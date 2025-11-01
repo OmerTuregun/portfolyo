@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "dateRange": "01.2025 - 06.2025",
+    "title": "Gerçek Zamanlı İçerik Sansürleme",
+    "description": "Kullanıcı tercihine göre gerçek zamanlı olarak açık, şiddet ve argo içerikleri tespit edip filtreleyen yapay zekâ destekli mobil sistem.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+1",
+    "githubUrl": "https://github.com/didarbilgin/RealTimeContentCensorship",
+    "tags": ["AI", "Makine Öğrenmesi", "YOLOv4", "BERT", "TensorFlow Lite"],
+    "modalContent": [
+      "<p>Bu proje, kullanıcı tercihine göre gerçek zamanlı olarak açık, şiddet içeren ve argo içerikleri tespit edip filtreleyen yapay zekâ destekli bir içerik sansürleme sistemi geliştirmeyi amaçlamaktadır.</p>",
+      "<p>Proje, özellikle çocuklar ve hassas kullanıcılar için dijital güvenliği artırmayı hedeflemektedir.</p>",
+      "<h5>Teknik Detaylar:</h5>",
+      "<ul>",
+      "<li><strong>Görsel Analiz:</strong> Gerçek zamanlı nesne tespiti için YOLOv4-Tiny ve CNN modelleri.</li>",
+      "<li><strong>Metin Analizi:</strong> Argo ve şiddet içeren dil tespiti için BERT.</li>",
+      "<li><strong>Mobil Optimizasyon:</strong> Modellerin düşük gecikme ile çalışması için TensorFlow Lite.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 2,
+    "dateRange": "01.2025 - Devam ediyor",
+    "title": "Hanefi Mezhebi Fetva Otomasyonu",
+    "description": "İslam hukukunda Hanefi mezhebine odaklanarak yapay zekâ destekli bir fetva otomasyon sistemi geliştirmeyi hedeflemektedir.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+2",
+    "githubUrl": "https://github.com/OmerTuregun/fatwa_automation",
+    "tags": ["AI", "NLP", "BERT", "T5", "GPT", "Python"],
+    "modalContent": [
+      "<p>Bu proje, İslam hukukunda Hanefi mezhebine odaklanarak yapay zekâ destekli bir fetva otomasyon sistemi geliştirmeyi hedeflemektedir. Doğal dil işleme (NLP) teknikleri kullanılarak, kullanıcı soruları yorumlanmakta ve ilgili fetvalar getirilmektedir.</p>",
+      "<h5>Kullanılan Yöntemler:</h5>",
+      "<ul>",
+      "<li><strong>Soru Yorumlama:</strong> BERT ve RoBERTa modelleri.</li>",
+      "<li><strong>Bilgi Erişimi:</strong> Bilgi grafikleri (Knowledge Graphs) ve anlamsal arama.</li>",
+      "<li><strong>Özetleme:</strong> Uzun fetva metinleri için T5 modeli.</li>",
+      "<li><strong>Metin Benzerliği:</strong> TF-IDF ve Word2Vec.</li>",
+      "<li><strong>Tamamlama:</strong> Eksik bilgiler için GPT tabanlı yöntemler.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 3,
+    "dateRange": "10.2025 - Devam ediyor",
+    "title": "Kişisel Portfolyo Websitesi (Bu Proje)",
+    "description": "ASP.NET Core, Docker ve 'Glassmorphism' tasarımıyla oluşturulan, JSON'dan beslenen dinamik ve interaktif portfolyo sitesi.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+3",
+    "githubUrl": "https://github.com/OmerTuregun/portfolyo.git",
+    "tags": ["ASP.NET Core", "Docker", "Bootstrap", "CSS", "JSON", "C#"],
+    "modalContent": [
+      "<p>Şu anda incelemekte olduğunuz bu portfolyo projesi, modern web teknolojilerini kullanarak 'Glassmorphism' tasarım dilini benimseyen bir yapıdadır.</p>",
+      "<h5>Teknik Detaylar:</h5>",
+      "<ul>",
+      "<li><strong>Backend:</strong> ASP.NET Core MVC (C#)</li>",
+      "<li><strong>Dağıtım:</strong> Docker & Docker-Compose</li>",
+      "<li><strong>Frontend:</strong> Bootstrap 5, AOS (Animasyon), 'Vanilla' JavaScript</li>",
+      "<li><strong>Veri:</strong> Proje içerikleri, dinamik olarak <code>projects.json</code> dosyasından çekilmekte ve JavaScript ile render edilmektedir.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 4,
+    "dateRange": "11.2024 - 12.2024",
+    "title": "Gerçek Zamanlı İşaret Dili Tanıma",
+    "description": "İşaret dili alfabesini gerçek zamanlı olarak tanıyabilen CNN tabanlı bir model geliştirilmiştir.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+4",
+    "githubUrl": "https://github.com/OmerTuregun/sign-language-recognition",
+    "tags": ["AI", "Makine Öğrenmesi", "CNN", "OpenCV", "TensorFlow"],
+    "modalContent": [
+      "<p>Bu projede, işaret dili alfabesini gerçek zamanlı olarak tanıyabilen Evrişimli Sinir Ağı (CNN) tabanlı bir model geliştirilmiştir.</p>",
+      "<p>Özel olarak oluşturulmuş bir veri setiyle eğitilen model, video akışı üzerinden el hareketlerini tespit edip sınıflandırmaktadır.</p>",
+      "<h5>Teknik Detaylar:</h5>",
+      "<ul>",
+      "<li><strong>Model:</strong> CNN (Evrişimli Sinir Ağı).</li>",
+      "<li><strong>Gerçek Zamanlı Görüntü İşleme:</strong> OpenCV.</li>",
+      "<li><strong>Model Eğitimi:</strong> TensorFlow ve Keras.</li>",
+      "<li><strong>Optimizasyon:</strong> Düşük gecikmeli tanıma için TensorFlow Lite.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 5,
+    "dateRange": "03.2025 - 04.2025",
+    "title": "İzmit Rota Planlayıcı (Dijkstra)",
+    "description": "Python (Flask) ve Folium kullanarak, Dijkstra algoritması ile İzmit'teki iki nokta arasındaki en kısa yolu bulan bir web uygulaması.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+5",
+    "githubUrl": "https://github.com/OmerTuregun/route_planner",
+    "tags": ["Python", "Flask", "Dijkstra", "Folium", "Algoritma"],
+    "modalContent": [
+      "<p>Bu proje, Python ve Flask web çatısı kullanılarak geliştirilmiş bir rota planlama aracıdır. İzmit için tanımlanmış düğüm (node) ve yolları kullanarak, Dijkstra'nın en kısa yol algoritmasını uygular.</p>",
+      "<h5>Özellikler:</h5>",
+      "<ul>",
+      "<li>Kullanıcının seçtiği iki nokta arasındaki en kısa rotayı hesaplama.</li>",
+      "<li>Sonucun interaktif bir harita üzerinde gösterilmesi.</li>",
+      "</ul>",
+      "<h5>Teknolojiler:</h5>",
+      "<ul>",
+      "<li><strong>Backend:</strong> Python, Flask</li>",
+      "<li><strong>Algoritma:</strong> Dijkstra</li>",
+      "<li><strong>Görselleştirme:</strong> Folium</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 6,
+    "dateRange": "04.2024 - 05.2024",
+    "title": "Akademik Makale Arama (Web Scraping)",
+    "description": "Google Scholar gibi platformlardan web scraping teknikleriyle makale arayan ve MongoDB'ye kaydeden bir web uygulaması.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+6",
+    "githubUrl": null,
+    "tags": ["Web Scraping", "Python", "MongoDB", "Elasticsearch"],
+    "modalContent": [
+      "<p>Google Scholar gibi platformlardan akademik makaleleri web scraping teknikleriyle arayan bir web uygulaması geliştirdim. Elde edilen makale bilgileri bir veritabanına kaydedilmektedir.</p>",
+      "<h5>Özellikler:</h5>",
+      "<ul>",
+      "<li>Web scraping ile otomatik veri çıkarımı.</li>",
+      "<li>Verilerin MongoDB veritabanına kaydedilmesi.</li>",
+      "<li>Kullanıcıların belirli niteliklere (yazar, yıl, anahtar kelime) göre makale sorgulaması.</li>",
+      "</ul>",
+      "<h5>Teknolojiler:</h5>",
+      "<ul>",
+      "<li><strong>Scraping:</strong> Python (BeautifulSoup, Scrapy vb.)</li>",
+      "<li><strong>Veritabanı:</strong> MongoDB (NoSQL)</li>",
+      "<li><strong>Arama/Filtreleme:</strong> Elasticsearch tabanlı sorgular.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 7,
+    "dateRange": "04.2024 - 05.2024",
+    "title": "Hasta Takip ve Yönetim Sistemi",
+    "description": "Python (Django) ve SQLite kullanılarak geliştirilmiş, ilişkisel veritabanı prensiplerine uygun bir hastane yönetim sistemi.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+7",
+    "githubUrl": null,
+    "tags": ["Python", "Django", "SQLite", "Veritabanı"],
+    "modalContent": [
+      "<p>Bu proje, Python (Django) kullanılarak geliştirilmiş, SQLite veritabanı ile çalışan bir hastane yönetim sistemi.</p>",
+      "<p>Sistem, hastaların kayıt olması, doktorlardan randevu alması, medikal raporlarını saklaması ve çeşitli sağlık işlemlerini merkezi bir web platformu üzerinden yönetmesini sağlamaktadır.</p>",
+      "<h5>Teknik Detaylar:</h5>",
+      "<ul>",
+      "<li><strong>Framework:</strong> Django (Python)</li>",
+      "<li><strong>Veritabanı:</strong> SQLite</li>",
+      "<li><strong>Mimari:</strong> İlişkisel veritabanı normalleştirme prensiplerine uygun tasarım.</li>",
+      "<li><strong>Özellikler:</strong> Randevu alma, hasta kaydı, medikal rapor yönetimi.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 8,
+    "dateRange": "08.2025",
+    "title": "Flask Ürün Katalogu (SPA)",
+    "description": "Python (Flask) ve MySQL tabanlı, SPA benzeri, admin panelli ve Docker destekli ürün katalogu uygulaması.",
+    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+8",
+    "githubUrl": "https://github.com/OmerTuregun/product_catalog",
+    "tags": ["Python", "Flask", "MySQL", "Docker", "Bootstrap 5", "JavaScript"],
+    "modalContent": [
+      "<p>Flask + MySQL tabanlı, tek sayfa (SPA benzeri) bir ürün katalog uygulaması. Sitede alışveriş yapılmaz; ürünlerin fiyatı, görseli, açıklaması ve stok durumu listelenir.</p>",
+      "<p>Admin kullanıcı, arayüzden dosya yükleyerek ürün ekleyebilir. Diğer kullanıcılar yalnızca görüntüler ve arama/filtre yapar.</p>",
+      "<h5>Özellikler:</h5>",
+      "<ul>",
+      "<li>Kullanıcı kayıt & giriş (Flask-Login)</li>",
+      "<li>Roller: admin (ürün ekleme) / user (görüntüleme)</li>",
+      "<li>Kategorilere göre filtreleme</li>",
+      "<li>Admin paneli üzerinden ürün görseli yükleme</li>",
+      "<li>Docker Compose ile kolay kurulum</li>",
+      "</ul>",
+      "<h5>Teknolojiler:</h5>",
+      "<p><strong>Backend:</strong> Python 3.11, Flask, Flask-SQLAlchemy, Gunicorn<br>",
+      "<strong>Veritabanı:</strong> MySQL 8<br>",
+      "<strong>Frontend:</strong> Bootstrap 5, vanilla JS</p>"
+    ]
+  }
+]
+

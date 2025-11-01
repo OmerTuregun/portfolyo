@@ -1,0 +1,426 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerim - Ömer Faruk Türegün</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- ==== ANA STİL DOSYASI (Anasayfa ile aynı) ==== -->
+    <style>
+        :root {
+            --primary-light: #90EE90; 
+            --bg-dark: #0D1117;       
+            --text-on-accent: #0D1117;
+            --glass-bg: rgba(22, 27, 34, 0.6); 
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #E6EDF3;
+        }
+
+        /* ==== NAVBAR ==== */
+        #navbar {
+            background: rgba(13, 17, 23, 0.75); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        .navbar .nav-link {
+            color: #E6EDF3;
+            font-weight: 500;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--primary-light);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        .navbar-brand span {
+            color: var(--primary-light);
+        }
+
+        /* ==== CAM KARTLAR (Genel Stil) ==== */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /*
+         * ==== PROJE STİLLERİ ====
+         */
+        .project-card-img {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 0.75rem 0.75rem 0 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .glass-card .project-card-body {
+            padding: 1.5rem;
+            position: relative;
+        }
+        .project-tags {
+            padding: 0;
+            margin: 1rem 0 0 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .project-tags li {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.6rem;
+            background-color: rgba(144, 238, 144, 0.1);
+            color: var(--primary-light);
+            border-radius: 99px;
+            border: 1px solid rgba(144, 238, 144, 0.3);
+        }
+        
+        /* Kartı tıklanabilir yapma */
+        .project-card-clickable {
+            cursor: pointer;
+        }
+
+        /* ==== BUNU EKLE ==== */
+        .project-card-footer {
+            display: flex; /* Anahtar bu: dikey hizala */
+            justify-content: space-between; /* Birini sola, birini sağa yasla */
+            align-items: flex-end; /* Öğeleri (tag listesi ve ikon) en alta hizala */
+            gap: 1rem; /* Aralarında boşluk bırak (taşmayı engeller) */
+        }
+
+        /* GitHub linki */
+        .project-github-link {
+            /* position: absolute ve ilgili her şey kaldırıldı */
+            font-size: 1.5rem;
+            color: #E6EDF3;
+            transition: all 0.3s ease;
+            flex-shrink: 0; /* İkonun küçülmesini engelle */
+        }
+        .project-github-link:hover {
+            color: var(--primary-light);
+            transform: scale(1.1);
+        }
+
+        #projectModal .modal-dialog {
+            max-width: 600px;
+        }
+
+        #projectModalContent h5 {
+            color: var(--primary-light); /* Yeşil renk */
+            font-weight: 700;          /* Kalın yazı */
+            margin-top: 1rem;          /* Üstündeki paragraftan biraz ayır */
+        }
+
+        #projectModal .modal-body,
+        #projectModal .modal-body ul li {
+            font-size: 0.9rem; /* 1rem (default) 'den küçültüldü */
+            line-height: 1.6;
+        }
+
+        #projectModalImage {
+            /* Genişliği, modalın genişliğinden daha az olsun (%100 değil) */
+            max-width: 80%; 
+            
+            /* Ne olursa olsun, dikeyde 300px'i geçmesin (Asıl çözüm bu) */
+            max-height: 300px;
+            
+            width: auto; /* En-boy oranını koru */
+            
+            /* Resmi ortala */
+            display: block;
+            margin: 0 auto; 
+        }
+
+        #projectModalTitle {
+            font-size: 0.9rem; /* Yazı boyutunu küçült (h5'ten küçük) */
+            font-weight: 400;  /* Kalınlığı azalt */
+            color: #E6EDF3 !important; /* text-white'ı ez */
+            opacity: 0.7; /* Biraz soluklaştır */
+        }
+
+        /* Gövdeye eklediğimiz asıl proje başlığını ayarla */
+        #projectModalContent h4 {
+            font-size: 1.5rem; /* Bu büyük kalsın */
+        }
+        
+        /* Ana Buton Stili */
+        .btn-primary-light {
+            background-color: var(--primary-light);
+            color: var(--text-on-accent);
+            border: 0;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-light:hover {
+            background-color: #fff;
+            color: var(--text-on-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(144, 238, 144, 0.2);
+        }
+    </style>
+</head>
+
+<body data-bs-theme="dark" class="bg-dark text-white">
+
+    <!-- ==== PROJELER SAYFASI İÇİN NAVBAR ==== -->
+    <nav id="navbar" class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                Ömer Faruk<span>.</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="expertise">Yetenekler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="services">Hizmetler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Projects">Projeler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ==== TÜM PROJELER BÖLÜMÜ ==== -->
+    <main class="container my-5 py-5">
+        
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="col">
+                <h1 class="display-4 fw-bold text-white mb-3">Tüm Projelerim</h1>
+                <p class="lead text-white-50">Geliştirdiğim uygulamaların ve çalışmaların tamamı.</p>
+            </div>
+        </div>
+
+        <!-- PROJELER BURAYA JS İLE GELECEK -->
+        <div class="row g-4" id="all-projects-container">
+            <!-- JS Tarafından Doldurulacak -->
+        </div> 
+
+    </main>
+
+    <!-- ==== PROJE DETAY MODALI (GİZLİ) ==== -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: transparent; border:none;">
+                <div class="glass-card" style="border-width: 2px; border-color: rgba(255,255,255,0.3);">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title text-white fw-bold" id="projectModalTitle">Proje Başlığı</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-white-50">
+                        <img src="" id="projectModalImage" class="img-fluid rounded mb-3" alt="Proje Görseli">
+                        <div id="projectModalTags" class="d-flex flex-wrap gap-2 mb-3">
+                            <!-- Etiketler buraya JS ile gelecek -->
+                        </div>
+                        <div id="projectModalContent">
+                            <!-- Detaylı içerik buraya JS ile gelecek -->
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <a href="#" id="projectModalGithubLink" class="btn btn-primary-light" target="_blank">
+                            <i class="bi bi-github me-2"></i> GitHub'da Görüntüle
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==== SCRIPT DOSYALARI ==== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- ==== PROJELER SAYFASINA ÖZEL JAVASCRIPT ==== -->
+    <script>
+        // Tüm projeleri tutacağımız global değişken
+        let allProjects = [];
+
+        // Sayfa yüklendiğinde çalışacak ana fonksiyonlar
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+
+            fetchProjects();
+
+            // Modal tetiklendiğinde veriyi doldur
+            const projectModal = document.getElementById('projectModal');
+            projectModal.addEventListener('show.bs.modal', (event) => {
+                const projectId = event.relatedTarget.getAttribute('data-project-id');
+                const project = allProjects.find(p => p.id == projectId);
+                if (project) {
+                    populateProjectModal(project);
+                }
+            });
+        });
+        
+        // JSON'dan Projeleri Çekme Fonksiyonu
+        async function fetchProjects() {
+            try {
+                const response = await fetch('/data/projects.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                allProjects = await response.json();
+                
+                // PROJELER SAYFASI İÇİN: TÜM projeleri al
+                const projectsToShow = allProjects; 
+                
+                const container = document.getElementById('all-projects-container');
+                container.innerHTML = ''; // Temizle
+                
+                projectsToShow.forEach(project => {
+                    container.innerHTML += createProjectCardHTML(project);
+                });
+
+                AOS.refresh();
+
+            } catch (error) {
+                console.error('Projeler yüklenirken hata oluştu:', error);
+                document.getElementById('all-projects-container').innerHTML = '<p class="text-danger">Projeler yüklenemedi.</p>';
+            }
+        }
+
+        // ==== createProjectCardHTML FONKSİYONUNUN TAMAMINI BUNUNLA DEĞİŞTİR ====
+        function createProjectCardHTML(project) {
+            const tagsHTML = project.tags.map(tag => `<li>${tag}</li>`).join('');
+
+            // GitHub linkini oluşturan logic (değişmedi)
+            const githubLinkHTML = project.githubUrl
+                ? `<a href="${project.githubUrl}" class="project-github-link" target="_blank" onclick="event.stopPropagation()">
+                    <i class="bi bi-github"></i>
+                </a>`
+                : ''; 
+
+            // ---- YENİ HTML YAPISI BURADA ----
+            return `
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="${(project.id % 3 + 1) * 100}">
+                <div class="glass-card card-hover w-100 p-0 project-card-clickable" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#projectModal" 
+                    data-project-id="${project.id}">
+
+                    <img src="${project.imageUrl}" class="project-card-img" alt="${project.title}">
+                    
+                    <!-- 
+                        Kart gövdesini dikey flex container yaptık (d-flex flex-column).
+                        flex-grow-1 ile kartın kalan tüm yüksekliğini doldurmasını sağladık.
+                    -->
+                    <div class="project-card-body d-flex flex-column flex-grow-1">
+                        
+                        <!-- Bu üst kısım (başlık, açıklama) en üste yaslanır -->
+                        <div>
+                            <h4 class="text-white fw-bold">${project.title}</h4>
+                            <p class="text-white-50 mb-3">${project.description}</p>
+                        </div>
+                        
+                        <!-- 
+                            mt-auto (margin-top: auto) sihri, bu div'i 
+                            flex container'ın (project-card-body) en dibine iter.
+                        -->
+                        <div class="mt-auto">
+                            <!-- Bu bizim yeni yatay flex wrapper'ımız -->
+                            <div class="project-card-footer">
+                                
+                                <!-- Sol Taraf: Tag'ler (sığdığı kadar genişler) -->
+                                <ul class="project-tags">
+                                    ${tagsHTML}
+                                </ul>
+                                
+                                <!-- Sağ Taraf: GitHub ikonu (sabit durur) -->
+                                ${githubLinkHTML}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        // Modalı Veriyle Dolduran Fonksiyon
+        function populateProjectModal(project) {
+            
+            document.getElementById('projectModalTitle').innerText = project.dateRange || 'Proje Detayı';
+
+            document.getElementById('projectModalImage').src = project.imageUrl;
+            
+            const githubLinkButton = document.getElementById('projectModalGithubLink');
+            if (project.githubUrl) {
+                githubLinkButton.href = project.githubUrl;
+                githubLinkButton.style.display = 'inline-block'; 
+            } else {
+                githubLinkButton.style.display = 'none'; 
+            }
+
+            const tagsContainer = document.getElementById('projectModalTags');
+            tagsContainer.innerHTML = '';
+            project.tags.forEach(tag => {
+                tagsContainer.innerHTML += `<span class="badge" style="background-color: rgba(144, 238, 144, 0.1); color: var(--primary-light); border: 1px solid rgba(144, 238, 144, 0.3); padding: 0.4rem 0.6rem; font-weight: 500;">${tag}</span>`;
+            });
+
+            const contentContainer = document.getElementById('projectModalContent');
+            
+            contentContainer.innerHTML = ''; 
+            
+            contentContainer.innerHTML += `<h4 class="text-white fw-bold mb-2">${project.title}</h4>`;
+            
+            contentContainer.innerHTML += project.modalContent.join('');
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+[
+  {
+    "type": "Eğitim",
+    "items": [
+      {
+        "id": 1,
+        "title": "Bilgisayar Mühendisliği",
+        "company": "Kocaeli Üniversitesi",
+        "dateRange": "2021 - Devam Ediyor",
+        "description": "Lisans eğitimi."
+      },
+      {
+        "id": 2,
+        "title": "Web Tasarımı ve Kodlama",
+        "company": "Anadolu Üniversitesi",
+        "dateRange": "2025 - Devam Ediyor",
+        "description": "Önlisans eğitimi."
+      }
+    ]
+  },
+  {
+    "type": "İş Deneyimi",
+    "experience": [
+      {
+        "id": 1,
+        "title": "Yazılım Geliştirici (Tam Zamanlı)",
+        "company": "KOLSAN - Kocaeli Lastik Sanayi A.Ş.",
+        "dateRange": "01.10.2025 - Devam Ediyor",
+        "description": "Fabrika sahasındaki makinelerin dijitalleştirilmesi, uzaktan yönetimi ve raporlanması için geliştirilen web platformlarında aktif olarak rol almaktayım. Mevcut sistemlerde optimizasyonlar, hata düzeltmeleri ve yeni modül geliştirmeleri yapıyorum.",
+        "tags": [
+          "C#",
+          "ASP.NET Core MVC",
+          "Node.js",
+          "MSSQL (SSMS)",
+          "JavaScript",
+          "HTML/CSS",
+          "Docker",
+          "GitHub"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "K-Team Program Katılımcısı (İş Deneyimi)",
+        "company": "Assan Bilişim",
+        "dateRange": "07.2024 - 06.2025",
+        "description": "Jetson cihazları üzerinde Linux ve Docker konteyner mimarileri üzerine çalıştım. Hem ofis hem de saha projelerinde yer alarak görüntü işleme uygulamalarına teknik destek sağladım. React ile web arayüzleri geliştirdim ve Python ile MongoDB sorguları oluşturdum. Sanal sunuculara ve uzak cihazlara terminal komutlarıyla erişim sağlayarak full-stack beceriler kazandım.",
+        "tags": [
+          "Linux",
+          "Docker",
+          "React",
+          "Python",
+          "MongoDB",
+          "Görüntü İşleme"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Stajlar",
+    "experience": [
+      {
+        "id": 3,
+        "title": "Veri Yönetimi Departmanı (Staj)",
+        "company": "Assan Bilişim",
+        "dateRange": "09.2024 - 10.2024",
+        "description": "YOLOv8 kullanarak kask takan/takmayan kişileri tespit eden bir model eğittim. Roboflow kullanarak veri analizi, etiketleme ve eğitim süreçlerini yönettim. Görüntü işleme projeleri için veri hazırlama ve model eğitimi konularında deneyim kazandım.",
+        "tags": [
+          "YOLOv8",
+          "Roboflow",
+          "Veri Analizi",
+          "Model Eğitimi"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Endüstriyel Uygulamalar & Departmanı (Staj)",
+        "company": "Assan Bilişim",
+        "dateRange": "07.2024 - 08.2024",
+        "description": "Jetson cihazları kullanarak Docker uygulamalarını geliştirdim ve Linux tabanlı sistemlerde aktif terminal kullanımı konusunda deneyim kazandım.",
+        "tags": [
+          "Jetson",
+          "Docker",
+          "Linux Terminal"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Diller",
+    "items": [
+      {
+        "id": 1,
+        "title": "English",
+        "description": "B1 Level",
+        "percentage": 60,
+        "flagCode": "gb"
+      },
+      {
+        "id": 2,
+        "title": "German",
+        "description": "A1 Level",
+        "percentage": 20,
+        "flagCode": "de"
+      }
+    ]
+  }
+]
+

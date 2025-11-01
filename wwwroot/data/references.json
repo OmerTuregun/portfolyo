@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Serdar ÇALIŞKAN",
+    "title": "Veri Analitiği ve Endüsriyel Uygulamalar Direktörü",
+    "company": "KİBAR HOLDİNG"
+  },
+  {
+    "id": 2,
+    "name": "Ali ÖZMERAL",
+    "title": "Yazılım Geliştirme Yöneticisi",
+    "company": "Assan Bilişim"
+  },
+  {
+    "id": 3,
+    "name": "İrfan MEVSİM",
+    "title": "Yazılım Geliştirme Yöneticisi",
+    "company": "Assan Bilişim"
+  },
+  {
+    "id": 4,
+    "name": "Feyza SANLIK HOCAOĞLU",
+    "title": "Yazılım Geliştirme Kıdemli Uzmanı",
+    "company": "YAŞAR BİLGİ"
+  },
+  {
+    "id": 5,
+    "name": "Enes  SETTAŞI",
+    "title": "Yazılım Geliştirme Uzmanı",
+    "company": "Assan Bilişim"
+  }
+]
