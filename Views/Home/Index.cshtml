@@ -386,6 +386,24 @@
             color: var(--text-muted);
         }
 
+        .about-teaser-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column; /* Mobilde */
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        @@media (min-width: 992px) {
+            .about-teaser-card {
+                flex-direction: row; /* Desktop'ta yan yana */
+                align-items: center;
+            }
+        }
+
     </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100" class="bg-dark text-white">
@@ -402,6 +420,9 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#hero">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="AboutMe">Hakkımda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#expertise">Yetenekler</a>
@@ -450,6 +471,16 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+        
+        <!-- ==== HAKKIMDA FRAGMAN BÖLÜMÜ ==== -->
+        <section id="about-teaser" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <!-- JS ile doldurulacak "cam kart" -->
+                <div class="about-teaser-card" id="about-teaser-card">
+                    <!-- Yükleniyor... -->
                 </div>
             </div>
         </section>
@@ -684,7 +715,8 @@
             initAnimatedProgressBars();
             fetchProjects();
             fetchExperience();
-            fetchReferences()
+            fetchReferences();
+            fetchAboutTeaser();
 
             // Modal tetiklendiğinde veriyi doldur
             const projectModal = document.getElementById('projectModal');
@@ -909,6 +941,40 @@
                 </div>
             </div>
             `;
+        }
+
+        async function fetchAboutTeaser() {
+            try {
+                const response = await fetch('/data/about.json');
+                if (!response.ok) throw new Error('Hakkımda verisi alınamadı');
+                
+                const data = await response.json();
+                const container = document.getElementById('about-teaser-card');
+                
+                // "Hakkımda" metnini al ve ilk cümlesini (veya 150 karakter) "fragman" yap
+                let teaserText = data.aboutMeText;
+                if (teaserText.length > 150) {
+                    teaserText = teaserText.substring(0, 150) + "...";
+                }
+
+                container.innerHTML = `
+                    <div class="pe-lg-5 mb-4 mb-lg-0">
+                        <h2 class="display-6 fw-bold text-white mb-3">Hakkımda</h2>
+                        <p class="lead text-white-50">${teaserText}</p>
+                    </div>
+                    <a asp-controller="Home" asp-action="AboutMe" class="btn btn-primary-light flex-shrink-0">
+                        Daha Fazlasını Oku <i class="bi bi-arrow-right-short"></i>
+                    </a>
+                `;
+                
+                // ÖNEMLİ: ASP.NET Tag Helper'ları (asp-action) JS içinde çalışmaz.
+                // Linki manuel olarak düzeltmemiz gerekiyor.
+                container.querySelector('a').href = '/Home/AboutMe'; 
+
+            } catch (error) {
+                console.error('Hakkımda fragmanı yüklenirken hata oluştu:', error);
+                container.innerHTML = '<p class="text-danger">Hakkımda bölümü yüklenemedi.</p>';
+            }
         }
 
     </script>

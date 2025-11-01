@@ -1,0 +1,337 @@
+@{
+    Layout = null; // Kendi layout'umuzu kullanacağız
+    ViewData["Title"] = "Hakkımda";
+}
+
+<!DOCTYPE html>
+<html lang="tr" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ömer Faruk Türegün</title>
+
+    <!-- Favicon (Emoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+
+    <!-- Bootstrap & İkonlar -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- AOS (Animasyon) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- ANA CSS STİLLERİ -->
+    <style>
+        :root {
+            --bg-dark: #0D1117;
+            --bg-glass: rgba(30, 41, 59, 0.5); /* Yarı şeffaf cam */
+            --border-glass: rgba(56, 68, 87, 0.5);
+            --text-light: #E6EDF3;
+            --text-muted: #8B949E;
+            --primary-light: #90EE90; /* Fıstık Yeşili */
+            --text-on-accent: #0D1117; /* Yeşilin üstündeki koyu yazı */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--bg-glass) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            border-radius: 1rem;
+            margin: 1rem;
+        }
+            .navbar .nav-link {
+                color: var(--text-muted);
+                font-weight: 500;
+                transition: all 0.2s ease-in-out;
+            }
+                .navbar .nav-link:hover,
+                .navbar .nav-link.active {
+                    color: var(--text-light);
+                }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        /* Genel Başlık Stilleri */
+        .display-5, .display-6 {
+            color: var(--text-light);
+        }
+
+        /* Kart Stilleri */
+        .glass-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        
+        /* Fıstık Yeşili Kart (Ana Kart gibi) */
+        .hero-card {
+            background-color: var(--primary-light);
+            color: var(--text-on-accent);
+            padding: 2rem;
+            border-radius: 1.5rem;
+        }
+            .hero-card h3 {
+                font-weight: 900;
+            }
+            .hero-card p {
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+
+        /* Carousel Stilleri */
+        .social-carousel {
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+        }
+            .social-carousel .carousel-item img {
+                aspect-ratio: 16 / 9;
+                object-fit: cover;
+            }
+            /* Carousel kontrol butonlarını "cam" yap */
+            .social-carousel .carousel-control-prev,
+            .social-carousel .carousel-control-next {
+                background-color: var(--bg-glass);
+                width: 10%;
+                opacity: 0.8;
+                transition: opacity 0.3s ease;
+            }
+            .social-carousel .carousel-control-prev:hover,
+            .social-carousel .carousel-control-next:hover {
+                opacity: 1;
+            }
+        
+        /* İçerik Alanı (Yazılar) */
+        .content-area {
+            padding-top: 1.5rem;
+        }
+            .content-area h5 {
+                color: var(--primary-light); /* Yeşil alt başlık */
+                font-weight: 700;
+            }
+            .content-area ul {
+                padding-left: 1.5rem;
+            }
+            .content-area li {
+                margin-bottom: 0.5rem;
+            }
+        
+        .link-primary-light {
+             color: var(--primary-light) !important;
+             text-decoration: none;
+             font-weight: 600;
+        }
+        .link-primary-light:hover {
+            text-decoration: underline !important;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==== STICKY NAVBAR ==== -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                Ömer Faruk TÜREGÜN
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="AboutMe">Hakkımda</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="AboutMe">Hakkımda</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="expertise">Yetenekler</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Projects">Projeler</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- ==== ANA İÇERİK ==== -->
+    <main class="container mt-4">
+        
+        <!-- Sayfa Başlığı -->
+        <section id="page-header" class="text-center py-4" data-aos="fade-up">
+            <h1 class="display-5 fw-bold text-white">Hakkımda & Sosyal Faaliyetler</h1>
+            <p class="lead text-white-50">Kodun arkasındaki kişi.</p>
+        </section>
+        
+        <!-- 1. Bölüm: Hakkımda (Cam Kart) -->
+        <section id="about-me-text" class="mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card">
+                <h3 class="fw-bold text-white mb-3">Hakkımda</h3>
+                <p id="about-me-content" class="lead text-white-50" style="font-size: 1.1rem;"></p>
+            </div>
+        </section>
+
+        <!-- 2. Bölüm: Gelecek Hedefi (Yeşil Kart) -->
+        <section id="future-goal-text" class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="hero-card">
+                <h3 class="mb-3">Kariyer Hedefim</h3>
+                <p id="future-goal-content" class="mb-0"></p>
+            </div>
+        </section>
+        
+        <!-- 3. Bölüm: Sosyal Faaliyetler (Dinamik) -->
+        <section id="social-activities-container">
+            <!-- İçerik JS ile buraya yüklenecek -->
+        </section>
+
+    </main>
+    
+    <!-- ==== FOOTER ==== -->
+    <footer class="footer">
+        <div class="container text-center">
+            <span class="text-muted">© @DateTime.Now.Year Ömer Faruk Türegün. Tüm hakları saklıdır.</span>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap & AOS Scriptleri -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- ANA SCRIPT (JSON'dan Veri Çekme) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 600,
+                once: true
+            });
+            
+            fetchAboutData();
+        });
+
+        async function fetchAboutData() {
+            try {
+                const response = await fetch('/data/about.json');
+                if (!response.ok) throw new Error('Veri alınamadı');
+                
+                const data = await response.json();
+                
+                // 1. Hakkımda Metnini Doldur
+                // (JSON'daki \n'leri <br>'ye çevirerek paragrafları koru)
+                document.getElementById('about-me-content').innerHTML = data.aboutMeText.replace(/\n/g, '<br />');
+                
+                // 2. Gelecek Hedefi Metnini Doldur
+                document.getElementById('future-goal-content').innerHTML = data.futureGoalText.replace(/\n/g, '<br />');
+
+                // 3. Sosyal Faaliyetleri (KİHMED, İzmitgücü) Doldur
+                const container = document.getElementById('social-activities-container');
+                container.innerHTML = ''; // Temizle
+                
+                data.socialActivities.forEach((activity, index) => {
+                    container.innerHTML += createSocialActivityHTML(activity, index);
+                });
+
+                // ÖNEMLİ: ASP.NET Tag Helper'ları (~) JS içinde çalışmaz.
+                // Tüm resim yollarını manuel olarak düzeltmemiz gerekiyor.
+                fixImagePaths(container);
+
+                setTimeout(() => { AOS.refresh(); }, 100);
+
+            } catch (error) {
+                console.error('Hakkımda verisi yüklenirken hata:', error);
+                document.getElementById('social-activities-container').innerHTML = '<p class="text-danger text-center">İçerik yüklenirken bir hata oluştu.</p>';
+            }
+        }
+        
+        // Sosyal Faaliyet Kartı (Carousel'li) HTML'ini oluşturan fonksiyon
+        function createSocialActivityHTML(activity, index) {
+            
+            // Carousel İçeriklerini (Resimleri) Oluştur
+            const carouselItemsHTML = activity.carouselImages.map((imgUrl, i) => `
+                <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                    <img src="${imgUrl}" class="d-block w-100" alt="${activity.title} Fotoğraf ${i + 1}">
+                </div>
+            `).join('');
+            
+            // Carousel Kontrol Butonlarını (Okları) Oluştur
+            const carouselControlsHTML = `
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${activity.id}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-${activity.id}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            `;
+            
+            // Yazı içeriğini (description) oluştur
+            const contentHTML = activity.description.join('\n');
+
+            // 2 Sütunlu (Resim / Yazı) yapıyı oluştur
+            return `
+            <div class="row g-4 g-lg-5 mb-5 align-items-center" data-aos="fade-up" data-aos-delay="${index * 100}">
+                
+                <!-- Sütun 1: Carousel -->
+                <div class="col-lg-6">
+                    <div id="carousel-${activity.id}" class="carousel slide social-carousel" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            ${carouselItemsHTML}
+                        </div>
+                        ${carouselControlsHTML}
+                    </div>
+                </div>
+                
+                <!-- Sütun 2: Açıklama -->
+                <div class="col-lg-6">
+                    <div class="content-area">
+                        <h2 class="display-6 fw-bold text-white mb-3">${activity.title}</h2>
+                        ${contentHTML}
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        // JS içinde '~/img/...' yollarını '/img/...' olarak düzelten fonksiyon
+        function fixImagePaths(container) {
+            const images = container.querySelectorAll('img');
+            images.forEach(img => {
+                let src = img.getAttribute('src');
+                if (src && src.startsWith('~/')) {
+                    img.setAttribute('src', src.substring(1)); // '~' karakterini kaldır
+                }
+            });
+        }
+    </script>
+    
+</body>
+</html>

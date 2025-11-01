@@ -1,0 +1,42 @@
+{
+  "aboutMeText": "Kocaeli Üniversitesi Bilgisayar Mühendisliği mezunuyum. Yapay Zekâ, Makine Öğrenmesi, Veri Bilimi ve Görüntü İşleme alanlarına büyük bir ilgi duyuyorum. Doğal Dil İşleme, Derin Öğrenme, Docker, Unix tabanlı sistemler (Ubuntu), arka uç geliştirme (Python, C#), ön yüz geliştirme (React, HTML, CSS, JavaScript, TypeScript) ve NoSQL veritabanları (MongoDB) konularında deneyim sahibiyim. Şu anda üniversite projelerinde ve bir Yetenek Programı'nda aktif olarak yer alıyor, teknik becerilerimi geliştirme fırsatı buluyorum. Gerçek dünya uygulamaları üzerinde çalışmaktan, sürekli öğrenmekten ve en güncel teknolojileri takip etmekten keyif alıyorum. Hedefim, FullStack Geliştirme alanında uzmanlaşarak, araştırma ve geliştirme yoluyla yenilikçi çözümler üretmek.",
+  "futureGoalText": "Kariyer hedefim, gelecekte AIOps (AI + DevOps) alanında uzmanlaşarak bu alanda kendi şirketimi kurmak ve yenilikçi çözümler geliştirmektir. Bu doğrultuda, teknolojiyi operasyonel süreçlerle entegre ederek verimlilik sağlayan yapay zeka tabanlı sistemler üzerine çalışmayı hedefliyorum.",
+  "socialActivities": [
+    {
+      "id": "kihmed",
+      "title": "KİHMED (Kocaeli İmam Hatip Mezunları Derneği)",
+      "carouselImages": [
+        "~/img/kihmed/foto1.jpg",
+        "~/img/kihmed/foto2.jpg",
+        "~/img/kihmed/foto3.jpg"
+      ],
+      "description": [
+        "<h5>Görevlerim ve Faaliyetlerim:</h5>",
+        "<p>5 senedir Gençlik Komisyonu'nda aktif olarak görev yapmaktayım. Bu süre zarfında 3 sene 'Ortaokul Koordinatörlüğü' görevini yürüttüm.</p>",
+        "<ul>",
+        "<li>Ortaokul öğrencilerine liderlik, mentörlük ve koçluk yaparak sosyal hayata hazırlanmalarına yardımcı oldum.</li>",
+        "<li>Öğrenci gruplarının dini birikimlerine katkı sağlamak amacıyla çeşitli eğitim ve sosyal faaliyetler düzenledim.</li>",
+        "<li>Şu anda derneğin sosyal medya yönetim ekibinde yer alarak başkan yardımcılığı görevini sürdürmekteyim.</li>",
+        "</ul>"
+      ]
+    },
+    {
+      "id": "izmitgucu",
+      "title": "İzmitgücü FK",
+      "carouselImages": [
+        "~/img/izmitgucu/mac1.jpg",
+        "~/img/izmitgucu/mac2.jpg",
+        "~/img/izmitgucu/mac3.jpg"
+      ],
+      "description": [
+        "<h5>Takımdaki Rolüm ve Başarılar:</h5>",
+        "<p>Arkadaşlarımla kurduğum ve her hafta aktif olarak futbol oynadığım bu takım, hayatımda büyük keyif aldığım bir alanı temsil ediyor. Takımın kaptanıyım ve forma numaram 4'tür.</p>",
+        "<ul>",
+        "<li><strong>SıratıMüstakim Turnuvası:</strong> Şampiyonluk</li>",
+        "<li><strong>MarmaraCup Kral Kupası:</strong> Şampiyonluk</li>",
+        "</ul>",
+        "<p>Takımımızın <a href='https://www.instagram.com/izmitgucu?igsh=MTRiN21xc28xMzRudQ==' target='_blank' class='link-primary-light'>resmi Instagram sayfasını</a> da yönetiyoruz.</p>"
+      ]
+    }
+  ]
+}
