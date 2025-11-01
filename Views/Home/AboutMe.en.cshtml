@@ -108,6 +108,7 @@
             .social-carousel .carousel-item img {
                 aspect-ratio: 16 / 9;
                 object-fit: cover;
+                background-color: #000;
             }
             /* Make carousel control buttons "glass" */
             .social-carousel .carousel-control-prev,
@@ -120,6 +121,9 @@
             .social-carousel .carousel-control-prev:hover,
             .social-carousel .carousel-control-next:hover {
                 opacity: 1;
+            }
+            #carousel-izmitgucu .carousel-item img {
+                object-fit: contain;
             }
         
         /* Content Area (Text) */
@@ -277,11 +281,16 @@
         function createSocialActivityHTML(activity, index) {
             
             // Create Carousel Content (Images)
-            const carouselItemsHTML = activity.carouselImages.map((imgUrl, i) => `
+            const carouselItemsHTML = activity.carouselImages.map((imgUrl, i) => {
+    
+                let correctedImgUrl = imgUrl.startsWith('~/') ? imgUrl.substring(1) : imgUrl;
+
+                return `
                 <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                    <img src="${imgUrl}" class="d-block w-100" alt="${activity.title} Photo ${i + 1}">
+                    <img src="${correctedImgUrl}" class="d-block w-100" alt="${activity.title} Fotoğraf ${i + 1}">
                 </div>
-            `).join('');
+                `;
+            }).join('');
             
             // Create Carousel Control Buttons (Arrows)
             const carouselControlsHTML = `
