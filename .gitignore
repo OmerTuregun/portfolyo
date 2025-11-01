@@ -1,0 +1,21 @@
+# Visual Studio ve Rider IDE özel ayar dosyaları
+# BU SATIRLAR SİZİN HATANIZI ÇÖZECEK:
+##
+.vs/
+.idea/
+
+# Derleme çıktı klasörleri
+##
+[Bb]in/
+[Oo]bj/
+
+# Kullanıcıya özel dosyalar (Paylaşılmamalı)
+##
+*.user
+*.suo
+
+# Diğer log ve cache dosyaları
+##
+*.log
+*.cache
+

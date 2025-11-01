@@ -1,0 +1,19 @@
+# Visual Studio ve Rider IDE dosyalarý
+##
+.vs/
+.idea/
+
+# Derleme çýktýlarý
+##
+[Bb]in/
+[Oo]bj/
+
+# Kullanýcýya özel dosyalar
+##
+*.user
+*.suo
+
+# Diðer
+##
+*.log
+*.cache

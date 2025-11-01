@@ -1,0 +1,471 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolyo v2</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons (Ok ikonu ve servis ikonları için) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. TEMA VE RENK PALETİ --- */
+        :root {
+            --bg-dark: #0D1117; /* Ana Koyu Arka Plan */
+            --accent-green: #90EE90; /* Fıstık Yeşili (Canlı) */
+            --text-on-accent: #0D1117; /* Yeşil Kart Üzerindeki Koyu Metin */
+            --card-glass: rgba(30, 37, 48, 0.7); /* "Cam" Kart Rengi */
+            --border-glass: rgba(255, 255, 255, 0.1); /* "Cam" Kart Kenarlığı */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        /* --- 2. STICKY NAVBAR (HEADER) --- */
+        #mainNavbar {
+            position: sticky;
+            top: 1rem; /* Sayfanın üstünden 1rem boşluklu */
+            z-index: 1020;
+            margin: 0 1rem; /* Kenarlardan boşluklu */
+        }
+
+        #mainNavbar .container-fluid {
+             background-color: rgba(30, 37, 48, 0.85); /* Hafif transparan */
+             backdrop-filter: blur(10px); /* Buğulaştırma (Glassmorphism) */
+             border: 1px solid var(--border-glass);
+             border-radius: 12px; /* Yuvarlatılmış kenar */
+        }
+
+        .navbar-brand {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+        .nav-link {
+            color: #f0f0f0;
+            font-weight: 500;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: var(--accent-green);
+        }
+        .navbar-toggler {
+            border-color: var(--border-glass);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* --- 3. HERO ALANI (FISTIK YEŞİLİ KART) --- */
+        #hero {
+            padding-top: 5rem; /* Navbar'dan sonra boşluk */
+        }
+
+        .hero-card {
+            background-color: var(--accent-green);
+            color: var(--text-on-accent);
+            border-radius: 24px;
+            padding: 2rem;
+            overflow: hidden; /* Resim taşmasın diye */
+        }
+
+        .hero-text h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 0.5rem 0 1.5rem 0;
+            line-height: 1.1;
+        }
+
+        .btn-dark-accent {
+            background-color: var(--text-on-accent);
+            color: var(--accent-green);
+            font-weight: 700;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-dark-accent:hover {
+            background-color: #fff;
+            color: var(--text-on-accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-image-frame {
+          width: 280px;
+          height: 280px;
+
+          @@media (min-width: 992px) {
+            width: 350px;
+            height: 350px;
+          }
+
+          position: relative;
+          margin: 0 auto;
+          border-radius: 50%; 
+          overflow: hidden;
+          border: 5px solid var(--primary-light);
+          background-color: #333;
+          z-index: 2;
+        }
+
+        .hero-image-frame img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .hero-image-frame::before {
+          content: '';
+          position: absolute;
+          width: 110%;
+          height: 110%;
+          top: -5%;
+          left: -5%;
+          border: 2px dashed var(--primary-light);
+          border-radius: 50%;
+          animation: spin 30s linear infinite;
+          z-index: -1;
+        }
+
+        @@keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- 4. YETENEK ALANI (PROGRESS BARS) --- */
+        #expertise {
+            padding: 6rem 0;
+        }
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        .skill-item h4 {
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .progress {
+            height: 10px;
+            background-color: var(--card-glass);
+            border-radius: 5px;
+        }
+        .progress-bar {
+            background-color: var(--accent-green);
+            width: 0%; /* GÜNCELLENDİ: Başlangıçta 0 olacak */
+            transition: width 1s ease-in-out; /* GÜNCELLENDİ: Animasyon için */
+        }
+
+        /* --- 5. SERVİS ALANI (CAM KARTLAR) --- */
+        #services {
+            padding: 4rem 0 6rem 0;
+        }
+
+        .service-card {
+            background-color: var(--card-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            height: 100%; /* Kartların aynı yükseklikte olmasını sağlar */
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card .icon {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            color: #ccc;
+        }
+        .service-card ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        /* Liste başına "check" ikonu */
+        .service-card ul li::before {
+            content: '\F26E'; /* Bootstrap Icon Check */
+            font-family: 'bootstrap-icons';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. STICKY HEADER (NAVBAR) -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#hero">Kişisel Portfolyom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!--
+                  Navbar linkleri.
+                  Sayfa tek parça olduğu için #hero, #expertise gibi ID'lere yönlenir.
+                -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#expertise">Yetenekler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Servisler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projeler (Sonra)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">İletişim (Sonra)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ANA İÇERİK -->
+    <main class="container mt-4">
+
+        <!-- 2. HERO ALANI (FISTIK YEŞİLİ KART) -->
+        <section id="hero">
+            <div class="hero-card">
+                <div class="row align-items-center">
+
+                    <!--
+                  Metin Alanı (Mobil: 1. sırada, Desktop: 1. sırada)
+                -->
+                    <div class="col-lg-7 hero-text">
+                        <h2>Merhaba, ben 👋 Ömer Faruk TÜREGÜN</h2>
+                        <h1>YAZILIM GELİŞTİRİCİ</h1>
+                        <a href="#contact" class="btn btn-dark-accent">
+                            Benimle İletişime Geç <i class="bi bi-arrow-right-short"></i>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-5 mt-4 mt-lg-0">
+                        <!-- Resmi sarmalayan dairesel çerçeveyi ekledik -->
+                        <div class="hero-image-frame">
+                            <img src="~/img/profil.jpg" alt="Ömer Faruk Türegün Profil Resmi">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. YETENEK ALANI (PROGRESS BARS) -->
+        <section id="expertise">
+            <!-- YENİ: Başlık eklendi -->
+            <h2 class="display-5 text-center fw-bold mb-3">Yazılım Geliştirici</h2>
+            <p class="lead text-center mb-5">Ana Yetenek Alanlarım</p>
+
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+
+                    <!-- Skill 1 -->
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between">
+                            <h4>Full Stack Proje Geliştirme</h4>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress">
+                            <!-- DEĞİŞİKLİK: 'style' yerine 'data-width' kullanıldı -->
+                            <div class="progress-bar" role="progressbar" data-width="90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between">
+                            <h4>Backend Geliştirme & Veritabanı</h4>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress">
+                            <!-- DEĞİŞİKLİK: 'style' yerine 'data-width' kullanıldı -->
+                            <div class="progress-bar" role="progressbar" data-width="75%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between">
+                            <h4>DevOps (Docker) & Altyapı Süreçleri</h4>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress">
+                            <!-- DEĞİŞİKLİK: 'style' yerine 'data-width' kullanıldı -->
+                            <div class="progress-bar" role="progressbar" data-width="75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between">
+                            <h4>Yapay Zeka (AI) Entegrasyonları</h4>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress">
+                            <!-- DEĞİŞİKLİK: 'style' yerine 'data-width' kullanıldı -->
+                            <div class="progress-bar" role="progressbar" data-width="65%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SERVİS ALANI (CAM KARTLAR) -->
+        <section id="services">
+            <h2 class="display-5 text-center fw-bold mb-3">Hizmetlerim</h2>
+            <p class="lead text-center mb-5">Kapsamlı Beceri Listem</p>
+
+            <div class="row">
+
+                <!-- Kart 1: FullStack -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="icon"><i class="bi bi-code-slash"></i></div>
+                        <h3>FullStack Geliştirme</h3>
+                        <ul>
+                            <!-- YAZILAR GÜNCELLENDİ -->
+                            <li>C# & ASP.NET Core MVC</li>
+                            <li>React & Next.js</li>
+                            <li>Node.js</li>
+                            <li>HTML5 / CSS3 / JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kart 2: Backend -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="icon"><i class="bi bi-server"></i></div>
+                        <h3>Backend & Veritabanı</h3> <!-- Başlık hafif güncellendi -->
+                        <ul>
+                            <!-- YAZILAR GÜNCELLENDİ -->
+                            <li>Python (FastAPI)</li>
+                            <li>Restful API Tasarımı</li>
+                            <li>MongoDB / PostgreSQL</li>
+                            <li>MySQL / MSSQL (SSMS)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kart 3: DevOps -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="icon"><i class="bi bi-cloud-arrow-up"></i></div>
+                        <h3>DevOps & Altyapı</h3> <!-- Başlık hafif güncellendi -->
+                        <ul>
+                            <!-- YAZILAR GÜNCELLENDİ -->
+                            <li>Docker & Docker-Compose</li>
+                            <li>Kubernetes (K8s)</li>
+                            <li>Linux Terminal</li>
+                            <li>Linux Sistem Yönetimi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kart 4: AI -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="icon"><i class="bi bi-robot"></i></div>
+                        <h3>AI & Makine Öğrenmesi</h3> <!-- Başlık hafif güncellendi -->
+                        <ul>
+                            <!-- YAZILAR GÜNCELLENDİ -->
+                            <li>Makine Öğrenmesi</li>
+                            <li>Derin Öğrenme</li>
+                            <li>LLM Geliştirme</li>
+                            <li>(ve ilgili projeler...)</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-4 mt-5" style="border-top: 1px solid var(--border-glass);">
+        <p class="mb-0">&copy; 2025 Ömer Faruk Türegün. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Bootstrap JS (Menünün mobilde açılıp kapanması için gerekli) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- YENİ: Progress Bar Animasyonu için JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const skillBars = document.querySelectorAll('.progress-bar');
+
+            const options = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.5 // %50'si görününce tetikle
+            };
+
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    // entry.isIntersecting: Öğe ekrana girdi mi?
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const targetWidth = bar.getAttribute('data-width');
+
+                        // Genişliği ayarla (CSS transition animasyonu tetikleyecek)
+                        bar.style.width = targetWidth;
+
+                        // Animasyon bir kez çalışsın, gözlemciyi kaldır
+                        observer.unobserve(bar);
+                    }
+                });
+            }, options);
+
+            // Her bir progress bar'ı gözlemle
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
