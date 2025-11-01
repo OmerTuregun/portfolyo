@@ -1,0 +1,163 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+1",
+    "dateRange": "01.2025 - 06.2025",
+    "githubUrl": "https://github.com/didarbilgin/RealTimeContentCensorship",
+    "title": "Real-Time Content Censorship",
+    "description": "An AI system that filters explicit, violent, and slang content on mobile devices based on user preference.",
+    "tags": ["Machine Learning", "YOLOv4", "BERT", "TensorFlow Lite"],
+    "modalContent": [
+      "<p>This project aims to develop an AI-powered content censorship system that detects and filters explicit, violent, and slang content in real-time based on user preferences. YOLO and CNN will be used for visual analysis, and BERT for text content.</p>",
+      "<h5>Methods Used:</h5>",
+      "<ul>",
+      "<li><strong>Visual Analysis:</strong> YOLOv4-Tiny and CNN models for real-time object detection.</li>",
+      "<li><strong>Text Analysis:</strong> BERT for detecting slang and violent language.</li>",
+      "<li><strong>Mobile Optimization:</strong> The system, optimized with TensorFlow Lite, will operate with high accuracy and low latency.</li>",
+      "</ul>",
+      "<p>The project particularly aims to enhance digital safety for children and sensitive users.</p>"
+    ]
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+2",
+    "dateRange": "01.2025 - Ongoing",
+    "githubUrl": "https://github.com/OmerTuregun/fatwa_automation",
+    "title": "Fatwa Automation in Islamic Law (Hanafi)",
+    "description": "An AI system focused on the Hanafi school, answering fatwa queries using NLP and Knowledge Graphs.",
+    "tags": ["NLP", "BERT", "T5", "GPT", "Knowledge Graphs"],
+    "modalContent": [
+      "<p>This project aims to develop an AI-powered fatwa automation system focused on the Hanafi school of Islamic law.</p>",
+      "<h5>Methods Used:</h5>",
+      "<ul>",
+      "<li><strong>Query Interpretation:</strong> User queries will be interpreted using NLP techniques with BERT and RoBERTa models.</li>",
+      "<li><strong>Information Retrieval:</strong> Relevant fatwas will be retrieved using Knowledge Graphs and semantic search.</li>",
+      "<li><strong>Summarization:</strong> Long fatwa texts will be summarized using T5.</li>",
+      "<li><strong>Text Similarity:</strong> TF-IDF and Word2Vec will be used for textual similarity.</li>",
+      "<li><strong>Completion:</strong> GPT-based methods will be applied to complete missing information.</li>",
+      "</ul>",
+      "<p>This project aims to provide a fast, reliable, and AI-powered fatwa system for Islamic law.</p>"
+    ]
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+3",
+    "dateRange": "09.2025 - Ongoing",
+    "githubUrl": "https://github.com/OmerTuregun/portfolyo",
+    "title": "Personal Portfolio Website (This Site)",
+    "description": "My personal portfolio site built with ASP.NET Core MVC, Docker, and dynamic content fed from JSON.",
+    "tags": ["ASP.NET Core", "Docker", "Bootstrap", "JavaScript", "JSON"],
+    "modalContent": [
+      "<p>This website you are currently browsing was designed and coded by me to showcase modern web technologies.</p>",
+      "<h5>Technical Details:</h5>",
+      "<ul>",
+      "<li><strong>Backend:</strong> ASP.NET Core MVC 8.0</li>",
+      "<li><strong>Frontend:</strong> Bootstrap 5, Vanilla JavaScript (AJAX), HTML5, AOS (Animation).</li>",
+      "<li><strong>Data Management:</strong> Projects, experiences, references, and 'about me' texts are dynamically fetched from JSON files stored under `wwwroot`.</li>",
+      "<li><strong>Forms:</strong> The contact form operates via a Formspree AJAX endpoint, requiring no backend.</li>",
+      "<li><strong>Deployment:</strong> The entire site runs inside a Docker container that can be launched with a single `docker-compose` command.</li>",
+      "</ul>",
+      "<p>This project combines my C# backend skills, dynamic content management with JSON, and modern 'glassmorphism' CSS design.</p>"
+    ]
+  },
+  {
+    "id": 4,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+4",
+    "dateRange": "11.2024 - 12.2024",
+    "githubUrl": "https://github.com/OmerTuregun/sign-language-recognition",
+    "title": "Real-Time Sign Language Recognition Model",
+    "description": "A CNN-based model that recognizes the sign language alphabet in real-time. Used OpenCV and TensorFlow Lite.",
+    "tags": ["CNN", "OpenCV", "TensorFlow Lite", "Image Processing"],
+    "modalContent": [
+      "<p>In this project, a CNN-based model capable of recognizing the sign language alphabet in real-time was developed.</p>",
+      "<h5>Methods Used:</h5>",
+      "<ul>",
+      "<li><strong>Model:</strong> A Convolutional Neural Network (CNN) trained on a custom-built dataset.</li>",
+      "<li><strong>Real-Time Recognition:</strong> Hand movements were detected using OpenCV for video-based recognition.</li>",
+      "<li><strong>Optimization:</strong> The model was optimized for mobile and embedded systems using TensorFlow Lite.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 5,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+5",
+    "dateRange": "03.2025 - 04.2025",
+    "githubUrl": "https://github.com/OmerTuregun/route_planner",
+    "title": "Izmit Route Planner (Kocaeli Bus)",
+    "description": "A web application developed with Flask and Docker, finding the best route using Kocaeli's public transport data with the A* algorithm.",
+    "tags": ["Python", "Flask", "A* Algorithm", "Docker", "Web Scraping"],
+    "modalContent": [
+      "<p>This project is a web application that performs the most efficient route planning for Kocaeli (Izmit) using public transportation data.</p>",
+      "<h5>Technical Details:</h5>",
+      "<ul>",
+      "<li><strong>Backend:</strong> Python (Flask)</li>",
+      "<li><strong>Data Collection:</strong> Bus routes and stop information were scraped from the Kocaeli Metropolitan Municipality's transportation portal using web scraping (BeautifulSoup).</li>",
+      "<li><strong>Algorithm:</strong> The A* (A-Star) search algorithm was implemented to find the shortest path (with the fewest transfers) between two stops.</li>",
+      "<li><strong>Frontend:</strong> A simple interface (Bootstrap) where the user can select start and destination stops.</li>",
+      "<li><strong>Deployment:</strong> The application is containerized with Docker.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 6,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+6",
+    "dateRange": "04.2024 - 05.2024",
+    "githubUrl": null,
+    "title": "Academic Article Search and Web Scraping",
+    "description": "A web app that scrapes articles from Google Scholar, saves them to MongoDB, and allows searching via Elasticsearch.",
+    "tags": ["Web Scraping", "MongoDB", "Elasticsearch", "Python"],
+    "modalContent": [
+      "<p>I developed a web application that searches for academic articles from platforms like Google Scholar using web scraping techniques.</p>",
+      "<h5>Features:</h5>",
+      "<ul>",
+      "<li><strong>Data Extraction:</strong> Article title, authors, abstract, and publication information were extracted using web scraping (BeautifulSoup, Scrapy) techniques.</li>",
+      "<li><strong>Data Storage:</strong> The obtained unstructured article information was saved to the NoSQL database, MongoDB.</li>",
+      "<li><strong>Search:</strong> A powerful Elasticsearch-based search engine was integrated to allow users to query by specific attributes (author, keyword).</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 7,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+7",
+    "dateRange": "04.2024 - 05.2024",
+    "githubUrl": null,
+    "title": "Patient Tracking and Management System",
+    "description": "A hospital management system developed with Python (Django) and SQLite, adhering to relational database principles.",
+    "tags": ["Python", "Django", "SQLite", "Relational Database"],
+    "modalContent": [
+      "<p>This project is a hospital management system developed using Python (Django) and running on an SQLite database. It was developed in accordance with relational database normalization principles.</p>",
+      "<h5>Features:</h5>",
+      "<ul>",
+      "<li><strong>User Management:</strong> Patients can register, and doctors can manage their appointment schedules.</li>",
+      "<li><strong>Appointment System:</strong> Patients can book appointments with doctors online.</li>",
+      "<li><strong>Reporting:</strong> Storage of medical reports and management of various health procedures through a central web platform.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 8,
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+8",
+    "dateRange": "08.2025",
+    "githubUrl": "https://github.com/OmerTuregun/product_catalog",
+    "title": "Product Catalog Application (Flask)",
+    "description": "A SPA-like product listing site with Flask, MySQL, and Docker Compose. Includes an admin panel and file upload features.",
+    "tags": ["Python", "Flask", "MySQL", "Docker", "SQLAlchemy"],
+    "modalContent": [
+      "<p>A Flask + MySQL based, single-page (SPA-like) product catalog application. The site is not for shopping; it lists products' price, image, description, and stock status.</p>",
+      "<h5>Features:</h5>",
+      "<ul>",
+      "<li><strong>User Management:</strong> User registration & login (Flask-Login).</li>",
+      "<li><strong>Roles:</strong> 'admin' (add/manage products) and 'user' (view/filter) roles.</li>",
+      "<li><strong>Product Management:</strong> Admin can add new products by uploading a file (product image) via the interface.</li>",
+      "<li><strong>Filtering:</strong> Search/filter by category, stock status, and name.</li>",
+      "</ul>",
+      "<h5>Technical Details:</h5>",
+      "<ul>",
+      "<li><strong>Backend:</strong> Python 3.11, Flask, Flask-SQLAlchemy, Flask-Login, Gunicorn</li>",
+      "<li><strong>Database:</strong> MySQL 8</li>",
+      "<li><strong>Frontend:</strong> Bootstrap 5, Vanilla JS</li>",
+      "<li><strong>Deployment:</strong> Docker Compose</li>",
+      "</ul>"
+    ]
+  }
+]

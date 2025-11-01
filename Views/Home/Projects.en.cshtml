@@ -3,27 +3,27 @@
 }
 
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projelerim - Ömer Faruk Türegün</title>
+    <title>Projects - Ömer Faruk Türegün</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- ==== ANA STİL DOSYASI (Anasayfa ile aynı) ==== -->
+    <!-- ==== MAIN STYLE FILE (Same as Homepage) ==== -->
     <style>
         :root {
             --bg-dark: #0D1117;
-            --bg-glass: rgba(30, 41, 59, 0.5); /* Yarı şeffaf cam */
-            --border-glass: rgba(148, 238, 144, 0.2); /* Yeşilimsi kenarlık */
-            --primary-light: #90EE90; /* Fıstık Yeşili */
-            --text-on-accent: #0D1117; /* Yeşilin üstündeki koyu yazı */
-            --text-light: #E6EDF3; /* Ana yazı rengi (Beyaz) */
-            --text-muted: #8B949E; /* Soluk yazı (Gri) */
+            --bg-glass: rgba(30, 41, 59, 0.5); /* Semi-transparent glass */
+            --border-glass: rgba(148, 238, 144, 0.2); /* Greenish border */
+            --primary-light: #90EE90; /* Pistachio Green */
+            --text-on-accent: #0D1117; /* Dark text on green */
+            --text-light: #E6EDF3; /* Main text color (White) */
+            --text-muted: #8B949E; /* Muted text (Gray) */
         }
 
         body {
@@ -55,7 +55,7 @@
             color: var(--text-light);
         }
 
-        /* ==== CAM KARTLAR (Genel Stil) ==== */
+        /* ==== GLASS CARDS (General Style) ==== */
         .glass-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -73,7 +73,7 @@
         }
         
         /*
-         * ==== PROJE STİLLERİ ====
+         * ==== PROJECT STYLES ====
          */
         .project-card-img {
             aspect-ratio: 16 / 9;
@@ -105,26 +105,26 @@
             border: 1px solid rgba(144, 238, 144, 0.3);
         }
         
-        /* Kartı tıklanabilir yapma */
+        /* Make card clickable */
         .project-card-clickable {
             cursor: pointer;
         }
 
-        /* ==== BUNU EKLE ==== */
+        /* ==== ADD THIS ==== */
         .project-card-footer {
-            display: flex; /* Anahtar bu: dikey hizala */
-            justify-content: space-between; /* Birini sola, birini sağa yasla */
-            align-items: flex-end; /* Öğeleri (tag listesi ve ikon) en alta hizala */
-            gap: 1rem; /* Aralarında boşluk bırak (taşmayı engeller) */
+            display: flex; /* Key: vertical alignment */
+            justify-content: space-between; /* One to left, one to right */
+            align-items: flex-end; /* Align items (tag list and icon) to bottom */
+            gap: 1rem; /* Space between (prevents overflow) */
         }
 
-        /* GitHub linki */
+        /* GitHub link */
         .project-github-link {
-            /* position: absolute ve ilgili her şey kaldırıldı */
+            /* position: absolute and related removed */
             font-size: 1.5rem;
             color: #E6EDF3;
             transition: all 0.3s ease;
-            flex-shrink: 0; /* İkonun küçülmesini engelle */
+            flex-shrink: 0; /* Prevent icon from shrinking */
         }
         .project-github-link:hover {
             color: var(--primary-light);
@@ -136,44 +136,44 @@
         }
 
         #projectModalContent h5 {
-            color: var(--primary-light); /* Yeşil renk */
-            font-weight: 700;          /* Kalın yazı */
-            margin-top: 1rem;          /* Üstündeki paragraftan biraz ayır */
+            color: var(--primary-light); /* Green color */
+            font-weight: 700;          /* Bold text */
+            margin-top: 1rem;          /* Space from paragraph above */
         }
 
         #projectModal .modal-body,
         #projectModal .modal-body ul li {
-            font-size: 0.9rem; /* 1rem (default) 'den küçültüldü */
+            font-size: 0.9rem; /* Reduced from 1rem (default) */
             line-height: 1.6;
         }
 
         #projectModalImage {
-            /* Genişliği, modalın genişliğinden daha az olsun (%100 değil) */
+            /* Width should be less than modal width (not 100%) */
             max-width: 80%; 
             
-            /* Ne olursa olsun, dikeyde 300px'i geçmesin (Asıl çözüm bu) */
+            /* Never exceed 300px vertically (Main solution) */
             max-height: 300px;
             
-            width: auto; /* En-boy oranını koru */
+            width: auto; /* Maintain aspect ratio */
             
-            /* Resmi ortala */
+            /* Center image */
             display: block;
             margin: 0 auto; 
         }
 
         #projectModalTitle {
-            font-size: 0.9rem; /* Yazı boyutunu küçült (h5'ten küçük) */
-            font-weight: 400;  /* Kalınlığı azalt */
-            color: #E6EDF3 !important; /* text-white'ı ez */
-            opacity: 0.7; /* Biraz soluklaştır */
+            font-size: 0.9rem; /* Reduce font size (smaller than h5) */
+            font-weight: 400;  /* Reduce weight */
+            color: #E6EDF3 !important; /* Override text-white */
+            opacity: 0.7; /* Make slightly faded */
         }
 
-        /* Gövdeye eklediğimiz asıl proje başlığını ayarla */
+        /* Style the actual project title we added to body */
         #projectModalContent h4 {
-            font-size: 1.5rem; /* Bu büyük kalsın */
+            font-size: 1.5rem; /* Keep this large */
         }
         
-        /* Ana Buton Stili */
+        /* Main Button Style */
         .btn-primary-light {
             background-color: var(--primary-light);
             color: var(--text-on-accent);
@@ -206,19 +206,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutMe">Hakkımda</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="expertise">Yetenekler</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a></li>
-                        <!-- "Projeler" linki (Aktif Sayfa) -->
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Projects">Projeler</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutMe">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="expertise">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Experience</a></li>
+                        <!-- "Projects" link (Active Page) -->
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     </ul>
                     <ul class="navbar-nav ms-2">
     <li class="nav-item">
-        <!-- Bu 'Index' sayfasında olduğu için asp-action="Index" yazar -->
-        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="en" style="font-weight: 700;">
-            <i class="bi bi-translate me-1"></i> EN
+        <!-- Bu 'Index.en' sayfasında olduğu için asp-action="Index" yazar -->
+        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="tr" style="font-weight: 700;">
+            <i class="bi bi-translate me-1"></i> TR
         </a>
     </li>
 </ul>
@@ -227,44 +227,44 @@
         </nav>
 
 
-    <!-- ==== TÜM PROJELER BÖLÜMÜ ==== -->
+    <!-- ==== ALL PROJECTS SECTION ==== -->
     <main class="container my-5 py-5">
         
         <div class="row text-center mb-5" data-aos="fade-up">
             <div class="col">
-                <h1 class="display-4 fw-bold text-white mb-3">Tüm Projelerim</h1>
-                <p class="lead text-white-50">Geliştirdiğim uygulamaların ve çalışmaların tamamı.</p>
+                <h1 class="display-4 fw-bold text-white mb-3">All My Projects</h1>
+                <p class="lead text-white-50">A complete collection of applications and works I've developed.</p>
             </div>
         </div>
 
-        <!-- PROJELER BURAYA JS İLE GELECEK -->
+        <!-- PROJECTS WILL BE ADDED HERE VIA JS -->
         <div class="row g-4" id="all-projects-container">
-            <!-- JS Tarafından Doldurulacak -->
+            <!-- Will be filled by JS -->
         </div> 
 
     </main>
 
-    <!-- ==== PROJE DETAY MODALI (GİZLİ) ==== -->
+    <!-- ==== PROJECT DETAIL MODAL (HIDDEN) ==== -->
     <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="background-color: transparent; border:none;">
                 <div class="glass-card" style="border-width: 2px; border-color: rgba(255,255,255,0.3);">
                     <div class="modal-header border-0">
-                        <h5 class="modal-title text-white fw-bold" id="projectModalTitle">Proje Başlığı</h5>
+                        <h5 class="modal-title text-white fw-bold" id="projectModalTitle">Project Title</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-white-50">
-                        <img src="" id="projectModalImage" class="img-fluid rounded mb-3" alt="Proje Görseli">
+                        <img src="" id="projectModalImage" class="img-fluid rounded mb-3" alt="Project Image">
                         <div id="projectModalTags" class="d-flex flex-wrap gap-2 mb-3">
-                            <!-- Etiketler buraya JS ile gelecek -->
+                            <!-- Tags will be added here via JS -->
                         </div>
                         <div id="projectModalContent">
-                            <!-- Detaylı içerik buraya JS ile gelecek -->
+                            <!-- Detailed content will be added here via JS -->
                         </div>
                     </div>
                     <div class="modal-footer border-0">
                         <a href="#" id="projectModalGithubLink" class="btn btn-primary-light" target="_blank">
-                            <i class="bi bi-github me-2"></i> GitHub'da Görüntüle
+                            <i class="bi bi-github me-2"></i> View on GitHub
                         </a>
                     </div>
                 </div>
@@ -272,16 +272,16 @@
         </div>
     </div>
 
-    <!-- ==== SCRIPT DOSYALARI ==== -->
+    <!-- ==== SCRIPT FILES ==== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- ==== PROJELER SAYFASINA ÖZEL JAVASCRIPT ==== -->
+    <!-- ==== PROJECTS PAGE SPECIFIC JAVASCRIPT ==== -->
     <script>
-        // Tüm projeleri tutacağımız global değişken
+        // Global variable to hold all projects
         let allProjects = [];
 
-        // Sayfa yüklendiğinde çalışacak ana fonksiyonlar
+        // Main functions to run when page loads
         document.addEventListener('DOMContentLoaded', () => {
             AOS.init({
                 duration: 800,
@@ -290,7 +290,7 @@
 
             fetchProjects();
 
-            // Modal tetiklendiğinde veriyi doldur
+            // Fill data when modal is triggered
             const projectModal = document.getElementById('projectModal');
             projectModal.addEventListener('show.bs.modal', (event) => {
                 const projectId = event.relatedTarget.getAttribute('data-project-id');
@@ -301,20 +301,20 @@
             });
         });
         
-        // JSON'dan Projeleri Çekme Fonksiyonu
+        // Function to Fetch Projects from JSON
         async function fetchProjects() {
             try {
-                const response = await fetch('/data/projects.json');
+                const response = await fetch('/data-en/projects.json');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 allProjects = await response.json();
                 
-                // PROJELER SAYFASI İÇİN: TÜM projeleri al
+                // FOR PROJECTS PAGE: Get ALL projects
                 const projectsToShow = allProjects; 
                 
                 const container = document.getElementById('all-projects-container');
-                container.innerHTML = ''; // Temizle
+                container.innerHTML = ''; // Clear
                 
                 projectsToShow.forEach(project => {
                     container.innerHTML += createProjectCardHTML(project);
@@ -323,23 +323,23 @@
                 AOS.refresh();
 
             } catch (error) {
-                console.error('Projeler yüklenirken hata oluştu:', error);
-                document.getElementById('all-projects-container').innerHTML = '<p class="text-danger">Projeler yüklenemedi.</p>';
+                console.error('Error loading projects:', error);
+                document.getElementById('all-projects-container').innerHTML = '<p class="text-danger">Projects could not be loaded.</p>';
             }
         }
 
-        // ==== createProjectCardHTML FONKSİYONUNUN TAMAMINI BUNUNLA DEĞİŞTİR ====
+        // ==== REPLACE ENTIRE createProjectCardHTML FUNCTION WITH THIS ====
         function createProjectCardHTML(project) {
             const tagsHTML = project.tags.map(tag => `<li>${tag}</li>`).join('');
 
-            // GitHub linkini oluşturan logic (değişmedi)
+            // Logic to create GitHub link (unchanged)
             const githubLinkHTML = project.githubUrl
                 ? `<a href="${project.githubUrl}" class="project-github-link" target="_blank" onclick="event.stopPropagation()">
                     <i class="bi bi-github"></i>
                 </a>`
                 : ''; 
 
-            // ---- YENİ HTML YAPISI BURADA ----
+            // ---- NEW HTML STRUCTURE HERE ----
             return `
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="${(project.id % 3 + 1) * 100}">
                 <div class="glass-card card-hover w-100 p-0 project-card-clickable" 
@@ -350,31 +350,31 @@
                     <img src="${project.imageUrl}" class="project-card-img" alt="${project.title}">
                     
                     <!-- 
-                        Kart gövdesini dikey flex container yaptık (d-flex flex-column).
-                        flex-grow-1 ile kartın kalan tüm yüksekliğini doldurmasını sağladık.
+                        Made card body a vertical flex container (d-flex flex-column).
+                        flex-grow-1 makes it fill all remaining height of the card.
                     -->
                     <div class="project-card-body d-flex flex-column flex-grow-1">
                         
-                        <!-- Bu üst kısım (başlık, açıklama) en üste yaslanır -->
+                        <!-- This top part (title, description) aligns to top -->
                         <div>
                             <h4 class="text-white fw-bold">${project.title}</h4>
                             <p class="text-white-50 mb-3">${project.description}</p>
                         </div>
                         
                         <!-- 
-                            mt-auto (margin-top: auto) sihri, bu div'i 
-                            flex container'ın (project-card-body) en dibine iter.
+                            mt-auto (margin-top: auto) magic pushes this div 
+                            to the bottom of the flex container (project-card-body).
                         -->
                         <div class="mt-auto">
-                            <!-- Bu bizim yeni yatay flex wrapper'ımız -->
+                            <!-- This is our new horizontal flex wrapper -->
                             <div class="project-card-footer">
                                 
-                                <!-- Sol Taraf: Tag'ler (sığdığı kadar genişler) -->
+                                <!-- Left Side: Tags (expands as much as it fits) -->
                                 <ul class="project-tags">
                                     ${tagsHTML}
                                 </ul>
                                 
-                                <!-- Sağ Taraf: GitHub ikonu (sabit durur) -->
+                                <!-- Right Side: GitHub icon (stays fixed) -->
                                 ${githubLinkHTML}
                             </div>
                         </div>
@@ -384,10 +384,10 @@
             `;
         }
 
-        // Modalı Veriyle Dolduran Fonksiyon
+        // Function to Fill Modal with Data
         function populateProjectModal(project) {
             
-            document.getElementById('projectModalTitle').innerText = project.dateRange || 'Proje Detayı';
+            document.getElementById('projectModalTitle').innerText = project.dateRange || 'Project Details';
 
             document.getElementById('projectModalImage').src = project.imageUrl;
             

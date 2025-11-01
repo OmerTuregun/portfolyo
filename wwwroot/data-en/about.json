@@ -1,0 +1,42 @@
+{
+  "aboutMeText": "I am a graduate of Kocaeli University Computer Engineering. I have a keen interest in Artificial Intelligence, Machine Learning, Data Science, and Image Processing. I have experience in Natural Language Processing, Deep Learning, Docker, Unix-based systems (Ubuntu), backend development (Python, C#), frontend development (React, HTML, CSS, JavaScript, TypeScript), and NoSQL databases (MongoDB). I am currently actively involved in university projects and a Talent Program, finding opportunities to enhance my technical skills. I enjoy working on real-world applications, continuous learning, and following the latest technologies. My goal is to specialize in FullStack Development and produce innovative solutions through research and development.",
+  "futureGoalText": "My career goal is to specialize in AIOps (AI + DevOps) in the future, establish my own company in this field, and develop innovative solutions. In this direction, I aim to work on AI-based systems that provide efficiency by integrating technology with operational processes.",
+  "socialActivities": [
+    {
+      "id": "kihmed",
+      "title": "KİHMED (Kocaeli Imam Hatip Alumni Association)",
+      "carouselImages": [
+        "~/img/kihmed/foto1.jpg",
+        "~/img/kihmed/foto2.jpg",
+        "~/img/kihmed/foto3.jpg"
+      ],
+      "description": [
+        "<h5>My Roles and Activities:</h5>",
+        "<p>I have been actively serving in the Youth Commission for 5 years. During this time, I served as the 'Middle School Coordinator' for 3 years.</p>",
+        "<ul>",
+        "<li>I helped middle school students prepare for social life by providing leadership, mentorship, and coaching.</li>",
+        "<li>I organized various educational and social activities to contribute to the religious knowledge of student groups.</li>",
+        "<li>I am currently serving as the vice president in the association's social media management team.</li>",
+        "</ul>"
+      ]
+    },
+    {
+      "id": "izmitgucu",
+      "title": "İzmitgücü FK",
+      "carouselImages": [
+        "~/img/izmitgucu/mac1.jpg",
+        "~/img/izmitgucu/mac2.jpg",
+        "~/img/izmitgucu/mac3.jpg"
+      ],
+      "description": [
+        "<h5>My Role in the Team and Achievements:</h5>",
+        "<p>This team, which I founded with my friends and play football with actively every week, represents an area of great enjoyment in my life. I am the team captain, and my jersey number is 4.</p>",
+        "<ul>",
+        "<li><strong>SıratıMüstakim Tournament:</strong> Championship</li>",
+        "<li><strong>MarmaraCup King's Cup:</strong> Championship</li>",
+        "</ul>",
+        "<p>We also manage our team's <a href='https://www.instagram.com/izmitgucu?igsh=MTRiN21xc28xMzRudQ==' target='_blank' class='link-primary-light'>official Instagram page</a>.</p>"
+      ]
+    }
+  ]
+}

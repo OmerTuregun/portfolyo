@@ -1,0 +1,107 @@
+[
+  {
+    "type": "Education",
+    "items": [
+      {
+        "id": 1,
+        "title": "Computer Engineering",
+        "company": "Kocaeli University",
+        "dateRange": "2021 - Ongoing",
+        "description": "Bachelor's degree."
+      },
+      {
+        "id": 2,
+        "title": "Web Design and Coding",
+        "company": "Anadolu University",
+        "dateRange": "2025 - Ongoing",
+        "description": "Associate degree."
+      }
+    ]
+  },
+  {
+    "type": "Work Experience",
+    "experience": [
+      {
+        "id": 1,
+        "title": "Software Developer (Full-Time)",
+        "company": "KOLSAN - Kocaeli Tire Industry Inc.",
+        "dateRange": "01.10.2025 - Ongoing",
+        "description": "I am actively involved in web platforms developed for the digitalization, remote management, and reporting of machinery on the factory floor. I perform optimizations, bug fixes, and new module developments in existing systems.",
+        "tags": [
+          "C#",
+          "ASP.NET Core MVC",
+          "Node.js",
+          "MSSQL (SSMS)",
+          "JavaScript",
+          "HTML/CSS",
+          "Docker",
+          "GitHub"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "K-Team Program Participant (Work Experience)",
+        "company": "Assan Bilişim",
+        "dateRange": "07.2024 - 06.2025",
+        "description": "I worked on Linux and Docker container architectures on Jetson devices. I provided technical support for image processing applications by participating in both office and field projects. I developed web interfaces with React and created MongoDB queries with Python. I gained full-stack skills by accessing virtual servers and remote devices via terminal commands.",
+        "tags": [
+          "Linux",
+          "Docker",
+          "React",
+          "Python",
+          "MongoDB",
+          "Image Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Internships",
+    "experience": [
+      {
+        "id": 3,
+        "title": "Data Management Department (Internship)",
+        "company": "Assan Bilişim",
+        "dateRange": "09.2024 - 10.2024",
+        "description": "I trained a model using YOLOv8 to detect individuals wearing or not wearing helmets. I managed data analysis, labeling, and training processes using Roboflow. I gained experience in data preparation and model training for image processing projects.",
+        "tags": [
+          "YOLOv8",
+          "Roboflow",
+          "Data Analysis",
+          "Model Training"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Industrial Applications & Department (Internship)",
+        "company": "Assan Bilişim",
+        "dateRange": "07.2024 - 08.2024",
+        "description": "I developed Docker applications using Jetson devices and gained experience in active terminal usage on Linux-based systems.",
+        "tags": [
+          "Jetson",
+          "Docker",
+          "Linux Terminal"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Languages",
+    "items": [
+      {
+        "id": 1,
+        "title": "English",
+        "description": "B1 Level",
+        "percentage": 60,
+        "flagCode": "gb"
+      },
+      {
+        "id": 2,
+        "title": "German",
+        "description": "A1 Level",
+        "percentage": 20,
+        "flagCode": "de"
+      }
+    ]
+  }
+]

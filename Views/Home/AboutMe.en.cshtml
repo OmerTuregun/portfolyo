@@ -1,10 +1,10 @@
 @{
-    Layout = null; // Kendi layout'umuzu kullanacağız
-    ViewData["Title"] = "Hakkımda";
+    Layout = null; // We'll use our own layout
+    ViewData["Title"] = "About Me";
 }
 
 <!DOCTYPE html>
-<html lang="tr" data-bs-theme="dark">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +13,7 @@
     <!-- Favicon (Emoji) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
 
-    <!-- Bootstrap & İkonlar -->
+    <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     
@@ -22,19 +22,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-    <!-- AOS (Animasyon) -->
+    <!-- AOS (Animation) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- ANA CSS STİLLERİ -->
+    <!-- MAIN CSS STYLES -->
     <style>
         :root {
             --bg-dark: #0D1117;
-            --bg-glass: rgba(30, 41, 59, 0.5); /* Yarı şeffaf cam */
+            --bg-glass: rgba(30, 41, 59, 0.5); /* Semi-transparent glass */
             --border-glass: rgba(56, 68, 87, 0.5);
             --text-light: #E6EDF3;
             --text-muted: #8B949E;
-            --primary-light: #90EE90; /* Fıstık Yeşili */
-            --text-on-accent: #0D1117; /* Yeşilin üstündeki koyu yazı */
+            --primary-light: #90EE90; /* Pistachio Green */
+            --text-on-accent: #0D1117; /* Dark text on green */
         }
 
         html {
@@ -71,12 +71,12 @@
             color: var(--text-light);
         }
 
-        /* Genel Başlık Stilleri */
+        /* General Title Styles */
         .display-5, .display-6 {
             color: var(--text-light);
         }
 
-        /* Kart Stilleri */
+        /* Card Styles */
         .glass-card {
             background: var(--bg-glass);
             border: 1px solid var(--border-glass);
@@ -84,7 +84,7 @@
             padding: 2rem;
         }
         
-        /* Fıstık Yeşili Kart (Ana Kart gibi) */
+        /* Pistachio Green Card (Like Main Card) */
         .hero-card {
             background-color: var(--primary-light);
             color: var(--text-on-accent);
@@ -99,7 +99,7 @@
                 font-weight: 500;
             }
 
-        /* Carousel Stilleri */
+        /* Carousel Styles */
         .social-carousel {
             border-radius: 1rem;
             overflow: hidden;
@@ -109,7 +109,7 @@
                 aspect-ratio: 16 / 9;
                 object-fit: cover;
             }
-            /* Carousel kontrol butonlarını "cam" yap */
+            /* Make carousel control buttons "glass" */
             .social-carousel .carousel-control-prev,
             .social-carousel .carousel-control-next {
                 background-color: var(--bg-glass);
@@ -122,12 +122,12 @@
                 opacity: 1;
             }
         
-        /* İçerik Alanı (Yazılar) */
+        /* Content Area (Text) */
         .content-area {
             padding-top: 1.5rem;
         }
             .content-area h5 {
-                color: var(--primary-light); /* Yeşil alt başlık */
+                color: var(--primary-light); /* Green subheading */
                 font-weight: 700;
             }
             .content-area ul {
@@ -168,17 +168,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="AboutMe">Hakkımda</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Projects">Projeler</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="AboutMe">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav ms-2">
     <li class="nav-item">
-        <!-- Bu 'Index' sayfasında olduğu için asp-action="Index" yazar -->
-        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="en" style="font-weight: 700;">
-            <i class="bi bi-translate me-1"></i> EN
+        <!-- Bu 'Index.en' sayfasında olduğu için asp-action="Index" yazar -->
+        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="tr" style="font-weight: 700;">
+            <i class="bi bi-translate me-1"></i> TR
         </a>
     </li>
 </ul>
@@ -186,33 +186,33 @@
         </div>
     </nav>
     
-    <!-- ==== ANA İÇERİK ==== -->
+    <!-- ==== MAIN CONTENT ==== -->
     <main class="container mt-4">
         
-        <!-- Sayfa Başlığı -->
+        <!-- Page Header -->
         <section id="page-header" class="text-center py-4" data-aos="fade-up">
-            <h1 class="display-5 fw-bold text-white">Hakkımda & Sosyal Faaliyetler</h1>
+            <h1 class="display-5 fw-bold text-white">About Me & Social Activities</h1>
         </section>
         
-        <!-- 1. Bölüm: Hakkımda (Cam Kart) -->
+        <!-- 1. Section: About Me (Glass Card) -->
         <section id="about-me-text" class="mb-4" data-aos="fade-up" data-aos-delay="100">
             <div class="glass-card">
-                <h3 class="fw-bold text-white mb-3">Hakkımda</h3>
+                <h3 class="fw-bold text-white mb-3">About Me</h3>
                 <p id="about-me-content" class="lead text-white-50" style="font-size: 1.1rem;"></p>
             </div>
         </section>
 
-        <!-- 2. Bölüm: Gelecek Hedefi (Yeşil Kart) -->
+        <!-- 2. Section: Future Goal (Green Card) -->
         <section id="future-goal-text" class="mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="hero-card">
-                <h3 class="mb-3">Kariyer Hedefim</h3>
+                <h3 class="mb-3">Career Goal</h3>
                 <p id="future-goal-content" class="mb-0"></p>
             </div>
         </section>
         
-        <!-- 3. Bölüm: Sosyal Faaliyetler (Dinamik) -->
+        <!-- 3. Section: Social Activities (Dynamic) -->
         <section id="social-activities-container">
-            <!-- İçerik JS ile buraya yüklenecek -->
+            <!-- Content will be loaded here via JS -->
         </section>
 
     </main>
@@ -220,15 +220,15 @@
     <!-- ==== FOOTER ==== -->
     <footer class="footer">
         <div class="container text-center">
-            <span class="text-muted">© @DateTime.Now.Year Ömer Faruk Türegün. Tüm hakları saklıdır.</span>
+            <span class="text-muted">© @DateTime.Now.Year Ömer Faruk Türegün. All rights reserved.</span>
         </div>
     </footer>
     
-    <!-- Bootstrap & AOS Scriptleri -->
+    <!-- Bootstrap & AOS Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- ANA SCRIPT (JSON'dan Veri Çekme) -->
+    <!-- MAIN SCRIPT (Fetch Data from JSON) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             AOS.init({
@@ -241,49 +241,49 @@
 
         async function fetchAboutData() {
             try {
-                const response = await fetch('/data/about.json');
-                if (!response.ok) throw new Error('Veri alınamadı');
+                const response = await fetch('/data-en/about.json');
+                if (!response.ok) throw new Error('Data could not be retrieved');
                 
                 const data = await response.json();
                 
-                // 1. Hakkımda Metnini Doldur
-                // (JSON'daki \n'leri <br>'ye çevirerek paragrafları koru)
+                // 1. Fill About Me Text
+                // (Convert \n from JSON to <br> to preserve paragraphs)
                 document.getElementById('about-me-content').innerHTML = data.aboutMeText.replace(/\n/g, '<br />');
                 
-                // 2. Gelecek Hedefi Metnini Doldur
+                // 2. Fill Future Goal Text
                 document.getElementById('future-goal-content').innerHTML = data.futureGoalText.replace(/\n/g, '<br />');
 
-                // 3. Sosyal Faaliyetleri (KİHMED, İzmitgücü) Doldur
+                // 3. Fill Social Activities (KİHMED, İzmitgücü)
                 const container = document.getElementById('social-activities-container');
-                container.innerHTML = ''; // Temizle
+                container.innerHTML = ''; // Clear
                 
                 data.socialActivities.forEach((activity, index) => {
                     container.innerHTML += createSocialActivityHTML(activity, index);
                 });
 
-                // ÖNEMLİ: ASP.NET Tag Helper'ları (~) JS içinde çalışmaz.
-                // Tüm resim yollarını manuel olarak düzeltmemiz gerekiyor.
+                // IMPORTANT: ASP.NET Tag Helpers (~) don't work inside JS.
+                // We need to fix all image paths manually.
                 fixImagePaths(container);
 
                 setTimeout(() => { AOS.refresh(); }, 100);
 
             } catch (error) {
-                console.error('Hakkımda verisi yüklenirken hata:', error);
-                document.getElementById('social-activities-container').innerHTML = '<p class="text-danger text-center">İçerik yüklenirken bir hata oluştu.</p>';
+                console.error('Error loading about data:', error);
+                document.getElementById('social-activities-container').innerHTML = '<p class="text-danger text-center">An error occurred while loading content.</p>';
             }
         }
         
-        // Sosyal Faaliyet Kartı (Carousel'li) HTML'ini oluşturan fonksiyon
+        // Function to create Social Activity Card (with Carousel) HTML
         function createSocialActivityHTML(activity, index) {
             
-            // Carousel İçeriklerini (Resimleri) Oluştur
+            // Create Carousel Content (Images)
             const carouselItemsHTML = activity.carouselImages.map((imgUrl, i) => `
                 <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                    <img src="${imgUrl}" class="d-block w-100" alt="${activity.title} Fotoğraf ${i + 1}">
+                    <img src="${imgUrl}" class="d-block w-100" alt="${activity.title} Photo ${i + 1}">
                 </div>
             `).join('');
             
-            // Carousel Kontrol Butonlarını (Okları) Oluştur
+            // Create Carousel Control Buttons (Arrows)
             const carouselControlsHTML = `
                 <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${activity.id}" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -295,14 +295,14 @@
                 </button>
             `;
             
-            // Yazı içeriğini (description) oluştur
+            // Create text content (description)
             const contentHTML = activity.description.join('\n');
 
-            // 2 Sütunlu (Resim / Yazı) yapıyı oluştur
+            // Create 2-column (Image / Text) structure
             return `
             <div class="row g-4 g-lg-5 mb-5 align-items-center" data-aos="fade-up" data-aos-delay="${index * 100}">
                 
-                <!-- Sütun 1: Carousel -->
+                <!-- Column 1: Carousel -->
                 <div class="col-lg-6">
                     <div id="carousel-${activity.id}" class="carousel slide social-carousel" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -312,7 +312,7 @@
                     </div>
                 </div>
                 
-                <!-- Sütun 2: Açıklama -->
+                <!-- Column 2: Description -->
                 <div class="col-lg-6">
                     <div class="content-area">
                         <h2 class="display-6 fw-bold text-white mb-3">${activity.title}</h2>
@@ -323,13 +323,13 @@
             `;
         }
 
-        // JS içinde '~/img/...' yollarını '/img/...' olarak düzelten fonksiyon
+        // Function to fix '~/img/...' paths to '/img/...' inside JS
         function fixImagePaths(container) {
             const images = container.querySelectorAll('img');
             images.forEach(img => {
                 let src = img.getAttribute('src');
                 if (src && src.startsWith('~/')) {
-                    img.setAttribute('src', src.substring(1)); // '~' karakterini kaldır
+                    img.setAttribute('src', src.substring(1)); // Remove '~' character
                 }
             });
         }

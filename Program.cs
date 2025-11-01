@@ -21,7 +21,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "default_lang",
+    pattern: "{lang=tr}/{controller=Home}/{action=Index}/{id?}", // Başına {lang=tr} ekledik
+    constraints: new { lang = "tr|en" }); // Sadece 'tr' veya 'en' kabul et
 
 app.Run();

@@ -2,13 +2,13 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim - Ömer Faruk Türegün</title>
+    <title>Contact - Ömer Faruk Türegün</title>
 
-    <!-- Bootstrap CSS ve Ikonlar -->
+    <!-- Bootstrap CSS and Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -17,29 +17,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-    <!-- AOS (Animasyon) CSS -->
+    <!-- AOS (Animation) CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* ==== ANA STİLLER ==== */
+        /* ==== MAIN STYLES ==== */
         :root {
-            --bg-dark: #0D1117; /* Ana koyu arka plan */
-            --bg-glass: rgba(30, 41, 59, 0.5); /* Cam kart arka planı */
-            --border-glass: rgba(148, 238, 144, 0.2); /* Cam kart kenarlığı */
-            --primary-light: #90EE90; /* Fıstık Yeşili Vurgu */
-            --text-on-accent: #0D1117; /* Vurgu üstü yazı (koyu) */
-            --text-light: #E6EDF3; /* Ana yazı rengi (Beyaz) */
-            --text-muted: #8B949E; /* Soluk yazı (Gri) */
+            --bg-dark: #0D1117; /* Main dark background */
+            --bg-glass: rgba(30, 41, 59, 0.5); /* Glass card background */
+            --border-glass: rgba(148, 238, 144, 0.2); /* Glass card border */
+            --primary-light: #90EE90; /* Pistachio Green Accent */
+            --text-on-accent: #0D1117; /* Text on accent (dark) */
+            --text-light: #E6EDF3; /* Main text color (White) */
+            --text-muted: #8B949E; /* Muted text (Gray) */
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Yatay kaydırmayı engelle */
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Ana başlık stili (YAZILIM GELİŞTİRİCİ gibi) */
+        /* Main title style (like SOFTWARE DEVELOPER) */
         .page-title {
             font-size: 3.5rem;
             line-height: 1.1;
@@ -55,14 +55,14 @@
         }
 
         .navbar {
-            /* Diğer sayfalardaki standart stil */
+            /* Standard style from other pages */
             background-color: var(--bg-glass) !important;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-glass);
             border-radius: 1rem;
-            margin: 1rem; /* 'margin: 1rem auto' değil */
-            /* width ve max-width kaldırıldı */
+            margin: 1rem; /* Not 'margin: 1rem auto' */
+            /* width and max-width removed */
         }
             .navbar .nav-link {
                 color: var(--text-muted);
@@ -78,7 +78,7 @@
             font-size: 1.25rem;
         }
 
-        /* ==== 'GLASS' KART ==== */
+        /* ==== 'GLASS' CARD ==== */
         .glass-card {
             background: var(--bg-glass);
             border: 1px solid var(--border-glass);
@@ -89,7 +89,7 @@
             height: 100%;
         }
 
-        /* ==== 'HERO' KART (Fıstık Yeşili) ==== */
+        /* ==== 'HERO' CARD (Pistachio Green) ==== */
         .hero-card {
             background-color: var(--primary-light);
             color: var(--text-on-accent);
@@ -98,7 +98,7 @@
             margin-bottom: 2rem;
         }
 
-        /* ==== İLETİŞİM FORMU STİLLERİ ==== */
+        /* ==== CONTACT FORM STYLES ==== */
         .form-control-glass {
             background: var(--bg-glass) !important;
             border: 1px solid var(--border-glass) !important;
@@ -114,17 +114,17 @@
 
             .form-control-glass:focus {
                 background: rgba(30, 41, 59, 0.8) !important;
-                box-shadow: 0 0 0 3px rgba(144, 238, 144, 0.3) !important; /* Yeşil odaklama */
+                box-shadow: 0 0 0 3px rgba(144, 238, 144, 0.3) !important; /* Green focus */
             }
 
-        /* Form etiketleri */
+        /* Form labels */
         .form-label {
             color: var(--text-light);
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
 
-        /* Gönder Butonu */
+        /* Submit Button */
         .btn-primary-light {
             background-color: var(--primary-light);
             color: var(--text-on-accent);
@@ -136,17 +136,17 @@
         }
 
             .btn-primary-light:hover {
-                background-color: #79db79; /* Biraz daha koyu yeşil */
+                background-color: #79db79; /* Slightly darker green */
                 color: var(--text-on-accent);
                 transform: translateY(-2px);
                 box-shadow: 0 4px 15px rgba(144, 238, 144, 0.2);
             }
 
-        /* ==== SOSYAL MEDYA BUTONLARI (YENİ) ==== */
+        /* ==== SOCIAL MEDIA BUTTONS (NEW) ==== */
         .social-buttons-container {
             display: flex;
-            flex-wrap: wrap; /* Sığmazsa alt satıra atar */
-            gap: 0.75rem; /* Butonlar arası boşluk */
+            flex-wrap: wrap; /* Wrap to next line if doesn't fit */
+            gap: 0.75rem; /* Space between buttons */
         }
 
         .social-btn {
@@ -163,7 +163,7 @@
             transition: all 0.3s ease;
         }
             .social-btn i {
-                /* İkon rengi yeşil */
+                /* Icon color green */
                 color: var(--primary-light);
                 font-size: 1.1rem;
                 margin-right: 0.5rem;
@@ -175,7 +175,7 @@
                 transform: translateY(-2px);
             }
 
-        /* Form Durum Mesajı için Fade Animasyonları */
+        /* Fade Animations for Form Status Message */
         #my-form-status {
             min-height: 50px;
             display: flex;
@@ -202,7 +202,7 @@
     </style>
 </head>
 <body data-bs-theme="dark" class="bg-dark text-white">
-    <!-- ==== BUNU ESKİ NAVBAR HTML'İ İLE DEĞİŞTİR ==== -->
+    <!-- ==== REPLACE WITH OLD NAVBAR HTML ==== -->
 
         <!-- ==== NAVBAR ==== -->
         <nav class="navbar navbar-expand-lg sticky-top">
@@ -216,18 +216,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutMe">Hakkımda</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Projects">Projeler</a></li>
-                        <!-- "İletişim" linki (Aktif Sayfa) -->
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutMe">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Experience</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Projects">Projects</a></li>
+                        <!-- "Contact" link (Active Page) -->
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     </ul>
                     <ul class="navbar-nav ms-2">
     <li class="nav-item">
-        <!-- Bu 'Index' sayfasında olduğu için asp-action="Index" yazar -->
-        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="en" style="font-weight: 700;">
-            <i class="bi bi-translate me-1"></i> EN
+        <!-- Bu 'Index.en' sayfasında olduğu için asp-action="Index" yazar -->
+        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="tr" style="font-weight: 700;">
+            <i class="bi bi-translate me-1"></i> TR
         </a>
     </li>
 </ul>
@@ -235,62 +235,62 @@
             </div>
         </nav>
 
-    <!-- ==== ANA İÇERİK ==== -->
+    <!-- ==== MAIN CONTENT ==== -->
     <main class="container my-5">
         <div class="text-center" data-aos="fade-up">
-            <h1 class="page-title">İLETİŞİME GEÇ</h1>
+            <h1 class="page-title">GET IN TOUCH</h1>
             <p class="lead text-white-50 mb-5">
-                Benimle çalışmak, bir proje hakkında konuşmak veya sadece merhaba demek için formu kullanabilirsiniz.
+                You can use the form to work with me, discuss a project, or just say hello.
             </p>
         </div>
 
         <div class="row g-4">
 
-            <!-- SOL SÜTUN: Form Alanı (FORM GÖNDERME İÇİN GÜNCELLENDİ) -->
+            <!-- LEFT COLUMN: Form Area (UPDATED FOR FORM SUBMISSION) -->
             <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
                 <div class="glass-card p-4 p-md-5">
                     
-                    <!-- 1. FORM ETİKETİ GÜNCELLENDİ (id, action, method) -->
+                    <!-- 1. FORM TAG UPDATED (id, action, method) -->
                     <form id="my-form" action="https://formspree.io/f/xvgvvblj" method="POST">
                         
                         <div class="mb-3">
-                            <label for="name" class="form-label">Ad Soyad</label>
-                            <!-- 2. 'name' ÖZELLİĞİ EKLENDİ -->
-                            <input type="text" class="form-control form-control-glass" id="name" name="AdSoyad" placeholder="Adınız Soyadınız" required>
+                            <label for="name" class="form-label">Full Name</label>
+                            <!-- 2. 'name' ATTRIBUTE ADDED -->
+                            <input type="text" class="form-control form-control-glass" id="name" name="FullName" placeholder="Your Full Name" required>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="email" class="form-label">E-posta Adresiniz</label>
-                            <!-- 2. 'name' ÖZELLİĞİ EKLENDİ -->
-                            <input type="email" class="form-control form-control-glass" id="email" name="email" placeholder="mail@adresiniz.com" required>
+                            <label for="email" class="form-label">Your Email Address</label>
+                            <!-- 2. 'name' ATTRIBUTE ADDED -->
+                            <input type="email" class="form-control form-control-glass" id="email" name="email" placeholder="mail@youraddress.com" required>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="message" class="form-label">Mesajınız</label>
-                            <!-- 2. 'name' ÖZELLİĞİ EKLENDİ -->
-                            <textarea class="form-control form-control-glass" id="message" name="mesaj" rows="6" placeholder="Bana bir mesaj bırakın..." required></textarea>
+                            <label for="message" class="form-label">Your Message</label>
+                            <!-- 2. 'name' ATTRIBUTE ADDED -->
+                            <textarea class="form-control form-control-glass" id="message" name="message" rows="6" placeholder="Leave me a message..." required></textarea>
                         </div>
                         
                         <div class="text-end">
                             <button type="submit" class="btn btn-primary-light">
-                                Mesajı Gönder <i class="bi bi-send-fill ms-2"></i>
+                                Send Message <i class="bi bi-send-fill ms-2"></i>
                             </button>
                         </div>
                         
-                        <!-- 3. FORM DURUM MESAJI EKLENDİ (Script'in aradığı ID) -->
+                        <!-- 3. FORM STATUS MESSAGE ADDED (ID that script looks for) -->
                         <p id="my-form-status" class="mt-3 text-center"></p>
 
                     </form>
                 </div>
             </div>
 
-            <!-- SAĞ SÜTUN: Bilgiler ve Sosyal Medya -->
+            <!-- RIGHT COLUMN: Information and Social Media -->
             <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
 
-                <!-- Fıstık Yeşili Bilgi Kartı -->
+                <!-- Pistachio Green Info Card -->
                 <div class="hero-card">
-                    <h4 class="fw-bold">İletişim Bilgileri</h4>
-                    <p class="mb-2">Benimle doğrudan iletişime geçmek için:</p>
+                    <h4 class="fw-bold">Contact Information</h4>
+                    <p class="mb-2">To get in touch with me directly:</p>
                     <ul class="list-unstyled mb-0" style="color: var(--text-on-accent);">
                         <li class="mb-2">
                             <i class="bi bi-envelope-fill me-2"></i>
@@ -303,8 +303,8 @@
                     </ul>
                 </div>
 
-                <!-- Sosyal Medya Linkleri (Yeni Butonlar) -->
-                <h4 class="text-white fw-bold mt-4 mb-3">Sosyal Medya</h4>
+                <!-- Social Media Links (New Buttons) -->
+                <h4 class="text-white fw-bold mt-4 mb-3">Social Media</h4>
                 <div class="social-buttons-container">
                     <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" class="social-btn">
                         <i class="bi bi-linkedin"></i> LinkedIn
@@ -334,11 +334,11 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS (Animasyon) JS -->
+    <!-- AOS (Animation) JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // AOS Animasyonlarını Başlat
+        // Start AOS Animations
         AOS.init({
             duration: 600,
             once: true,
@@ -346,7 +346,7 @@
         });
     </script>
 
-    <!-- ==== BUNU SAYFANIN EN ALTINA EKLE (ESKİ SCRIPT'İN YERİNE) ==== -->
+    <!-- ==== ADD THIS AT THE BOTTOM OF PAGE (INSTEAD OF OLD SCRIPT) ==== -->
     <script>
         var form = document.getElementById("my-form");
         
@@ -355,12 +355,12 @@
             var status = document.getElementById("my-form-status");
             var data = new FormData(event.target);
             
-            // Butonu kilitle ve "Gönderiliyor..." yaz
+            // Lock button and write "Sending..."
             var submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
-            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Gönderiliyor...';
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
 
-            // Önceki mesajı temizle ve animasyon sınıflarını kaldır
+            // Clear previous message and remove animation classes
             status.innerHTML = '';
             status.classList.remove('fade-in', 'fade-out');
 
@@ -371,31 +371,31 @@
                 'Accept': 'application/json'
             }
             }).then(response => {
-            // Butonu geri aç
+            // Unlock button
             submitButton.disabled = false;
-            submitButton.innerHTML = 'Mesajı Gönder <i class="bi bi-send-fill ms-2"></i>';
+            submitButton.innerHTML = 'Send Message <i class="bi bi-send-fill ms-2"></i>';
 
             if (response.ok) {
-                // Yeni mesajı göster ve fade-in yap
-                status.innerHTML = '<div class="alert alert-success" style="background-color: var(--primary-light); color: var(--text-on-accent); border: 0; font-weight: 500;">Teşekkürler mesajınızı aldım, en kısa sürede size dönüş sağlayacağım.</div>';
-                status.classList.add('fade-in'); // Yavaşça görünmesini sağla
+                // Show new message and fade-in
+                status.innerHTML = '<div class="alert alert-success" style="background-color: var(--primary-light); color: var(--text-on-accent); border: 0; font-weight: 500;">Thank you! I received your message and will get back to you as soon as possible.</div>';
+                status.classList.add('fade-in'); // Make it appear slowly
                 form.reset(); 
                 
-                // 3 saniye sonra fade-out yap ve animasyon bitince tamamen gizle
+                // Fade-out after 3 seconds and completely hide after animation ends
                 setTimeout(() => {
                     status.classList.remove('fade-in');
-                    status.classList.add('fade-out'); // Yavaşça kaybolmasını sağla
+                    status.classList.add('fade-out'); // Make it disappear slowly
                     
-                    // Animasyon süresi (0.5s) kadar bekleyip içeriği boşalt
+                    // Wait for animation duration (0.5s) and clear content
                     setTimeout(() => {
                         status.innerHTML = '';
                         status.classList.remove('fade-out');
-                    }, 500); // CSS transition süresiyle aynı olmalı
-                }, 3000); // 3 saniye sonra kaybolmaya başlasın
+                    }, 500); // Should match CSS transition duration
+                }, 3000); // Start fading after 3 seconds
 
             } else {
                 response.json().then(data => {
-                let errorMessage = 'Bir hata oluştu, lütfen daha sonra tekrar deneyin.';
+                let errorMessage = 'An error occurred, please try again later.';
                 if (Object.hasOwn(data, 'errors')) {
                     errorMessage = data["errors"].map(error => error["message"]).join(", ");
                 }
@@ -408,13 +408,13 @@
                         status.innerHTML = '';
                         status.classList.remove('fade-out');
                     }, 500);
-                }, 5000); // Hata mesajı biraz daha uzun kalsın
+                }, 5000); // Error message stays a bit longer
                 })
             }
             }).catch(error => {
             submitButton.disabled = false;
-            submitButton.innerHTML = 'Mesajı Gönder <i class="bi bi-send-fill ms-2"></i>';
-            status.innerHTML = '<div class="alert alert-danger">Bir ağ hatası oluştu, lütfen internet bağlantınızı kontrol edin.</div>';
+            submitButton.innerHTML = 'Send Message <i class="bi bi-send-fill ms-2"></i>';
+            status.innerHTML = '<div class="alert alert-danger">A network error occurred, please check your internet connection.</div>';
             status.classList.add('fade-in');
             setTimeout(() => {
                     status.classList.remove('fade-in');
@@ -430,4 +430,3 @@
     </script>
 </body>
 </html>
-

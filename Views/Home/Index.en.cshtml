@@ -3,11 +3,11 @@
 }
 
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ömer Faruk Türegün - Portfolyo</title>
+    <title>Ömer Faruk Türegün - Portfolio</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -65,10 +65,9 @@
         .hero-card {
             background-color: var(--primary-light);
             color: var(--text-on-accent);
-            /* Kartın iç boşluğunu artırdık */
-            padding: 3rem 2rem; /* Mobil için */
+            padding: 3rem 2rem;
             @@media (min-width: 992px) {
-                padding: 4rem 3rem; /* Desktop için */
+                padding: 4rem 3rem;
             }
             border-radius: 1.5rem;
             margin-top: 2rem;
@@ -76,21 +75,18 @@
         }
 
         .hero-text h2 {
-            /* "Merhaba, ben..." yazısı */
-            font-size: 1.5rem; /* Büyütüldü (1.2rem idi) */
+            font-size: 1.5rem;
             font-weight: 500;
         }
 
         .hero-text h1 {
-            /* "YAZILIM GELİŞTİRİCİ" yazısı */
-            font-size: 3.5rem; /* Büyütüldü (3rem idi) */
+            font-size: 3.5rem;
             line-height: 1.1;
             font-weight: 900;
             margin: 0.5rem 0 1.5rem;
             
-            /* Ekrana sığmazsa diye desktop'ta daha da büyüsün */
             @@media (min-width: 992px) {
-                font-size: 4.5rem; /* Desktop'ta çok daha büyük */
+                font-size: 4.5rem;
             }
         }
         .btn-dark-accent {
@@ -109,12 +105,10 @@
         }
 
         .hero-image-frame {
-            /* Mobil için büyütüldü (280px idi) */
             width: 300px; 
             height: 300px;
             
             @@media (min-width: 992px) { 
-                /* Desktop için büyütüldü (350px idi) */
                 width: 400px;
                 height: 400px;
             }
@@ -150,16 +144,16 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ==== YETENEK BÖLÜMÜ ==== */
+        /* ==== SKILLS SECTION ==== */
         .progress-bar {
             background-color: var(--primary-light);
             font-weight: bold;
             color: var(--text-on-accent);
-            width: 0%; /* Animasyon için 0'dan başla */
+            width: 0%;
             transition: width 1s ease-in-out;
         }
 
-        /* ==== CAM KARTLAR (Hizmetler & Projeler) ==== */
+        /* ==== GLASS CARDS (Services & Projects) ==== */
         .glass-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -176,7 +170,7 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* ==== HİZMETLER KART İÇERİĞİ ==== */
+        /* ==== SERVICE CARD CONTENT ==== */
         .service-list {
             list-style: none;
             padding: 0;
@@ -192,19 +186,19 @@
         }
         
         /*
-         * ==== YENİ EKLENEN PROJE STİLLERİ ====
+         * ==== PROJECT STYLES ====
          */
         .project-card-img {
             aspect-ratio: 16 / 9;
             width: 100%;
             object-fit: cover;
-            border-radius: 0.75rem 0.75rem 0 0; /* Sadece üst köşeler */
+            border-radius: 0.75rem 0.75rem 0 0;
             margin-bottom: 0;
             border-bottom: 1px solid var(--glass-border);
         }
         .glass-card .project-card-body {
             padding: 1.5rem;
-            position: relative; /* GitHub linki için */
+            position: relative;
         }
         .project-tags {
             padding: 0;
@@ -224,25 +218,22 @@
             border: 1px solid rgba(144, 238, 144, 0.3);
         }
         
-        /* Kartı tıklanabilir yapma */
         .project-card-clickable {
             cursor: pointer;
         }
 
         .project-card-footer {
-            display: flex; /* Anahtar bu: dikey hizala */
-            justify-content: space-between; /* Birini sola, birini sağa yasla */
-            align-items: flex-end; /* Öğeleri (tag listesi ve ikon) en alta hizala */
-            gap: 1rem; /* Aralarında boşluk bırak (taşmayı engeller) */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
         }
 
-        /* ==== BUNU DEĞİŞTİR ==== */
         .project-github-link {
-            /* position: absolute ve ilgili her şey kaldırıldı */
             font-size: 1.5rem;
             color: #E6EDF3;
             transition: all 0.3s ease;
-            flex-shrink: 0; /* İkonun küçülmesini engelle */
+            flex-shrink: 0;
         }
         .project-github-link:hover {
             color: var(--primary-light);
@@ -254,44 +245,37 @@
         }
 
         #projectModalContent h5 {
-            color: var(--primary-light); /* Yeşil renk */
-            font-weight: 700;          /* Kalın yazı */
-            margin-top: 1rem;          /* Üstündeki paragraftan biraz ayır */
+            color: var(--primary-light);
+            font-weight: 700;
+            margin-top: 1rem;
         }
 
         #projectModal .modal-body,
         #projectModal .modal-body ul li {
-            font-size: 0.9rem; /* 1rem (default) 'den küçültüldü */
+            font-size: 0.9rem;
             line-height: 1.6;
         }
 
         #projectModalImage {
-            /* Genişliği, modalın genişliğinden daha az olsun (%100 değil) */
             max-width: 80%; 
-            
-            /* Ne olursa olsun, dikeyde 300px'i geçmesin (Asıl çözüm bu) */
             max-height: 300px;
-            
-            width: auto; /* En-boy oranını koru */
-            
-            /* Resmi ortala */
+            width: auto;
             display: block;
             margin: 0 auto; 
         }
 
         #projectModalTitle {
-            font-size: 0.9rem; /* Yazı boyutunu küçült (h5'ten küçük) */
-            font-weight: 400;  /* Kalınlığı azalt */
-            color: #E6EDF3 !important; /* text-white'ı ez */
-            opacity: 0.7; /* Biraz soluklaştır */
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #E6EDF3 !important;
+            opacity: 0.7;
         }
 
-        /* Gövdeye eklediğimiz asıl proje başlığını ayarla */
         #projectModalContent h4 {
-            font-size: 1.5rem; /* Bu büyük kalsın */
+            font-size: 1.5rem;
         }
 
-        /* ==== Ana Buton Stili ==== */
+        /* ==== Main Button Style ==== */
         .btn-primary-light {
             background-color: var(--primary-light);
             color: var(--text-on-accent);
@@ -308,21 +292,20 @@
             box-shadow: 0 4px 15px rgba(144, 238, 144, 0.2);
         }
 
-        /* Mini Zaman Tüneli Stilleri */
+        /* Mini Timeline Styles */
         .mini-timeline-container {
             display: flex;
-            flex-direction: column; /* Mobilde dikey */
+            flex-direction: column;
             gap: 1.5rem;
         }
 
         .mini-timeline-card-wrapper .glass-card {
-            /* Bu, anasayfadaki "Servis" kartlarıyla aynı stili kullanır */
             background: var(--bg-glass);
             border: 1px solid var(--border-glass);
             border-radius: 1rem;
             padding: 1.5rem;
             transition: all 0.3s ease;
-            height: 100%; /* Dikey hizalama için */
+            height: 100%;
         }
             .mini-timeline-card-wrapper .glass-card:hover {
                 transform: translateY(-5px);
@@ -331,7 +314,7 @@
         .mini-timeline-date {
             font-size: 0.9rem;
             font-weight: 500;
-            color: var(--primary-light); /* Yeşil tarih */
+            color: var(--primary-light);
             margin-bottom: 0.25rem;
         }
         .mini-timeline-title {
@@ -345,14 +328,13 @@
             color: var(--text-muted);
         }
 
-        /* Desktop'ta (LG) yatay Flexbox'a geç */
         @@media (min-width: 992px) {
             .mini-timeline-container {
-                flex-direction: row; /* Desktop'ta yatay */
+                flex-direction: row;
                 justify-content: space-between;
             }
             .mini-timeline-card-wrapper {
-                width: 100%; /* Flex item'ların eşit genişlik almasını sağlar */
+                width: 100%;
                 display: flex;
                 align-items: stretch;
             }
@@ -360,7 +342,7 @@
 
         .reference-card-wrapper {
             display: flex;
-            align-items: stretch; /* Kartların eşit yükseklikte olmasını sağlar */
+            align-items: stretch;
         }
         .reference-card {
             background: var(--bg-glass);
@@ -374,7 +356,7 @@
         .reference-name {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--primary-light); /* Yeşil isim */
+            color: var(--primary-light);
         }
         .reference-title {
             font-size: 0.9rem;
@@ -392,14 +374,14 @@
             border-radius: 1rem;
             padding: 2rem;
             display: flex;
-            flex-direction: column; /* Mobilde */
+            flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
         }
 
         @@media (min-width: 992px) {
             .about-teaser-card {
-                flex-direction: row; /* Desktop'ta yan yana */
+                flex-direction: row;
                 align-items: center;
             }
         }
@@ -411,7 +393,7 @@
     <!-- ==== NAVBAR ==== -->
     <nav id="navbar" class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Kişisel Web Sayfama Hoşgeldiniz<span>.</span></a>
+            <a class="navbar-brand" href="#">Welcome to My Personal Website<span>.</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -419,35 +401,35 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#hero">Ana Sayfa</a>
+                        <a class="nav-link active" aria-current="page" href="#hero">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="AboutMe">Hakkımda</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="AboutMe">About Me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#expertise">Yetenekler</a>
+                        <a class="nav-link" href="#expertise">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">Hizmetler</a>
+                        <a class="nav-link" href="#services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Experience">Experience</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projeler</a>
+                        <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Projects">Tüm Projeler</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Projects">All Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Contact">İletişim</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-2">
     <li class="nav-item">
-        <!-- Bu 'Index' sayfasında olduğu için asp-action="Index" yazar -->
-        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="en" style="font-weight: 700;">
-            <i class="bi bi-translate me-1"></i> EN
+        <!-- Bu 'Index.en' sayfasında olduğu için asp-action="Index" yazar -->
+        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="tr" style="font-weight: 700;">
+            <i class="bi bi-translate me-1"></i> TR
         </a>
     </li>
 </ul>
@@ -455,27 +437,27 @@
         </div>
     </nav>
 
-    <!-- ==== ANA BÖLÜMLERİ SARAN CONTAINER ==== -->
+    <!-- ==== MAIN SECTIONS CONTAINER ==== -->
     <div class="container">
 
-        <!-- ==== 1. HERO BÖLÜMÜ (YEŞİL KART) ==== -->
+        <!-- ==== 1. HERO SECTION (GREEN CARD) ==== -->
         <section id="hero" class="mt-4">
             <div class="hero-card" data-aos="fade-up">
                 <div class="row align-items-center">
                     
-                    <!-- Metin Alanı -->
+                    <!-- Text Area -->
                     <div class="col-lg-7 order-2 order-lg-1 hero-text">
-                        <h2>Merhaba, ben 👋 Ömer Faruk TÜREGÜN</h2>
-                        <h1>YAZILIM GELİŞTİRİCİ</h1>
+                        <h2>Hello, I'm 👋 Ömer Faruk TÜREGÜN</h2>
+                        <h1>SOFTWARE DEVELOPER</h1>
                         <a asp-controller="Home" asp-action="Contact" class="btn btn-dark-accent">
-                            Benimle İletişime Geç <i class="bi bi-arrow-right-short"></i>
+                            Get In Touch <i class="bi bi-arrow-right-short"></i>
                         </a>
                     </div>
 
-                    <!-- Profil Resmi Alanı -->
+                    <!-- Profile Image Area -->
                     <div class="col-lg-5 order-1 order-lg-2 mb-4 mb-lg-0">
                         <div class="hero-image-frame mx-auto">
-                            <img src="~/img/profil.jpg" alt="Ömer Faruk Türegün Profil Resmi">
+                            <img src="~/img/profil.jpg" alt="Ömer Faruk Türegün Profile Picture">
                         </div>
                     </div>
 
@@ -483,23 +465,23 @@
             </div>
         </section>
         
-        <!-- ==== HAKKIMDA FRAGMAN BÖLÜMÜ ==== -->
+        <!-- ==== ABOUT TEASER SECTION ==== -->
         <section id="about-teaser" class="py-5">
             <div class="container" data-aos="fade-up">
-                <!-- JS ile doldurulacak "cam kart" -->
+                <!-- Will be filled with "glass card" via JS -->
                 <div class="about-teaser-card" id="about-teaser-card">
-                    <!-- Yükleniyor... -->
+                    <!-- Loading... -->
                 </div>
             </div>
         </section>
 
-        <!-- ==== 2. YETENEKLER BÖLÜMÜ (PROGRESS BAR) ==== -->
+        <!-- ==== 2. SKILLS SECTION (PROGRESS BAR) ==== -->
         <section id="expertise" class="py-5">
             <div class="container" data-aos="fade-up">
                 <div class="row text-center mb-4">
                     <div class="col">
-                        <h2 class="display-5 fw-bold text-white">Yazılım Geliştirici</h2>
-                        <p class="lead text-white-50">Kullandığım Ana Teknolojiler</p>
+                        <h2 class="display-5 fw-bold text-white">Software Developer</h2>
+                        <p class="lead text-white-50">Core Technologies I Use</p>
                     </div>
                 </div>
                 
@@ -507,29 +489,29 @@
                     <div class="col-md-10 col-lg-8">
                         <!-- FullStack -->
                         <div class="mb-3">
-                            <h5 class="text-white-50">Full Stack Proje Geliştirme</h5>
-                            <div class="progress" role="progressbar" aria-label="FullStack Yetkinliği" style="height: 25px;">
+                            <h5 class="text-white-50">Full Stack Project Development</h5>
+                            <div class="progress" role="progressbar" aria-label="FullStack Proficiency" style="height: 25px;">
                                 <div class="progress-bar progress-bar-animated" data-width="90%">90%</div>
                             </div>
                         </div>
                         <!-- Backend -->
                         <div class="mb-3">
-                            <h5 class="text-white-50">Backend ve Veritabanı Entegrasyonları</h5>
-                            <div class="progress" role="progressbar" aria-label="Backend Yetkinliği" style="height: 25px;">
+                            <h5 class="text-white-50">Backend and Database Integrations</h5>
+                            <div class="progress" role="progressbar" aria-label="Backend Proficiency" style="height: 25px;">
                                 <div class="progress-bar progress-bar-animated" data-width="80%">80%</div>
                             </div>
                         </div>
                         <!-- DevOps -->
                         <div class="mb-3">
-                            <h5 class="text-white-50">DevOps & Konteyner Teknolojileri</h5>
-                            <div class="progress" role="progressbar" aria-label="DevOps Yetkinliği" style="height: 25px;">
+                            <h5 class="text-white-50">DevOps & Container Technologies</h5>
+                            <div class="progress" role="progressbar" aria-label="DevOps Proficiency" style="height: 25px;">
                                 <div class="progress-bar progress-bar-animated" data-width="80%">80%</div>
                             </div>
                         </div>
                         <!-- AI -->
                         <div class="mb-3">
-                            <h5 class="text-white-50">AI & Makine Öğrenmesi</h5>
-                            <div class="progress" role="progressbar" aria-label="AI Yetkinliği" style="height: 25px;">
+                            <h5 class="text-white-50">AI & Machine Learning</h5>
+                            <div class="progress" role="progressbar" aria-label="AI Proficiency" style="height: 25px;">
                                 <div class="progress-bar progress-bar-animated" data-width="65%">65%</div>
                             </div>
                         </div>
@@ -539,22 +521,22 @@
         </section>
 
 
-        <!-- ==== 3. HİZMETLER / KARTLAR ==== -->
+        <!-- ==== 3. SERVICES / CARDS ==== -->
         <section id="services" class="py-5">
             <div class="container" data-aos="fade-up">
                 <div class="row text-center mb-4">
                     <div class="col">
-                        <h2 class="display-5 fw-bold text-white">Hizmetlerim</h2>
-                        <p class="lead text-white-50">Kapsamlı Beceri listem</p>
+                        <h2 class="display-5 fw-bold text-white">My Services</h2>
+                        <p class="lead text-white-50">Comprehensive Skill List</p>
                     </div>
                 </div>
 
                 <div class="row g-4">
-                    <!-- Kart 1: FullStack Geliştirme -->
+                    <!-- Card 1: FullStack Development -->
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                         <div class="glass-card card-hover w-100 p-4">
                             <i class="bi bi-code-slash fs-2 mb-3 d-block text-primary-light"></i>
-                            <h5 class="card-title text-white fw-bold mb-3">FullStack Geliştirme</h5>
+                            <h5 class="card-title text-white fw-bold mb-3">FullStack Development</h5>
                             <ul class="service-list">
                                 <li><i class="bi bi-check-lg"></i>C# & ASP.NET Core MVC</li>
                                 <li><i class="bi bi-check-lg"></i>React & Next.js</li>
@@ -564,42 +546,42 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- Kart 2: Backend & Veritabanı -->
+                    <!-- Card 2: Backend & Database -->
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
                         <div class="glass-card card-hover w-100 p-4">
                             <i class="bi bi-server fs-2 mb-3 d-block text-primary-light"></i>
-                            <h5 class="card-title text-white fw-bold mb-3">Backend & Veritabanı</h5>
+                            <h5 class="card-title text-white fw-bold mb-3">Backend & Database</h5>
                             <ul class="service-list">
                                 <li><i class="bi bi-check-lg"></i>Python (FastAPI)</li>
-                                <li><i class="bi bi-check-lg"></i>Restful API Tasarımı</li>
+                                <li><i class="bi bi-check-lg"></i>RESTful API Design</li>
                                 <li><i class="bi bi-check-lg"></i>MongoDB</li>
                                 <li><i class="bi bi-check-lg"></i>PostgreSQL</li>
                                 <li><i class="bi bi-check-lg"></i>MySQL / MSSQL (SSMS)</li>
                             </ul>
                         </div>
                     </div>
-                    <!-- Kart 3: DevOps & Altyapı -->
+                    <!-- Card 3: DevOps & Infrastructure -->
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
                         <div class="glass-card card-hover w-100 p-4">
                             <i class="bi bi-terminal fs-2 mb-3 d-block text-primary-light"></i>
-                            <h5 class="card-title text-white fw-bold mb-3">DevOps & Altyapı</h5>
+                            <h5 class="card-title text-white fw-bold mb-3">DevOps & Infrastructure</h5>
                             <ul class="service-list">
                                 <li><i class="bi bi-check-lg"></i>Docker & Docker-Compose</li>
                                 <li><i class="bi bi-check-lg"></i>Kubernetes (K8s)</li>
                                 <li><i class="bi bi-check-lg"></i>Linux Terminal</li>
-                                <li><i class="bi bi-check-lg"></i>Linux Sistem Yönetimi</li>
+                                <li><i class="bi bi-check-lg"></i>Linux System Administration</li>
                             </ul>
                         </div>
                     </div>
-                    <!-- Kart 4: AI & Makine Öğrenmesi -->
+                    <!-- Card 4: AI & Machine Learning -->
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
                         <div class="glass-card card-hover w-100 p-4">
                             <i class="bi bi-robot fs-2 mb-3 d-block text-primary-light"></i>
-                            <h5 class="card-title text-white fw-bold mb-3">AI & Makine Öğrenmesi</h5>
+                            <h5 class="card-title text-white fw-bold mb-3">AI & Machine Learning</h5>
                             <ul class="service-list">
-                                <li><i class="bi bi-check-lg"></i>Makine Öğrenmesi</li>
-                                <li><i class="bi bi-check-lg"></i>Derin Öğrenme</li>
-                                <li><i class="bi bi-check-lg"></i>LLM Geliştirme</li>
+                                <li><i class="bi bi-check-lg"></i>Machine Learning</li>
+                                <li><i class="bi bi-check-lg"></i>Deep Learning</li>
+                                <li><i class="bi bi-check-lg"></i>LLM Development</li>
                             </ul>
                         </div>
                     </div>
@@ -607,92 +589,92 @@
             </div>
         </section>
 
-        <!-- ==== MİNİ DENEYİM ZAMAN TÜNELİ (FRAGMAN) ==== -->
+        <!-- ==== MINI EXPERIENCE TIMELINE (TEASER) ==== -->
         <section id="mini-experience" class="py-5">
             <div class="container" data-aos="fade-up">
-                <!-- Başlık ve Buton -->
+                <!-- Title and Button -->
                 <div class="row mb-4 align-items-center">
                     <div class="col-md-8">
-                        <h2 class="display-5 fw-bold text-white">Kariyerime Hızlı Bakış</h2>
-                        <p class="lead text-white-50">En güncel deneyimlerim.</p>
+                        <h2 class="display-5 fw-bold text-white">Quick Look at My Career</h2>
+                        <p class="lead text-white-50">My most recent experiences.</p>
                     </div>
                     <div class="col-md-4 text-md-end">
                         <a asp-controller="Home" asp-action="Experience" class="btn btn-primary-light">
-                            Tüm Deneyimlerim <i class="bi bi-arrow-right-short"></i>
+                            All My Experience <i class="bi bi-arrow-right-short"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Deneyim Kartları Buraya JS ile Gelecek (Sadece ilk 3'ü) -->
+                <!-- Experience Cards Will Come Here via JS (Only first 3) -->
                 <div class="mini-timeline-container" id="mini-timeline-container">
-                    <!-- Yükleniyor... (JS ile temizlenecek) -->
+                    <!-- Loading... (will be cleared by JS) -->
                 </div>
             </div>
         </section>
 
         <section id="references" class="py-5">
             <div class="container" data-aos="fade-up">
-                <!-- Başlık -->
+                <!-- Title -->
                 <div class="row mb-4">
                     <div class="col text-center">
-                        <h2 class="display-5 fw-bold text-white">Referanslarım</h2>
+                        <h2 class="display-5 fw-bold text-white">My References</h2>
                     </div>
                 </div>
 
-                <!-- Referans Kartları Buraya JS ile Gelecek -->
+                <!-- Reference Cards Will Come Here via JS -->
                 <div class="row g-4" id="references-container">
-                    <!-- Yükleniyor... (JS ile temizlenecek) -->
+                    <!-- Loading... (will be cleared by JS) -->
                 </div>
             </div>
         </section>
 
-        <!-- ==== 4. PROJELER (JSON'DAN GELECEK) ==== -->
+        <!-- ==== 4. PROJECTS (FROM JSON) ==== -->
         <section id="projects" class="py-5">
             <div class="container" data-aos="fade-up">
-                <!-- Başlık alanı -->
+                <!-- Title area -->
                 <div class="row mb-4 align-items-center">
                     <div class="col-md-8">
-                        <h2 class="display-5 fw-bold text-white">Son Projelerim</h2>
-                        <p class="lead text-white-50">Üzerinde çalıştığım bazı güncel projeler.</p>
+                        <h2 class="display-5 fw-bold text-white">My Recent Projects</h2>
+                        <p class="lead text-white-50">Some of the latest projects I've been working on.</p>
                     </div>
                     <div class="col-md-4 text-md-end">
                         <a asp-controller="Home" asp-action="Projects" class="btn btn-primary-light">
-                            Tümünü Gör <i class="bi bi-arrow-right-short"></i>
+                            View All <i class="bi bi-arrow-right-short"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- PROJELER BURAYA JS İLE GELECEK -->
+                <!-- PROJECTS WILL COME HERE VIA JS -->
                 <div class="row g-4" id="home-projects-container">
-                    <!-- JS Tarafından Doldurulacak -->
+                    <!-- Will be filled by JS -->
                 </div>
             </div>
         </section>
 
-    </div> <!-- .container biter -->
+    </div> <!-- .container ends -->
     
-    <!-- ==== PROJE DETAY MODALI (GİZLİ) ==== -->
+    <!-- ==== PROJECT DETAIL MODAL (HIDDEN) ==== -->
     <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="background-color: transparent; border:none;">
-                <!-- Modal'ın "cam" görünümünü zorla veriyoruz -->
+                <!-- Force modal's "glass" appearance -->
                 <div class="glass-card" style="border-width: 2px; border-color: rgba(255,255,255,0.3);">
                     <div class="modal-header border-0">
-                        <h5 class="modal-title text-white fw-bold" id="projectModalTitle">Proje Başlığı</h5>
+                        <h5 class="modal-title text-white fw-bold" id="projectModalTitle">Project Title</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-white-50">
-                        <img src="" id="projectModalImage" class="img-fluid rounded mb-3" alt="Proje Görseli">
+                        <img src="" id="projectModalImage" class="img-fluid rounded mb-3" alt="Project Image">
                         <div id="projectModalTags" class="d-flex flex-wrap gap-2 mb-3">
-                            <!-- Etiketler buraya JS ile gelecek -->
+                            <!-- Tags will come here via JS -->
                         </div>
                         <div id="projectModalContent">
-                            <!-- Detaylı içerik buraya JS ile gelecek -->
+                            <!-- Detailed content will come here via JS -->
                         </div>
                     </div>
                     <div class="modal-footer border-0">
                         <a href="#" id="projectModalGithubLink" class="btn btn-primary-light" target="_blank">
-                            <i class="bi bi-github me-2"></i> GitHub'da Görüntüle
+                            <i class="bi bi-github me-2"></i> View on GitHub
                         </a>
                     </div>
                 </div>
@@ -701,18 +683,18 @@
     </div>
 
 
-    <!-- ==== SCRIPT DOSYALARI ==== -->
+    <!-- ==== SCRIPT FILES ==== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- ==== ANASAYFAYA ÖZEL JAVASCRIPT ==== -->
+    <!-- ==== HOMEPAGE SPECIFIC JAVASCRIPT ==== -->
     <script>
-        // Tüm projeleri tutacağımız global değişken
+        // Global variable to hold all projects
         let allProjects = [];
         let allExperience = [];
         let allReferences = [];
 
-        // Sayfa yüklendiğinde çalışacak ana fonksiyonlar
+        // Main functions to run when page loads
         document.addEventListener('DOMContentLoaded', () => {
             AOS.init({
                 duration: 800,
@@ -725,7 +707,7 @@
             fetchReferences();
             fetchAboutTeaser();
 
-            // Modal tetiklendiğinde veriyi doldur
+            // Fill data when modal is triggered
             const projectModal = document.getElementById('projectModal');
             projectModal.addEventListener('show.bs.modal', (event) => {
                 const projectId = event.relatedTarget.getAttribute('data-project-id');
@@ -736,7 +718,7 @@
             });
         });
 
-        // Progress Barları Ekrana Gelince Doldurma Fonksiyonu
+        // Function to Fill Progress Bars When Visible on Screen
         function initAnimatedProgressBars() {
             const progressBars = document.querySelectorAll('.progress-bar');
             
@@ -749,27 +731,27 @@
                         observer.unobserve(bar);
                     }
                 });
-            }, { threshold: 0.5 }); // Çubuğun %50'si görününce tetiklen
+            }, { threshold: 0.5 });
 
             progressBars.forEach(bar => {
                 observer.observe(bar);
             });
         }
         
-        // JSON'dan Projeleri Çekme Fonksiyonu
+        // Function to Fetch Projects from JSON
         async function fetchProjects() {
             try {
-                const response = await fetch('/data/projects.json');
+                const response = await fetch('/data-en/projects.json');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 allProjects = await response.json();
                 
-                // ANASAYFA İÇİN: Sadece ilk 3 projeyi al
+                // FOR HOMEPAGE: Get only first 3 projects
                 const projectsToShow = allProjects.slice(0, 3); 
                 
                 const container = document.getElementById('home-projects-container');
-                container.innerHTML = ''; // Temizle
+                container.innerHTML = ''; // Clear
                 
                 projectsToShow.forEach(project => {
                     container.innerHTML += createProjectCardHTML(project);
@@ -778,23 +760,23 @@
                 AOS.refresh();
 
             } catch (error) {
-                console.error('Projeler yüklenirken hata oluştu:', error);
-                document.getElementById('home-projects-container').innerHTML = '<p class="text-danger">Projeler yüklenemedi.</p>';
+                console.error('Error loading projects:', error);
+                document.getElementById('home-projects-container').innerHTML = '<p class="text-danger">Projects could not be loaded.</p>';
             }
         }
 
-        // ==== createProjectCardHTML FONKSİYONUNUN TAMAMINI BUNUNLA DEĞİŞTİR ====
+        // ==== REPLACE ENTIRE createProjectCardHTML FUNCTION WITH THIS ====
         function createProjectCardHTML(project) {
             const tagsHTML = project.tags.map(tag => `<li>${tag}</li>`).join('');
 
-            // GitHub linkini oluşturan logic (değişmedi)
+            // Logic to create GitHub link (unchanged)
             const githubLinkHTML = project.githubUrl
                 ? `<a href="${project.githubUrl}" class="project-github-link" target="_blank" onclick="event.stopPropagation()">
                     <i class="bi bi-github"></i>
                 </a>`
                 : ''; 
 
-            // ---- YENİ HTML YAPISI BURADA ----
+            // ---- NEW HTML STRUCTURE HERE ----
             return `
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="${(project.id % 3 + 1) * 100}">
                 <div class="glass-card card-hover w-100 p-0 project-card-clickable" 
@@ -805,31 +787,31 @@
                     <img src="${project.imageUrl}" class="project-card-img" alt="${project.title}">
                     
                     <!-- 
-                        Kart gövdesini dikey flex container yaptık (d-flex flex-column).
-                        flex-grow-1 ile kartın kalan tüm yüksekliğini doldurmasını sağladık.
+                        Made card body a vertical flex container (d-flex flex-column).
+                        flex-grow-1 makes it fill all remaining height of the card.
                     -->
                     <div class="project-card-body d-flex flex-column flex-grow-1">
                         
-                        <!-- Bu üst kısım (başlık, açıklama) en üste yaslanır -->
+                        <!-- This top part (title, description) aligns to top -->
                         <div>
                             <h4 class="text-white fw-bold">${project.title}</h4>
                             <p class="text-white-50 mb-3">${project.description}</p>
                         </div>
                         
                         <!-- 
-                            mt-auto (margin-top: auto) sihri, bu div'i 
-                            flex container'ın (project-card-body) en dibine iter.
+                            mt-auto (margin-top: auto) magic pushes this div 
+                            to the bottom of the flex container (project-card-body).
                         -->
                         <div class="mt-auto">
-                            <!-- Bu bizim yeni yatay flex wrapper'ımız -->
+                            <!-- This is our new horizontal flex wrapper -->
                             <div class="project-card-footer">
                                 
-                                <!-- Sol Taraf: Tag'ler (sığdığı kadar genişler) -->
+                                <!-- Left Side: Tags (expands as much as it fits) -->
                                 <ul class="project-tags">
                                     ${tagsHTML}
                                 </ul>
                                 
-                                <!-- Sağ Taraf: GitHub ikonu (sabit durur) -->
+                                <!-- Right Side: GitHub icon (stays fixed) -->
                                 ${githubLinkHTML}
                             </div>
                         </div>
@@ -839,10 +821,10 @@
             `;
         }
 
-        // Modalı Veriyle Dolduran Fonksiyon
+        // Function to Fill Modal with Data
         function populateProjectModal(project) {
             
-            document.getElementById('projectModalTitle').innerText = project.dateRange || 'Proje Detayı';
+            document.getElementById('projectModalTitle').innerText = project.dateRange || 'Project Details';
 
             document.getElementById('projectModalImage').src = project.imageUrl;
             
@@ -871,14 +853,14 @@
 
         async function fetchExperience() {
             try {
-                const response = await fetch('/data/experience.json');
+                const response = await fetch('/data-en/experience.json');
                 if (!response.ok) {
-                    throw new Error('Deneyim verisi alınamadı');
+                    throw new Error('Experience data could not be retrieved');
                 }
                 allExperience = await response.json();
                 
-                // ANASAYFA İÇİN: Sadece "İş Deneyimi" grubunu bul ve ilk 3'ünü al
-                const workExperienceGroup = allExperience.find(group => group.type === "İş Deneyimi");
+                // FOR HOMEPAGE: Find only "Work Experience" group and get first 3
+                const workExperienceGroup = allExperience.find(group => group.type === "İş Deneyimi" || group.type === "Work Experience");
                 let experiencesToShow = [];
 
                 if (workExperienceGroup && workExperienceGroup.experience) {
@@ -886,24 +868,24 @@
                 }
                 
                 const container = document.getElementById('mini-timeline-container');
-                container.innerHTML = ''; // Temizle
+                container.innerHTML = ''; // Clear
                 
                 experiencesToShow.forEach((exp, index) => {
                     container.innerHTML += createMiniTimelineCardHTML(exp, index);
                 });
 
-                // Veri yüklendikten sonra AOS'u yenile (animasyon için)
+                // Refresh AOS after data is loaded (for animation)
                 AOS.refresh();
 
             } catch (error) {
-                console.error('Deneyimler yüklenirken hata oluştu:', error);
-                document.getElementById('mini-timeline-container').innerHTML = '<p class="text-danger">Deneyimler yüklenemedi.</p>';
+                console.error('Error loading experiences:', error);
+                document.getElementById('mini-timeline-container').innerHTML = '<p class="text-danger">Experiences could not be loaded.</p>';
             }
         }
 
         function createMiniTimelineCardHTML(exp, index) {
             return `
-            <!-- Mini Zaman Tüneli Kartı -->
+            <!-- Mini Timeline Card -->
             <div class="mini-timeline-card-wrapper" data-aos="fade-up" data-aos-delay="${(index + 1) * 100}">
                 <div class="glass-card">
                     <div class="mini-timeline-date">${exp.dateRange}</div>
@@ -916,14 +898,14 @@
 
         async function fetchReferences() {
             try {
-                const response = await fetch('/data/references.json');
+                const response = await fetch('/data-en/references.json');
                 if (!response.ok) {
-                    throw new Error('Referans verisi alınamadı');
+                    throw new Error('Reference data could not be retrieved');
                 }
                 allReferences = await response.json();
                 
                 const container = document.getElementById('references-container');
-                container.innerHTML = ''; // Temizle
+                container.innerHTML = ''; // Clear
                 
                 allReferences.forEach((ref, index) => {
                     container.innerHTML += createReferenceCardHTML(ref, index);
@@ -932,13 +914,13 @@
                 AOS.refresh();
 
             } catch (error) {
-                console.error('Referanslar yüklenirken hata oluştu:', error);
-                container.innerHTML = '<p class="text-danger text-center">Referanslar yüklenemedi.</p>';
+                console.error('Error loading references:', error);
+                container.innerHTML = '<p class="text-danger text-center">References could not be loaded.</p>';
             }
         }
 
         function createReferenceCardHTML(ref, index) {
-            // 4'lü grid için col-lg-3, 3'lü için col-lg-4 kullan
+            // Use col-lg-3 for 4-column grid, col-lg-4 for 3-column
             return `
             <div class="col-lg-3 col-md-6 reference-card-wrapper" data-aos="fade-up" data-aos-delay="${(index + 1) * 100}">
                 <div class="reference-card">
@@ -952,13 +934,13 @@
 
         async function fetchAboutTeaser() {
             try {
-                const response = await fetch('/data/about.json');
-                if (!response.ok) throw new Error('Hakkımda verisi alınamadı');
+                const response = await fetch('/data-en/about.json');
+                if (!response.ok) throw new Error('About data could not be retrieved');
                 
                 const data = await response.json();
                 const container = document.getElementById('about-teaser-card');
                 
-                // "Hakkımda" metnini al ve ilk cümlesini (veya 150 karakter) "fragman" yap
+                // Get "About Me" text and make first sentence (or 150 characters) a "teaser"
                 let teaserText = data.aboutMeText;
                 if (teaserText.length > 150) {
                     teaserText = teaserText.substring(0, 150) + "...";
@@ -966,21 +948,21 @@
 
                 container.innerHTML = `
                     <div class="pe-lg-5 mb-4 mb-lg-0">
-                        <h2 class="display-6 fw-bold text-white mb-3">Hakkımda</h2>
+                        <h2 class="display-6 fw-bold text-white mb-3">About Me</h2>
                         <p class="lead text-white-50">${teaserText}</p>
                     </div>
                     <a asp-controller="Home" asp-action="AboutMe" class="btn btn-primary-light flex-shrink-0">
-                        Daha Fazlasını Oku <i class="bi bi-arrow-right-short"></i>
+                        Read More <i class="bi bi-arrow-right-short"></i>
                     </a>
                 `;
                 
-                // ÖNEMLİ: ASP.NET Tag Helper'ları (asp-action) JS içinde çalışmaz.
-                // Linki manuel olarak düzeltmemiz gerekiyor.
+                // IMPORTANT: ASP.NET Tag Helpers (asp-action) don't work inside JS.
+                // We need to fix the link manually.
                 container.querySelector('a').href = '/Home/AboutMe'; 
 
             } catch (error) {
-                console.error('Hakkımda fragmanı yüklenirken hata oluştu:', error);
-                container.innerHTML = '<p class="text-danger">Hakkımda bölümü yüklenemedi.</p>';
+                console.error('Error loading about teaser:', error);
+                container.innerHTML = '<p class="text-danger">About section could not be loaded.</p>';
             }
         }
 
