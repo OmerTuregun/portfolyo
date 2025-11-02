@@ -4,7 +4,7 @@
     "dateRange": "01.2025 - 06.2025",
     "title": "Gerçek Zamanlı İçerik Sansürleme",
     "description": "Kullanıcı tercihine göre gerçek zamanlı olarak açık, şiddet ve argo içerikleri tespit edip filtreleyen yapay zekâ destekli mobil sistem.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+1",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+1",
     "githubUrl": "https://github.com/didarbilgin/RealTimeContentCensorship",
     "tags": ["AI", "Makine Öğrenmesi", "YOLOv4", "BERT", "TensorFlow Lite"],
     "modalContent": [
@@ -23,7 +23,7 @@
     "dateRange": "01.2025 - Devam ediyor",
     "title": "Hanefi Mezhebi Fetva Otomasyonu",
     "description": "İslam hukukunda Hanefi mezhebine odaklanarak yapay zekâ destekli bir fetva otomasyon sistemi geliştirmeyi hedeflemektedir.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+2",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+2",
     "githubUrl": "https://github.com/OmerTuregun/fatwa_automation",
     "tags": ["AI", "NLP", "BERT", "T5", "GPT", "Python"],
     "modalContent": [
@@ -43,7 +43,7 @@
     "dateRange": "10.2025 - Devam ediyor",
     "title": "Kişisel Portfolyo Websitesi (Bu Proje)",
     "description": "ASP.NET Core, Docker ve 'Glassmorphism' tasarımıyla oluşturulan, JSON'dan beslenen dinamik ve interaktif portfolyo sitesi.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+3",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+3",
     "githubUrl": "https://github.com/OmerTuregun/portfolyo.git",
     "tags": ["ASP.NET Core", "Docker", "Bootstrap", "CSS", "JSON", "C#"],
     "modalContent": [
@@ -62,7 +62,7 @@
     "dateRange": "11.2024 - 12.2024",
     "title": "Gerçek Zamanlı İşaret Dili Tanıma",
     "description": "İşaret dili alfabesini gerçek zamanlı olarak tanıyabilen CNN tabanlı bir model geliştirilmiştir.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+4",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+4",
     "githubUrl": "https://github.com/OmerTuregun/sign-language-recognition",
     "tags": ["AI", "Makine Öğrenmesi", "CNN", "OpenCV", "TensorFlow"],
     "modalContent": [
@@ -82,7 +82,7 @@
     "dateRange": "03.2025 - 04.2025",
     "title": "İzmit Rota Planlayıcı (Dijkstra)",
     "description": "Python (Flask) ve Folium kullanarak, Dijkstra algoritması ile İzmit'teki iki nokta arasındaki en kısa yolu bulan bir web uygulaması.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+5",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+5",
     "githubUrl": "https://github.com/OmerTuregun/route_planner",
     "tags": ["Python", "Flask", "Dijkstra", "Folium", "Algoritma"],
     "modalContent": [
@@ -105,7 +105,7 @@
     "dateRange": "04.2024 - 05.2024",
     "title": "Akademik Makale Arama (Web Scraping)",
     "description": "Google Scholar gibi platformlardan web scraping teknikleriyle makale arayan ve MongoDB'ye kaydeden bir web uygulaması.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+6",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+6",
     "githubUrl": null,
     "tags": ["Web Scraping", "Python", "MongoDB", "Elasticsearch"],
     "modalContent": [
@@ -129,7 +129,7 @@
     "dateRange": "04.2024 - 05.2024",
     "title": "Hasta Takip ve Yönetim Sistemi",
     "description": "Python (Django) ve SQLite kullanılarak geliştirilmiş, ilişkisel veritabanı prensiplerine uygun bir hastane yönetim sistemi.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+7",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+7",
     "githubUrl": null,
     "tags": ["Python", "Django", "SQLite", "Veritabanı"],
     "modalContent": [
@@ -149,7 +149,7 @@
     "dateRange": "08.2025",
     "title": "Flask Ürün Katalogu (SPA)",
     "description": "Python (Flask) ve MySQL tabanlı, SPA benzeri, admin panelli ve Docker destekli ürün katalogu uygulaması.",
-    "imageUrl": "https://placehold.co/600x400/0D1117/90EE90?text=Proje+8",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+8",
     "githubUrl": "https://github.com/OmerTuregun/product_catalog",
     "tags": ["Python", "Flask", "MySQL", "Docker", "Bootstrap 5", "JavaScript"],
     "modalContent": [
