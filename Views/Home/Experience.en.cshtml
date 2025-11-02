@@ -293,6 +293,66 @@
         .language-card .language-progress {
             width: var(--progress-width, 0%);
         }
+
+        /* Sertifika Kartı Stilleri */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Mobilde tek sütun */
+            gap: 1rem;
+        }
+
+        /* Desktop'ta (LG) 2 sütunlu grid */
+        @@media (min-width: 992px) {
+            .certificate-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+                gap: 1.5rem;
+            }
+        }
+
+        .certificate-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Grid'de eşit yükseklik için */
+        }
+
+        .certificate-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+        .certificate-provider {
+            font-size: 0.9rem;
+            color: var(--primary-light); /* Yeşil */
+            font-weight: 500;
+        }
+        .certificate-date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+        .certificate-skills {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: auto; /* Linki dibe iterken bunu üstte tutar */
+            padding-top: 1rem;
+        }
+        .certificate-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .certificate-link:hover {
+            color: #fff;
+            transform: translateX(4px);
+        }
     </style>
 </head>
 <body data-bs-theme="dark" class="bg-dark text-white">    
@@ -357,6 +417,42 @@
         </section>
 
     </main>
+
+    <!-- ==== SERTİFİKALAR BÖLÜMÜ ==== -->
+    <section id="certificates-section" class="py-5">
+        
+        <div class="timeline-group-header" data-aos="fade-right" style="padding-left: 4rem;">
+            <h2 id="certificates-title">Certificates</h2> 
+        </div>
+
+        <!-- Sertifika Kartları Buraya JS ile Gelecek -->
+        <div class="certificate-grid" id="certificates-container">
+            <!-- Yükleniyor... (JS ile temizlenecek) -->
+        </div>
+
+    </section>
+
+    <!-- ==== BUNU SAYFANIN EN ALTINA (</body> ÖNCESİNE) EKLE ==== -->
+
+    <!-- ==== SERTİFİKA GÖRÜNTÜLEME MODALI (GİZLİ) ==== -->
+    <div class="modal fade" id="certificateModal" tabindex="-1" aria-labelledby="certificateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl"> <!-- TAM EKRANA YAKIN (XL) -->
+            <div class="modal-content" style="background-color: var(--bg-dark); border: 1px solid var(--border-glass);">
+                
+                <div class="modal-header border-0">
+                    <!-- Başlık JS ile doldurulacak -->
+                    <h5 class="modal-title text-white" id="certificateModalLabel">Certificate</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body text-center p-2">
+                    <!-- Resim JS ile buraya eklenecek -->
+                    <img src="" id="certificateModalImage" class="img-fluid" alt="Sertifika Görüntüsü" style="max-height: 80vh;">
+                </div>
+
+            </div>
+        </div>
+    </div>
     
     <!-- ==== FOOTER ==== -->
     <footer class="footer">
@@ -380,6 +476,26 @@
             
             // Fetch data and create HTML
             fetchExperienceData();
+            fetchCertificates();
+
+            const certificateModal = document.getElementById('certificateModal');
+            if (certificateModal) {
+                certificateModal.addEventListener('show.bs.modal', function (event) {
+                    // Tıklanan link (buton)
+                    const button = event.relatedTarget;
+                    
+                    // Veriyi linkin data-* özelliklerinden çek
+                    const imgSrc = button.getAttribute('data-img-src');
+                    const title = button.getAttribute('data-title');
+
+                    // Modal'ın içindeki elemanları bul ve güncelle
+                    const modalTitle = certificateModal.querySelector('#certificateModalLabel');
+                    const modalImage = certificateModal.querySelector('#certificateModalImage');
+                    
+                    modalTitle.textContent = title;
+                    modalImage.src = imgSrc;
+                });
+            }
         });
 
         // ==== DELETE OLD "fetchExperienceData" FUNCTION AND ADD THIS ====
@@ -486,6 +602,69 @@
                     <p class="timeline-description">${item.description}</p>
                     ${tagsHTML}
                 </div>
+            </div>
+            `;
+        }
+
+        async function fetchCertificates() {
+            // Dil (lang) parametresine göre doğru JSON'u seç
+            const lang = document.documentElement.lang || 'tr';
+            const jsonPath = lang === 'en' ? '/data-en/certificates.json' : '/data/certificates.json';
+            
+            // TR veya EN başlık
+            const titleText = lang === 'en' ? 'Certificates' : 'Sertifikalar';
+            document.getElementById('certificates-title').innerText = titleText;
+            
+            try {
+                const response = await fetch(jsonPath);
+                if (!response.ok) throw new Error('Sertifika verisi alınamadı');
+                
+                const data = await response.json();
+                const container = document.getElementById('certificates-container');
+                container.innerHTML = ''; // Temizle
+
+                data.forEach((cert, index) => {
+                    container.innerHTML += createCertificateCardHTML(cert, index, lang);
+                });
+
+                AOS.refresh();
+
+            } catch (error) {
+                console.error('Sertifikalar yüklenirken hata oluştu:', error);
+                container.innerHTML = '<p class="text-danger text-center">Sertifikalar yüklenirken bir hata oluştu.</p>';
+            }
+        }
+
+        function createCertificateCardHTML(cert, index, lang) {
+            const linkText = lang === 'en' ? 'View Certificate' : 'Sertifikayı Görüntüle';
+            const skillsTitle = lang === 'en' ? 'Skills' : 'Yetenekler';
+            
+            // Resim yolunu düzelt
+            let correctedImgUrl = cert.imageUrl.startsWith('~/') ? cert.imageUrl.substring(1) : cert.imageUrl;
+
+            return `
+            <div class="certificate-card" data-aos="fade-up" data-aos-delay="${(index % 2) * 100}">
+                <div class="certificate-provider">${cert.provider}</div>
+                <h4 class="certificate-title">${cert.title}</h4>
+                <div class="certificate-date">${cert.date}</div>
+                
+                <p class="certificate-skills mb-0">
+                    <strong>${skillsTitle}:</strong> ${cert.skills.join(' · ')}
+                </p>
+
+                <!-- 
+                    DEĞİŞİKLİK BURADA:
+                    Bu artık bir 'a' linki değil, modal'ı açan bir 'button' linki.
+                    'data-bs-toggle' ve 'data-bs-target' eklendi.
+                    'data-img-src' ve 'data-title' ile modalı besleyeceğiz.
+                -->
+                <a href="#" class="certificate-link"
+                data-bs-toggle="modal"
+                data-bs-target="#certificateModal"
+                data-img-src="${correctedImgUrl}"
+                data-title="${cert.title}">
+                    ${linkText} <i class="bi bi-arrow-right-short"></i>
+                </a>
             </div>
             `;
         }

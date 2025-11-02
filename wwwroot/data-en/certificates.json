@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "TechCamp Certification",
+    "provider": "Talentcoders",
+    "date": "Issued: Sep 2025",
+    "skills": ["TechCamp Program", "Software Development"],
+    "imageUrl": "~/img/certificates/techcamp.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Introduction to Image Processing Certificate",
+    "provider": "T3 Foundation",
+    "date": "Issued: Aug 2025",
+    "skills": ["OpenCV", "Image Processing", "Computer Vision"],
+    "imageUrl": "~/img/certificates/goruntu_isleme.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Linux Workshop Certification",
+    "provider": "Techcareer.net",
+    "date": "Issued: Aug 2025",
+    "skills": ["Linux", "Terminal", "System Administration"],
+    "imageUrl": "~/img/certificates/linux.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Python 202 Certificate",
+    "provider": "Global AI Hub",
+    "date": "Issued: Aug 2025",
+    "skills": ["Python", "FastAPI", "Docker", "HTML5", "CSS"],
+    "imageUrl": "~/img/certificates/python_202.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Intro to Machine Learning Workshop Certificate",
+    "provider": "Techcareer.net",
+    "date": "Issued: Apr 2025",
+    "skills": ["Artificial Intelligence", "Machine Learning", "Dynamic Programming"],
+    "imageUrl": "~/img/certificates/machine_learning.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Advanced Python Training Certificate",
+    "provider": "BT Akademi",
+    "date": "Issued: Feb 2025",
+    "skills": ["Python", "Asynchronous Programming", "Test-Driven Development", "FastAPI"],
+    "imageUrl": "~/img/certificates/advanced_python.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Artificial Intelligence Certificate",
+    "provider": "Pupilica",
+    "date": "Issued: Feb 2025",
+    "skills": ["Python", "Data Analytics", "Machine Learning", "AI", "Data Visualization"],
+    "imageUrl": "~/img/certificates/ai_pupilica.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Silicon Valley Artificial Intelligence Career Certificate of Attendance",
+    "provider": "Eastern Mediterranean University",
+    "date": "Issued: Dec 2024",
+    "skills": ["AI Strategy", "AI Operations"],
+    "imageUrl": "~/img/certificates/silicon_valley.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Pre-Incubation Entrepreneurship Certificate",
+    "provider": "Kocaeli University TEKNOPARK A.Ş.",
+    "date": "Issued: Dec 2024",
+    "skills": ["Startup Launch", "Entrepreneurship"],
+    "imageUrl": "~/img/certificates/girisimcilik.jpg"
+  },
+  {
+    "id": 10,
+    "title": "FrontEnd Developer Certificate",
+    "provider": "BT Akademi",
+    "date": "Issued: Nov 2024",
+    "skills": ["HTML", "CSS", "JavaScript", "Responsive Design", "React.js"],
+    "imageUrl": "~/img/certificates/frontend.jpg"
+  }
+]

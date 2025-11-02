@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "TechCamp Certification",
+    "provider": "Talentcoders",
+    "date": "Yayınlanma: Eylül 2025",
+    "skills": ["TechCamp Programı", "Yazılım Geliştirme"],
+    "imageUrl": "~/img/certificates/techcamp.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Görüntü İşlemeye Giriş Sertifikası",
+    "provider": "T3 Vakfı",
+    "date": "Yayınlanma: Ağu 2025",
+    "skills": ["OpenCV", "Görüntü İşleme", "Bilgisayarlı Görü"],
+    "imageUrl": "~/img/certificates/goruntu_isleme.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Linux Workshop Certification",
+    "provider": "Techcareer.net",
+    "date": "Yayınlanma: Ağu 2025",
+    "skills": ["Linux", "Terminal", "Sistem Yönetimi"],
+    "imageUrl": "~/img/certificates/linux.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Python 202 Certificate",
+    "provider": "Global AI Hub",
+    "date": "Yayınlanma: Ağu 2025",
+    "skills": ["Python", "FastAPI", "Docker", "HTML5", "CSS"],
+    "imageUrl": "~/img/certificates/python_202.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Intro to Machine Learning Workshop Certificate",
+    "provider": "Techcareer.net",
+    "date": "Yayınlanma: Nis 2025",
+    "skills": ["Yapay Zeka", "Makine Öğrenimi", "Dinamik Programlama"],
+    "imageUrl": "~/img/certificates/machine_learning.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Advanced Python Training Certificate",
+    "provider": "BT Akademi",
+    "date": "Yayınlanma: Şub 2025",
+    "skills": ["Python", "Asynchronous Programming", "Test-Driven Development", "FastAPI"],
+    "imageUrl": "~/img/certificates/advanced_python.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Artificial Intelligence Certificate",
+    "provider": "Pupilica",
+    "date": "Yayınlanma: Şub 2025",
+    "skills": ["Python", "Veri Analitiği", "Makine Öğrenimi", "Yapay Zeka", "Veri Görselleştirme"],
+    "imageUrl": "~/img/certificates/ai_pupilica.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Silicon Valley Artificial Intelligence Career Certificate of Attendance",
+    "provider": "Doğu Akdeniz Üniversitesi",
+    "date": "Yayınlanma: Ara 2024",
+    "skills": ["Yapay Zeka Stratejisi", "Yapay Zeka İşlemleri"],
+    "imageUrl": "~/img/certificates/silicon_valley.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Ön Kuluçka Girişimcilik Sertifikası",
+    "provider": "Kocaeli Üniversitesi TEKNOPARK A.Ş.",
+    "date": "Yayınlanma: Ara 2024",
+    "skills": ["Girişim Başlatma", "Girişimcilik"],
+    "imageUrl": "~/img/certificates/girisimcilik.jpg"
+  },
+  {
+    "id": 10,
+    "title": "FrontEnd Developer Certificate",
+    "provider": "BT Akademi",
+    "date": "Yayınlanma: Kas 2024",
+    "skills": ["HTML", "CSS", "JavaScript", "Responsive Design", "React.js"],
+    "imageUrl": "~/img/certificates/frontend.jpg"
+  }
+]
