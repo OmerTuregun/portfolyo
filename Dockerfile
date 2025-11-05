@@ -12,8 +12,9 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 
-ENV ASPNETCORE_URLS=http://+:8080
-EXPOSE 8080
+# Projenin konteyner içinde 5001 portunu dinlemesini sağlıyoruz
+ENV ASPNETCORE_URLS=http://+:5001 
+EXPOSE 5001
 
 
 ENTRYPOINT ["dotnet", "My-Portfolyo.dll"]
