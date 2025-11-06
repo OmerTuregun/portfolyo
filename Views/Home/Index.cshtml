@@ -443,10 +443,10 @@
                         <a class="nav-link" asp-controller="Home" asp-action="AboutMe">Hakkımda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#expertise">Yetenekler</a>
+                        <a class="nav-link" href="#expertise">Hizmetler</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">Hizmetler</a>
+                        <a class="nav-link" href="#services">Yetenekler</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a>
@@ -572,8 +572,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="row text-center mb-4">
                     <div class="col">
-                        <h2 class="display-5 fw-bold text-white">Hizmetlerim</h2>
-                        <p class="lead text-white-50">Kapsamlı Beceri listem</p>
+                        <h2 class="display-5 fw-bold text-white">Yeteneklerim</h2>
                     </div>
                 </div>
 
@@ -710,7 +709,6 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-white-50">
-                        <img src="" id="projectModalImage" class="img-fluid rounded mb-3" alt="Proje Görseli">
                         <div id="projectModalTags" class="d-flex flex-wrap gap-2 mb-3">
                             <!-- Etiketler buraya JS ile gelecek -->
                         </div>
@@ -838,18 +836,17 @@
             }
         }
 
-        // ==== createProjectCardHTML FONKSİYONUNUN TAMAMINI BUNUNLA DEĞİŞTİR ====
         function createProjectCardHTML(project) {
             const tagsHTML = project.tags.map(tag => `<li>${tag}</li>`).join('');
 
-            // GitHub linkini oluşturan logic (değişmedi)
+            // GitHub linkini oluşturan logic
             const githubLinkHTML = project.githubUrl
                 ? `<a href="${project.githubUrl}" class="project-github-link" target="_blank" onclick="event.stopPropagation()">
                     <i class="bi bi-github"></i>
                 </a>`
                 : ''; 
 
-            // ---- YENİ HTML YAPISI BURADA ----
+            // ---- GÜNCEL HTML YAPISI (Görsel etiketi silinmiştir) ----
             return `
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="${(project.id % 3 + 1) * 100}">
                 <div class="glass-card card-hover w-100 p-0 project-card-clickable" 
@@ -857,34 +854,20 @@
                     data-bs-target="#projectModal" 
                     data-project-id="${project.id}">
 
-                    <img src="${project.imageUrl}" class="project-card-img" alt="${project.title}">
-                    
-                    <!-- 
-                        Kart gövdesini dikey flex container yaptık (d-flex flex-column).
-                        flex-grow-1 ile kartın kalan tüm yüksekliğini doldurmasını sağladık.
-                    -->
                     <div class="project-card-body d-flex flex-column flex-grow-1">
                         
-                        <!-- Bu üst kısım (başlık, açıklama) en üste yaslanır -->
                         <div>
                             <h4 class="text-white fw-bold">${project.title}</h4>
                             <p class="text-white-50 mb-3">${project.description}</p>
                         </div>
                         
-                        <!-- 
-                            mt-auto (margin-top: auto) sihri, bu div'i 
-                            flex container'ın (project-card-body) en dibine iter.
-                        -->
                         <div class="mt-auto">
-                            <!-- Bu bizim yeni yatay flex wrapper'ımız -->
                             <div class="project-card-footer">
                                 
-                                <!-- Sol Taraf: Tag'ler (sığdığı kadar genişler) -->
                                 <ul class="project-tags">
                                     ${tagsHTML}
                                 </ul>
                                 
-                                <!-- Sağ Taraf: GitHub ikonu (sabit durur) -->
                                 ${githubLinkHTML}
                             </div>
                         </div>
@@ -899,7 +882,6 @@
             
             document.getElementById('projectModalTitle').innerText = project.dateRange || 'Proje Detayı';
 
-            document.getElementById('projectModalImage').src = project.imageUrl;
             
             const githubLinkButton = document.getElementById('projectModalGithubLink');
             if (project.githubUrl) {

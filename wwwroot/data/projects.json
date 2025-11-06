@@ -40,7 +40,7 @@
   },
   {
     "id": 3,
-    "dateRange": "10.2025 - Devam ediyor",
+    "dateRange": "10.2025 - 11.2025",
     "title": "Kişisel Portfolyo Websitesi (Bu Proje)",
     "description": "ASP.NET Core, Docker ve 'Glassmorphism' tasarımıyla oluşturulan, JSON'dan beslenen dinamik ve interaktif portfolyo sitesi.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+3",

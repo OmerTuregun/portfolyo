@@ -42,7 +42,7 @@
   {
     "id": 3,
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+3",
-    "dateRange": "09.2025 - Ongoing",
+    "dateRange": "10.2025 - 11.2025",
     "githubUrl": "https://github.com/OmerTuregun/portfolyo",
     "title": "Personal Portfolio Website (This Site)",
     "description": "My personal portfolio site built with ASP.NET Core MVC, Docker, and dynamic content fed from JSON.",

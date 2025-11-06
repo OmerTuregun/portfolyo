@@ -254,7 +254,6 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-white-50">
-                        <img src="" id="projectModalImage" class="img-fluid rounded mb-3" alt="Project Image">
                         <div id="projectModalTags" class="d-flex flex-wrap gap-2 mb-3">
                             <!-- Tags will be added here via JS -->
                         </div>
@@ -328,18 +327,17 @@
             }
         }
 
-        // ==== REPLACE ENTIRE createProjectCardHTML FUNCTION WITH THIS ====
         function createProjectCardHTML(project) {
             const tagsHTML = project.tags.map(tag => `<li>${tag}</li>`).join('');
 
-            // Logic to create GitHub link (unchanged)
+            // GitHub linkini oluşturan logic
             const githubLinkHTML = project.githubUrl
                 ? `<a href="${project.githubUrl}" class="project-github-link" target="_blank" onclick="event.stopPropagation()">
                     <i class="bi bi-github"></i>
                 </a>`
                 : ''; 
 
-            // ---- NEW HTML STRUCTURE HERE ----
+            // ---- GÜNCEL HTML YAPISI (Görsel etiketi silinmiştir) ----
             return `
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="${(project.id % 3 + 1) * 100}">
                 <div class="glass-card card-hover w-100 p-0 project-card-clickable" 
@@ -347,34 +345,20 @@
                     data-bs-target="#projectModal" 
                     data-project-id="${project.id}">
 
-                    <img src="${project.imageUrl}" class="project-card-img" alt="${project.title}">
-                    
-                    <!-- 
-                        Made card body a vertical flex container (d-flex flex-column).
-                        flex-grow-1 makes it fill all remaining height of the card.
-                    -->
                     <div class="project-card-body d-flex flex-column flex-grow-1">
                         
-                        <!-- This top part (title, description) aligns to top -->
                         <div>
                             <h4 class="text-white fw-bold">${project.title}</h4>
                             <p class="text-white-50 mb-3">${project.description}</p>
                         </div>
                         
-                        <!-- 
-                            mt-auto (margin-top: auto) magic pushes this div 
-                            to the bottom of the flex container (project-card-body).
-                        -->
                         <div class="mt-auto">
-                            <!-- This is our new horizontal flex wrapper -->
                             <div class="project-card-footer">
                                 
-                                <!-- Left Side: Tags (expands as much as it fits) -->
                                 <ul class="project-tags">
                                     ${tagsHTML}
                                 </ul>
                                 
-                                <!-- Right Side: GitHub icon (stays fixed) -->
                                 ${githubLinkHTML}
                             </div>
                         </div>
@@ -389,7 +373,6 @@
             
             document.getElementById('projectModalTitle').innerText = project.dateRange || 'Project Details';
 
-            document.getElementById('projectModalImage').src = project.imageUrl;
             
             const githubLinkButton = document.getElementById('projectModalGithubLink');
             if (project.githubUrl) {
