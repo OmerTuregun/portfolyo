@@ -1,0 +1,32 @@
+# DEVELOPMENT DOCKER COMPOSE
+# Kullanım: docker-compose -f docker-compose.dev.yml up -d --build
+# Site: http://localhost:5002
+# Hot-reload: Kod değişiklikleri otomatik olarak yansır (watch mode)
+
+services:
+  portfolio-web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: portfolio-web-dev
+    restart: unless-stopped
+    ports:
+      - "5002:5002"  # Development için farklı port
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5002
+      - DOTNET_WATCH_RUN_LAUNCH_PROFILE=Development
+    volumes:
+      # Hot-reload için source code'u mount ediyoruz
+      - .:/src
+      - /src/bin
+      - /src/obj
+    working_dir: /src
+    networks:
+      - portfolio-dev-network
+    # Development için watch mode aktif
+    command: dotnet watch run --urls http://+:5002
+
+networks:
+  portfolio-dev-network:
+    driver: bridge

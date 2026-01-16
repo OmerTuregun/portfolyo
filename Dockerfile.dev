@@ -1,0 +1,22 @@
+# DEVELOPMENT DOCKERFILE
+# Hot-reload ve development için optimize edilmiş
+# Production için Dockerfile kullanın
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS development
+WORKDIR /src
+
+# Proje dosyasını kopyala ve restore et
+COPY *.csproj .
+RUN dotnet restore
+
+# Tüm dosyaları kopyala (volume mount ile override edilecek)
+COPY . .
+
+# Development için watch mode kullanılacak
+# Volume mount ile source code değişiklikleri otomatik yansır
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=http://+:5002
+EXPOSE 5002
+
+# Watch mode ile çalıştır (hot-reload)
+ENTRYPOINT ["dotnet", "watch", "run", "--urls", "http://+:5002"]
