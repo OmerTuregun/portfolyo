@@ -11,6 +11,6 @@ docker compose -f docker-compose.dev.yml up -d --build
 
 echo ""
 echo "✅ Development ortamı hazır!"
-echo "📝 Site: http://localhost:5002"
+echo "📝 Site: http://localhost:3000"
 echo "📊 Logları izlemek için: docker compose -f docker-compose.dev.yml logs -f"
 echo ""

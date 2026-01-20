@@ -1,0 +1,229 @@
+@model My_Portfolyo.Models.Admin.ExperienceViewModel
+@{
+    Layout = null;
+    var lang = ViewData["Lang"]?.ToString() ?? "tr";
+    var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
+    var type = ViewData["Type"]?.ToString() ?? "Eğitim";
+    var types = ViewData["Types"] as List<string> ?? new List<string> { "Eğitim", "İş Deneyimi", "Stajlar", "Diller" };
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deneyim Düzenle - Admin Panel</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-light: #90EE90;
+            --bg-dark: #0D1117;
+            --glass-bg: rgba(22, 27, 34, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: #E6EDF3;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .form-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-label {
+            color: #E6EDF3;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select, textarea.form-control {
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid var(--glass-border);
+            color: #E6EDF3;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .form-control:focus, .form-select:focus, textarea.form-control:focus {
+            background: rgba(13, 17, 23, 0.9);
+            border-color: var(--primary-light);
+            color: #E6EDF3;
+            box-shadow: 0 0 0 0.2rem rgba(144, 238, 144, 0.25);
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-light);
+            color: var(--bg-dark);
+            border: none;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary-custom:hover {
+            background: #7dd87d;
+            color: var(--bg-dark);
+        }
+
+        .btn-secondary-custom {
+            background: rgba(255, 255, 255, 0.1);
+            color: #E6EDF3;
+            border: 1px solid var(--glass-border);
+        }
+
+        .text-danger {
+            color: #ff6b6b !important;
+        }
+
+        .help-text {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 style="color: var(--primary-light);">
+                <i class="bi bi-pencil"></i> Deneyim Düzenle (@(currentLang == "tr" ? "Türkçe" : "English"))
+            </h3>
+            <a href="/@lang/Admin/Experience?lang=@currentLang&type=@type" class="btn btn-secondary-custom">
+                <i class="bi bi-arrow-left"></i> Geri Dön
+            </a>
+        </div>
+
+        <div class="form-card">
+            <form method="post" asp-action="Edit" asp-route-id="@Model.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang">
+                @Html.AntiForgeryToken()
+                
+                <input type="hidden" name="Type" value="@type" />
+
+                <div class="mb-3">
+                    <label for="Type" class="form-label">
+                        <i class="bi bi-folder"></i> Kategori *
+                    </label>
+                    <select name="Type" id="Type" class="form-select" required>
+                        @foreach (var t in types)
+                        {
+                            @if (t == type)
+                            {
+                                <option value="@t" selected>@t</option>
+                            }
+                            else
+                            {
+                                <option value="@t">@t</option>
+                            }
+                        }
+                    </select>
+                    <div class="help-text">Deneyimin kategorisini seçin</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Title" class="form-label">
+                            <i class="bi bi-type"></i> Başlık *
+                        </label>
+                        <input asp-for="Title" class="form-control" placeholder="Örn: Yazılım Geliştirici" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Company" class="form-label">
+                            <i class="bi bi-building"></i> Şirket/Kurum *
+                        </label>
+                        <input asp-for="Company" class="form-control" placeholder="Örn: Kocaeli Üniversitesi" />
+                        <span asp-validation-for="Company" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="DateRange" class="form-label">
+                        <i class="bi bi-calendar"></i> Tarih Aralığı *
+                    </label>
+                    <input asp-for="DateRange" class="form-control" placeholder="Örn: 2021 - Devam Ediyor" />
+                    <span asp-validation-for="DateRange" class="text-danger"></span>
+                    <div class="help-text">Örn: 2021 - Devam Ediyor veya 01.10.2025 - Devam Ediyor</div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">
+                        <i class="bi bi-text-paragraph"></i> Açıklama *
+                    </label>
+                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Deneyim açıklaması"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3" id="tagsSection">
+                    <label asp-for="TagsInput" class="form-label">
+                        <i class="bi bi-tags"></i> Etiketler
+                    </label>
+                    <input asp-for="TagsInput" class="form-control" placeholder="C#, Python, Docker (virgülle ayırın)" />
+                    <span asp-validation-for="TagsInput" class="text-danger"></span>
+                    <div class="help-text">Etiketleri virgülle ayırın: C#, Python, Docker</div>
+                </div>
+
+                <div class="row" id="languageFields" style="display: none;">
+                    <div class="col-md-6 mb-3">
+                        <label for="Percentage" class="form-label">
+                            <i class="bi bi-percent"></i> Yüzde (0-100)
+                        </label>
+                        <input type="number" name="Percentage" id="Percentage" class="form-control" min="0" max="100" value="@(Model.Percentage ?? 0)" />
+                        <div class="help-text">Dil seviyesi yüzdesi (sadece Diller kategorisi için)</div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="FlagCode" class="form-label">
+                            <i class="bi bi-flag"></i> Bayrak Kodu
+                        </label>
+                        <input type="text" name="FlagCode" id="FlagCode" class="form-control" placeholder="Örn: gb, de, tr" value="@Model.FlagCode" />
+                        <div class="help-text">ISO ülke kodu (sadece Diller kategorisi için)</div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary-custom">
+                        <i class="bi bi-check-circle"></i> Güncelle
+                    </button>
+                    <a href="/@lang/Admin/Experience?lang=@currentLang&type=@type" class="btn btn-secondary-custom">
+                        <i class="bi bi-x-circle"></i> İptal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script>
+        // Diller kategorisi seçildiğinde özel alanları göster
+        document.getElementById('Type').addEventListener('change', function() {
+            const isLanguage = this.value === 'Diller';
+            document.getElementById('languageFields').style.display = isLanguage ? 'flex' : 'none';
+            document.getElementById('tagsSection').style.display = isLanguage ? 'none' : 'block';
+        });
+        
+        // Sayfa yüklendiğinde kontrol et
+        document.addEventListener('DOMContentLoaded', function() {
+            const typeSelect = document.getElementById('Type');
+            const isLanguage = typeSelect.value === 'Diller';
+            document.getElementById('languageFields').style.display = isLanguage ? 'flex' : 'none';
+            document.getElementById('tagsSection').style.display = isLanguage ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>

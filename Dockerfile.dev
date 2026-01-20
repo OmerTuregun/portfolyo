@@ -15,8 +15,8 @@ COPY . .
 # Development için watch mode kullanılacak
 # Volume mount ile source code değişiklikleri otomatik yansır
 ENV ASPNETCORE_ENVIRONMENT=Development
-ENV ASPNETCORE_URLS=http://+:5002
-EXPOSE 5002
+ENV ASPNETCORE_URLS=http://+:3000
+EXPOSE 3000
 
 # Watch mode ile çalıştır (hot-reload)
-ENTRYPOINT ["dotnet", "watch", "run", "--urls", "http://+:5002"]
+ENTRYPOINT ["dotnet", "watch", "run", "--urls", "http://+:3000"]

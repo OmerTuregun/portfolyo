@@ -1,0 +1,187 @@
+@model My_Portfolyo.Models.Admin.LoginViewModel
+@{
+    Layout = null;
+    var lang = ViewData["Lang"]?.ToString() ?? "en";
+    var model = Model ?? new My_Portfolyo.Models.Admin.LoginViewModel();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Portfolio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-light: #90EE90;
+            --bg-dark: #0D1117;
+            --glass-bg: rgba(22, 27, 34, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0D1117 0%, #161B22 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: var(--primary-light);
+            font-weight: 900;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #E6EDF3;
+            opacity: 0.7;
+        }
+
+        .form-label {
+            color: #E6EDF3;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid var(--glass-border);
+            color: #E6EDF3;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .form-control:focus {
+            background: rgba(13, 17, 23, 0.9);
+            border-color: var(--primary-light);
+            color: #E6EDF3;
+            box-shadow: 0 0 0 0.2rem rgba(144, 238, 144, 0.25);
+        }
+
+        .btn-login {
+            background: var(--primary-light);
+            color: var(--bg-dark);
+            border: none;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: #7dd87d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3);
+        }
+
+        .text-danger {
+            color: #ff6b6b !important;
+        }
+
+        .alert {
+            border-radius: 0.5rem;
+            border: none;
+        }
+
+        .alert-danger {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1><i class="bi bi-shield-lock"></i> Admin Panel</h1>
+                <p>Login to management panel</p>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState[string.Empty] != null && ViewData.ModelState[string.Empty].Errors.Count > 0)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState[string.Empty].Errors)
+                    {
+                        <div>@error.ErrorMessage</div>
+                    }
+                </div>
+            }
+
+            <form method="post" asp-action="Login" asp-route-lang="@lang">
+                @Html.AntiForgeryToken()
+                
+                <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+                <div class="mb-3">
+                    <label for="Username" class="form-label">
+                        <i class="bi bi-person"></i> Username
+                    </label>
+                    <input type="text" id="Username" name="Username" class="form-control" placeholder="Enter your username" autocomplete="username" value="@(model.Username ?? "")" />
+                    @if (ViewData.ModelState["Username"]?.Errors.Count > 0)
+                    {
+                        <span class="text-danger">@ViewData.ModelState["Username"]?.Errors[0].ErrorMessage</span>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label for="Password" class="form-label">
+                        <i class="bi bi-lock"></i> Password
+                    </label>
+                    <input type="password" id="Password" name="Password" class="form-control" placeholder="Enter your password" autocomplete="current-password" />
+                    @if (ViewData.ModelState["Password"]?.Errors.Count > 0)
+                    {
+                        <span class="text-danger">@ViewData.ModelState["Password"]?.Errors[0].ErrorMessage</span>
+                    }
+                </div>
+
+                <button type="submit" class="btn btn-login">
+                    <i class="bi bi-box-arrow-in-right"></i> Sign In
+                </button>
+            </form>
+
+            <div class="text-center mt-4">
+                <a href="/@lang" class="text-decoration-none" style="color: var(--primary-light); opacity: 0.8;">
+                    <i class="bi bi-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
