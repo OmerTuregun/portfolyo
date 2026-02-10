@@ -109,6 +109,19 @@
             <form method="post" asp-action="Edit" asp-route-id="@Model.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang">
                 @Html.AntiForgeryToken()
 
+                <div class="mb-3">
+                    <label asp-for="Id" class="form-label">
+                        <i class="bi bi-hash"></i> @(currentLang == "tr" ? "Sıra / ID" : "Order / ID")
+                    </label>
+                    <input asp-for="Id" type="number" class="form-control" min="1" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                    <div class="help-text">
+                        @(currentLang == "tr"
+                            ? "Küçük ID değerine sahip projeler listede daha yukarıda görünür."
+                            : "Projects with smaller ID values appear higher in the list.")
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label asp-for="DateRange" class="form-label">

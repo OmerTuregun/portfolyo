@@ -22,25 +22,8 @@
     "type": "İş Deneyimi",
     "experience": [
       {
-        "id": 3,
-        "title": "Yazılım Geliştirme Uzmanı",
-        "company": "UZER Makina",
-        "dateRange": "01.01.2026 - Devam Ediyor",
-        "description": "Fabrika sahasındaki makinelerin dijitalleştirilmesi, uzaktan yönetimi ve raporlanması için geliştirilen web platformlarında aktif olarak rol almaktayım. Mevcut sistemlerde optimizasyonlar, hata düzeltmeleri ve yeni modül geliştirmeleri yapıyorum. Aynı zamanda şirket içindeki Departmanlarda kullanılan web ara yüzlü modüllerin geliştirilmesinde, planlanmasında ve uçtan uca yazım aşamalarında aktif rol alıyorum.",
-        "tags": [
-          "C#",
-          "ASP.NET Core MVC",
-          "Node.js",
-          "MSSQL (SSMS)",
-          "JavaScript",
-          "HTML/CSS",
-          "Docker",
-          "GitHub"
-        ]
-      },
-      {
         "id": 1,
-        "title": "Yazılım Geliştirici (Sözleşmeli)",
+        "title": "Yazılım Geliştirici (Tam Zamanlı)",
         "company": "KOLSAN - Kocaeli Lastik Sanayi A.Ş.",
         "dateRange": "01.10.2025 - 31.12.2025",
         "description": "Fabrika sahasındaki makinelerin dijitalleştirilmesi, uzaktan yönetimi ve raporlanması için geliştirilen web platformlarında aktif olarak rol almaktayım. Mevcut sistemlerde optimizasyonlar, hata düzeltmeleri ve yeni modül geliştirmeleri yapıyorum.",
@@ -68,6 +51,23 @@
           "Python",
           "MongoDB",
           "Görüntü İşleme"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Yazılım Geliştirme Uzmanı",
+        "company": "UZER Makina",
+        "dateRange": "01.01.2026 - Devam Ediyor",
+        "description": "Fabrika sahasındaki makinelerin dijitalleştirilmesi, uzaktan yönetimi ve raporlanması için geliştirilen web platformlarında aktif olarak rol almaktayım. Mevcut sistemlerde optimizasyonlar, hata düzeltmeleri ve yeni modül geliştirmeleri yapıyorum. Aynı zamanda şirket içindeki Departmanlarda kullanılan web ara yüzlü modüllerin geliştirilmesinde, planlanmasında ve uçtan uca yazım aşamalarında aktif rol alıyorum.",
+        "tags": [
+          "C#",
+          "ASP.NET Core MVC",
+          "Node.js",
+          "MSSQL (SSMS)",
+          "JavaScript",
+          "HTML/CSS",
+          "Docker",
+          "GitHub"
         ]
       }
     ]

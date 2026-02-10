@@ -99,108 +99,43 @@
 <body>
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
+            @{
+                var isTr = currentLang == "tr";
+            }
             <h3 style="color: var(--primary-light);">
-                <i class="bi bi-pencil"></i> Deneyim Düzenle (@(currentLang == "tr" ? "Türkçe" : "English"))
+                <i class="bi bi-pencil"></i> @(isTr ? "Deneyim Düzenle" : "Edit Experience") (@(currentLang == "tr" ? "Türkçe" : "English"))
             </h3>
-            <a href="/@lang/Admin/Experience?lang=@currentLang&type=@type" class="btn btn-secondary-custom">
-                <i class="bi bi-arrow-left"></i> Geri Dön
+            <a asp-controller="AdminExperience" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="@currentLang" asp-route-type="@type" class="btn btn-secondary-custom">
+                <i class="bi bi-arrow-left"></i> @(isTr ? "Geri Dön" : "Back")
             </a>
         </div>
 
         <div class="form-card">
-            <form method="post" asp-action="Edit" asp-route-id="@Model.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang">
+            <form method="post" asp-action="Edit" asp-route-id="@Model.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" asp-route-type="@type">
                 @Html.AntiForgeryToken()
+                <input type="hidden" name="contentLang" value="@currentLang" />
+                <input type="hidden" name="type" value="@type" />
                 
-                <input type="hidden" name="Type" value="@type" />
+                @{
+                    var isTr = currentLang == "tr";
+                    var partialName = type switch
+                    {
+                        "Eğitim" => "_EditEducation",
+                        "İş Deneyimi" => "_EditWorkExperience",
+                        "Stajlar" => "_EditInternship",
+                        "Diller" => "_EditLanguage",
+                        _ => "_EditEducation"
+                    };
+                }
 
-                <div class="mb-3">
-                    <label for="Type" class="form-label">
-                        <i class="bi bi-folder"></i> Kategori *
-                    </label>
-                    <select name="Type" id="Type" class="form-select" required>
-                        @foreach (var t in types)
-                        {
-                            @if (t == type)
-                            {
-                                <option value="@t" selected>@t</option>
-                            }
-                            else
-                            {
-                                <option value="@t">@t</option>
-                            }
-                        }
-                    </select>
-                    <div class="help-text">Deneyimin kategorisini seçin</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Title" class="form-label">
-                            <i class="bi bi-type"></i> Başlık *
-                        </label>
-                        <input asp-for="Title" class="form-control" placeholder="Örn: Yazılım Geliştirici" />
-                        <span asp-validation-for="Title" class="text-danger"></span>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="Company" class="form-label">
-                            <i class="bi bi-building"></i> Şirket/Kurum *
-                        </label>
-                        <input asp-for="Company" class="form-control" placeholder="Örn: Kocaeli Üniversitesi" />
-                        <span asp-validation-for="Company" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="DateRange" class="form-label">
-                        <i class="bi bi-calendar"></i> Tarih Aralığı *
-                    </label>
-                    <input asp-for="DateRange" class="form-control" placeholder="Örn: 2021 - Devam Ediyor" />
-                    <span asp-validation-for="DateRange" class="text-danger"></span>
-                    <div class="help-text">Örn: 2021 - Devam Ediyor veya 01.10.2025 - Devam Ediyor</div>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Description" class="form-label">
-                        <i class="bi bi-text-paragraph"></i> Açıklama *
-                    </label>
-                    <textarea asp-for="Description" class="form-control" rows="4" placeholder="Deneyim açıklaması"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3" id="tagsSection">
-                    <label asp-for="TagsInput" class="form-label">
-                        <i class="bi bi-tags"></i> Etiketler
-                    </label>
-                    <input asp-for="TagsInput" class="form-control" placeholder="C#, Python, Docker (virgülle ayırın)" />
-                    <span asp-validation-for="TagsInput" class="text-danger"></span>
-                    <div class="help-text">Etiketleri virgülle ayırın: C#, Python, Docker</div>
-                </div>
-
-                <div class="row" id="languageFields" style="display: none;">
-                    <div class="col-md-6 mb-3">
-                        <label for="Percentage" class="form-label">
-                            <i class="bi bi-percent"></i> Yüzde (0-100)
-                        </label>
-                        <input type="number" name="Percentage" id="Percentage" class="form-control" min="0" max="100" value="@(Model.Percentage ?? 0)" />
-                        <div class="help-text">Dil seviyesi yüzdesi (sadece Diller kategorisi için)</div>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="FlagCode" class="form-label">
-                            <i class="bi bi-flag"></i> Bayrak Kodu
-                        </label>
-                        <input type="text" name="FlagCode" id="FlagCode" class="form-control" placeholder="Örn: gb, de, tr" value="@Model.FlagCode" />
-                        <div class="help-text">ISO ülke kodu (sadece Diller kategorisi için)</div>
-                    </div>
-                </div>
+                @await Html.PartialAsync($"~/Views/Admin/Experience/{partialName}.cshtml", Model)
 
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary-custom">
-                        <i class="bi bi-check-circle"></i> Güncelle
+                        <i class="bi bi-check-circle"></i> @(isTr ? "Güncelle" : "Update")
                     </button>
-                    <a href="/@lang/Admin/Experience?lang=@currentLang&type=@type" class="btn btn-secondary-custom">
-                        <i class="bi bi-x-circle"></i> İptal
+                    <a asp-controller="AdminExperience" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="@currentLang" asp-route-type="@type" class="btn btn-secondary-custom">
+                        <i class="bi bi-x-circle"></i> @(isTr ? "İptal" : "Cancel")
                     </a>
                 </div>
             </form>
@@ -208,22 +143,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script>
-        // Diller kategorisi seçildiğinde özel alanları göster
-        document.getElementById('Type').addEventListener('change', function() {
-            const isLanguage = this.value === 'Diller';
-            document.getElementById('languageFields').style.display = isLanguage ? 'flex' : 'none';
-            document.getElementById('tagsSection').style.display = isLanguage ? 'none' : 'block';
-        });
-        
-        // Sayfa yüklendiğinde kontrol et
-        document.addEventListener('DOMContentLoaded', function() {
-            const typeSelect = document.getElementById('Type');
-            const isLanguage = typeSelect.value === 'Diller';
-            document.getElementById('languageFields').style.display = isLanguage ? 'flex' : 'none';
-            document.getElementById('tagsSection').style.display = isLanguage ? 'none' : 'block';
-        });
-    </script>
 </body>
 </html>

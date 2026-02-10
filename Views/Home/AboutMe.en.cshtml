@@ -245,7 +245,9 @@
 
         async function fetchAboutData() {
             try {
-                const response = await fetch('/data-en/about.json');
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data-en/about.json?v=${timestamp}`);
                 if (!response.ok) throw new Error('Data could not be retrieved');
                 
                 const data = await response.json();

@@ -152,16 +152,10 @@ namespace My_Portfolyo.Controllers
                 currentLang = "tr";
             }
 
-            if (!ModelState.IsValid)
-            {
-                ViewData["CurrentLang"] = currentLang;
-                ViewData["Lang"] = lang ?? "tr";
-                return View(model);
-            }
-
             try
             {
                 var projects = await _jsonService.ReadJsonArrayAsync<ProjectViewModel>("projects.json", currentLang);
+                // Eski kaydı, route'tan gelen ID ile bul (orijinal ID)
                 var projectIndex = projects.FindIndex(p => p.Id == id);
 
                 if (projectIndex == -1)
@@ -169,7 +163,24 @@ namespace My_Portfolyo.Controllers
                     return NotFound();
                 }
 
-                model.Id = id;
+                // Aynı ID'ye sahip başka proje var mı? (çakışmayı engelle)
+                if (projects.Any(p => p.Id == model.Id && p.Id != id))
+                {
+                    ModelState.AddModelError(nameof(model.Id), currentLang == "tr"
+                        ? "Bu ID değerine sahip başka bir proje zaten var."
+                        : "Another project with this ID already exists.");
+
+                    ViewData["CurrentLang"] = currentLang;
+                    ViewData["Lang"] = lang ?? "tr";
+                    return View(model);
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    ViewData["CurrentLang"] = currentLang;
+                    ViewData["Lang"] = lang ?? "tr";
+                    return View(model);
+                }
 
                 // Tags'i parse et
                 if (!string.IsNullOrEmpty(model.TagsInput))

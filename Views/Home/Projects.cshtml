@@ -303,11 +303,16 @@
         // JSON'dan Projeleri Çekme Fonksiyonu
         async function fetchProjects() {
             try {
-                const response = await fetch('/data/projects.json');
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data/projects.json?v=${timestamp}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 allProjects = await response.json();
+
+                // ID'ye göre sırala (küçük ID en üstte)
+                allProjects.sort((a, b) => (a.id || 0) - (b.id || 0));
                 
                 // PROJELER SAYFASI İÇİN: TÜM projeleri al
                 const projectsToShow = allProjects; 

@@ -47,9 +47,37 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+else
+{
+    // Development ortamında hot-reload browser refresh'i devre dışı bırak
+    // WebSocket hatasını önlemek için (Docker container içinden dışarıya bağlanamıyor)
+    app.Use(async (context, next) =>
+    {
+        // Browser refresh WebSocket isteklerini ignore et
+        if (context.Request.Path.StartsWithSegments("/_framework/aspnetcore-browser-refresh"))
+        {
+            context.Response.StatusCode = 404;
+            return;
+        }
+        await next();
+    });
+}
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+
+// Static files için cache kontrolü
+var staticFileOptions = new StaticFileOptions();
+if (app.Environment.IsDevelopment())
+{
+    // Development ortamında cache'i devre dışı bırak
+    staticFileOptions.OnPrepareResponse = ctx =>
+    {
+        ctx.Context.Response.Headers.Append("Cache-Control", "no-cache, no-store, must-revalidate");
+        ctx.Context.Response.Headers.Append("Pragma", "no-cache");
+        ctx.Context.Response.Headers.Append("Expires", "0");
+    };
+}
+app.UseStaticFiles(staticFileOptions);
 
 app.UseRouting();
 

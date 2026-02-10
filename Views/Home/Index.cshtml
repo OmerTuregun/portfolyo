@@ -812,11 +812,16 @@
         // JSON'dan Projeleri Çekme Fonksiyonu
         async function fetchProjects() {
             try {
-                const response = await fetch('/data/projects.json');
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data/projects.json?v=${timestamp}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 allProjects = await response.json();
+
+                // ID'ye göre sırala (küçük ID en üstte)
+                allProjects.sort((a, b) => (a.id || 0) - (b.id || 0));
                 
                 // ANASAYFA İÇİN: Sadece ilk 3 projeyi al
                 const projectsToShow = allProjects.slice(0, 3); 
@@ -908,7 +913,9 @@
 
         async function fetchExperience() {
             try {
-                const response = await fetch('/data/experience.json');
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data/experience.json?v=${timestamp}`);
                 if (!response.ok) {
                     throw new Error('Deneyim verisi alınamadı');
                 }
@@ -989,7 +996,9 @@
 
         async function fetchAboutTeaser() {
             try {
-                const response = await fetch('/data/about.json');
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data/about.json?v=${timestamp}`);
                 if (!response.ok) throw new Error('Hakkımda verisi alınamadı');
                 
                 const data = await response.json();

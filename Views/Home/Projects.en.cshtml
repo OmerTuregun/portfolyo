@@ -303,11 +303,16 @@
         // Function to Fetch Projects from JSON
         async function fetchProjects() {
             try {
-                const response = await fetch('/data-en/projects.json');
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data-en/projects.json?v=${timestamp}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 allProjects = await response.json();
+
+                // Sort by ID (smaller ID at the top)
+                allProjects.sort((a, b) => (a.id || 0) - (b.id || 0));
                 
                 // FOR PROJECTS PAGE: Get ALL projects
                 const projectsToShow = allProjects; 

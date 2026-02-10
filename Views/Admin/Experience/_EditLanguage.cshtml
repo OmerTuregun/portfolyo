@@ -1,0 +1,34 @@
+@model My_Portfolyo.Models.Admin.ExperienceViewModel
+@{
+    var lang = ViewData["Lang"]?.ToString() ?? "tr";
+    var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
+    var isTr = currentLang == "tr";
+}
+
+<input type="hidden" name="Type" value="Diller" />
+
+<div class="mb-3">
+    <label asp-for="Title" class="form-label">
+        <i class="bi bi-type"></i> @(isTr ? "Başlık" : "Title") *
+    </label>
+    <input asp-for="Title" class="form-control" placeholder="@(isTr ? "Örn: English, German" : "e.g.: English, German")" required />
+    <span asp-validation-for="Title" class="text-danger"></span>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="Percentage" class="form-label">
+            <i class="bi bi-percent"></i> @(isTr ? "Yüzde (0-100)" : "Percentage (0-100)") *
+        </label>
+        <input type="number" name="Percentage" id="Percentage" class="form-control" min="0" max="100" value="@(Model.Percentage ?? 0)" required />
+        <div class="help-text">@(isTr ? "Dil seviyesi yüzdesi" : "Language proficiency percentage")</div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="FlagCode" class="form-label">
+            <i class="bi bi-flag"></i> @(isTr ? "Bayrak Kodu" : "Flag Code")
+        </label>
+        <input type="text" name="FlagCode" id="FlagCode" class="form-control" placeholder="@(isTr ? "Örn: gb, de, tr" : "e.g.: gb, de, tr")" value="@Model.FlagCode" />
+        <div class="help-text">@(isTr ? "ISO ülke kodu" : "ISO country code")</div>
+    </div>
+</div>

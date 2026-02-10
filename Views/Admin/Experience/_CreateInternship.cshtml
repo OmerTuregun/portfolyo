@@ -1,0 +1,51 @@
+@model My_Portfolyo.Models.Admin.ExperienceViewModel
+@{
+    var lang = ViewData["Lang"]?.ToString() ?? "tr";
+    var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
+    var isTr = currentLang == "tr";
+}
+
+<input type="hidden" name="Type" value="Stajlar" />
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="Title" class="form-label">
+            <i class="bi bi-type"></i> @(isTr ? "Başlık" : "Title") *
+        </label>
+        <input asp-for="Title" class="form-control" placeholder="@(isTr ? "Örn: Veri Yönetimi Departmanı (Staj)" : "e.g.: Data Management Department (Internship)")" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label asp-for="Company" class="form-label">
+            <i class="bi bi-building"></i> @(isTr ? "Şirket" : "Company") *
+        </label>
+        <input asp-for="Company" class="form-control" placeholder="@(isTr ? "Örn: Assan Bilişim" : "e.g.: Assan Bilişim")" required />
+        <span asp-validation-for="Company" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label asp-for="DateRange" class="form-label">
+        <i class="bi bi-calendar"></i> @(isTr ? "Tarih Aralığı" : "Date Range") *
+    </label>
+    <input asp-for="DateRange" class="form-control" placeholder="@(isTr ? "Örn: 09.2024 - 10.2024" : "e.g.: 09/2024 - 10/2024")" required />
+    <span asp-validation-for="DateRange" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Description" class="form-label">
+        <i class="bi bi-text-paragraph"></i> @(isTr ? "Açıklama" : "Description") *
+    </label>
+    <textarea asp-for="Description" class="form-control" rows="4" placeholder="@(isTr ? "Staj açıklaması" : "Internship description")" required></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="TagsInput" class="form-label">
+        <i class="bi bi-tags"></i> @(isTr ? "Etiketler" : "Tags")
+    </label>
+    <input asp-for="TagsInput" class="form-control" placeholder="@(isTr ? "YOLOv8, Roboflow, Veri Analizi (virgülle ayırın)" : "YOLOv8, Roboflow, Data Analysis (comma separated)")" />
+    <span asp-validation-for="TagsInput" class="text-danger"></span>
+    <div class="help-text">@(isTr ? "Etiketleri virgülle ayırın" : "Separate tags with commas")</div>
+</div>

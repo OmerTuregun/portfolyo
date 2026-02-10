@@ -22,23 +22,6 @@
     "type": "İş Deneyimi",
     "experience": [
       {
-        "id": 3,
-        "title": "Yazılım Geliştirme Uzmanı",
-        "company": "UZER Makina",
-        "dateRange": "01.01.2026 - Devam Ediyor",
-        "description": "Fabrika sahasındaki makinelerin dijitalleştirilmesi, uzaktan yönetimi ve raporlanması için geliştirilen web platformlarında aktif olarak rol almaktayım. Mevcut sistemlerde optimizasyonlar, hata düzeltmeleri ve yeni modül geliştirmeleri yapıyorum. Aynı zamanda şirket içindeki Departmanlarda kullanılan web ara yüzlü modüllerin geliştirilmesinde, planlanmasında ve uçtan uca yazım aşamalarında aktif rol alıyorum.",
-        "tags": [
-          "C#",
-          "ASP.NET Core MVC",
-          "Node.js",
-          "MSSQL (SSMS)",
-          "JavaScript",
-          "HTML/CSS",
-          "Docker",
-          "GitHub"
-        ]
-      },
-      {
         "id": 1,
         "title": "Yazılım Geliştirici (Sözleşmeli)",
         "company": "KOLSAN - Kocaeli Lastik Sanayi A.Ş.",
@@ -57,17 +40,36 @@
       },
       {
         "id": 2,
-        "title": "K-Team Program Katılımcısı (İş Deneyimi)",
-        "company": "Assan Bilişim",
-        "dateRange": "01.07.2024 - 30.06.2025",
-        "description": "Jetson cihazları üzerinde Linux ve Docker konteyner mimarileri üzerine çalıştım. Hem ofis hem de saha projelerinde yer alarak görüntü işleme uygulamalarına teknik destek sağladım. React ile web arayüzleri geliştirdim ve Python ile MongoDB sorguları oluşturdum. Sanal sunuculara ve uzak cihazlara terminal komutlarıyla erişim sağlayarak full-stack beceriler kazandım.",
+        "title": "Yazılım Geliştirici (Sözleşmeli)",
+        "company": "KOLSAN - Kocaeli Lastik Sanayi A.Ş.",
+        "dateRange": "01.10.2025 - 31.12.2025",
+        "description": "Fabrika sahasındaki makinelerin dijitalleştirilmesi, uzaktan yönetimi ve raporlanması için geliştirilen web platformlarında aktif olarak rol almaktayım. Mevcut sistemlerde optimizasyonlar, hata düzeltmeleri ve yeni modül geliştirmeleri yapıyorum.",
         "tags": [
-          "Linux",
+          "C#",
+          "ASP.NET Core MVC",
+          "Node.js",
+          "MSSQL (SSMS)",
+          "JavaScript",
+          "HTML/CSS",
           "Docker",
-          "React",
-          "Python",
-          "MongoDB",
-          "Görüntü İşleme"
+          "GitHub"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Yazılım Geliştirme Uzmanı",
+        "company": "UZER Makina",
+        "dateRange": "01.01.2026 - Devam Ediyor",
+        "description": "Fabrika sahasındaki makinelerin dijitalleştirilmesi, uzaktan yönetimi ve raporlanması için geliştirilen web platformlarında aktif olarak rol almaktayım. Mevcut sistemlerde optimizasyonlar, hata düzeltmeleri ve yeni modül geliştirmeleri yapıyorum. Aynı zamanda şirket içindeki Departmanlarda kullanılan web ara yüzlü modüllerin geliştirilmesinde, planlanmasında ve uçtan uca yazım aşamalarında aktif rol alıyorum.",
+        "tags": [
+          "C#",
+          "ASP.NET Core MVC",
+          "Node.js",
+          "MSSQL (SSMS)",
+          "JavaScript",
+          "HTML/CSS",
+          "Docker",
+          "GitHub"
         ]
       }
     ]

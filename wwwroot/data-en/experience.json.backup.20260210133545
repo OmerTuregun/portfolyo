@@ -1,6 +1,6 @@
 ﻿[
   {
-    "type": "Eğitim",
+    "type": "Education",
     "items": [
       {
         "id": 1,
@@ -19,28 +19,11 @@
     ]
   },
   {
-    "type": "İş Deneyimi",
+    "type": "Work Experience",
     "experience": [
       {
-        "id": 3,
-        "title": "Software Development Specialist",
-        "company": "UZER Makina",
-        "dateRange": "01.01.2026 - Devam Ediyor",
-        "description": "I actively participate in the development of web platforms for the digitalization, remote management, and reporting of machinery on the factory floor. I perform optimizations, bug fixes, and develop new modules in existing systems. I also take an active role in the development, planning, and end-to-end writing of web interface modules used by various departments within the company.",
-        "tags": [
-          "C#",
-          "ASP.NET Core MVC",
-          "Node.js",
-          "MSSQL (SSMS)",
-          "JavaScript",
-          "HTML/CSS",
-          "Docker",
-          "GitHub"
-        ]
-      },
-      {
         "id": 1,
-        "title": "Software Developer (Contractual)",
+        "title": "Software Developer (Full-Time)",
         "company": "KOLSAN - Kocaeli Tire Industry Inc.",
         "dateRange": "01.10.2025 - 31.12.2025",
         "description": "I am actively involved in web platforms developed for the digitalization, remote management, and reporting of machinery on the factory floor. I perform optimizations, bug fixes, and new module developments in existing systems.",
@@ -57,7 +40,7 @@
       },
       {
         "id": 2,
-        "title": "K-Team Program Participant (Intern)",
+        "title": "K-Team Program Participant (Work Experience)",
         "company": "Assan Bilişim",
         "dateRange": "01.07.2024 - 30.06.2025",
         "description": "I worked on Linux and Docker container architectures on Jetson devices. I provided technical support for image processing applications by participating in both office and field projects. I developed web interfaces with React and created MongoDB queries with Python. I gained full-stack skills by accessing virtual servers and remote devices via terminal commands.",
@@ -73,7 +56,7 @@
     ]
   },
   {
-    "type": "Stajlar",
+    "type": "Internships",
     "experience": [
       {
         "id": 3,
@@ -103,13 +86,14 @@
     ]
   },
   {
-    "type": "Diller",
+    "type": "Languages",
     "items": [
       {
         "id": 1,
         "title": "English",
         "dateRange": "",
-        "percentage": 40,
+        "description": "B1 Level",
+        "percentage": 60,
         "flagCode": "gb"
       },
       {

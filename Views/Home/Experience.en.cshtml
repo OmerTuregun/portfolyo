@@ -502,7 +502,9 @@
 
         async function fetchExperienceData() {
             try {
-                const response = await fetch('/data-en/experience.json');
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data-en/experience.json?v=${timestamp}`);
                 if (!response.ok) throw new Error('Data could not be retrieved');
                 
                 const data = await response.json();
@@ -513,6 +515,8 @@
                 languageContainer.innerHTML = ''; // Clear languages card
 
                 // Process each group in JSON (Education, Work, Internship, Languages)
+                // Note: On the admin side, new records are inserted at the top of the list,
+                // so we don't sort by ID here.
                 data.forEach(group => {
                     
                     // ---- NEW LOGIC HERE ----
@@ -616,7 +620,9 @@
             document.getElementById('certificates-title').innerText = titleText;
             
             try {
-                const response = await fetch(jsonPath);
+                // Cache'i bypass etmek için timestamp ekle
+                const timestamp = new Date().getTime();
+                const response = await fetch(`${jsonPath}?v=${timestamp}`);
                 if (!response.ok) throw new Error('Sertifika verisi alınamadı');
                 
                 const data = await response.json();
