@@ -6,7 +6,13 @@
     "description": "Kullanıcı tercihine göre gerçek zamanlı olarak açık, şiddet ve argo içerikleri tespit edip filtreleyen yapay zekâ destekli mobil sistem.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+1",
     "githubUrl": "https://github.com/didarbilgin/RealTimeContentCensorship",
-    "tags": ["AI", "Makine Öğrenmesi", "YOLOv4", "BERT", "TensorFlow Lite"],
+    "tags": [
+      "AI",
+      "Makine Öğrenmesi",
+      "YOLOv4",
+      "BERT",
+      "TensorFlow Lite"
+    ],
     "modalContent": [
       "<p>Bu proje, kullanıcı tercihine göre gerçek zamanlı olarak açık, şiddet içeren ve argo içerikleri tespit edip filtreleyen yapay zekâ destekli bir içerik sansürleme sistemi geliştirmeyi amaçlamaktadır.</p>",
       "<p>Proje, özellikle çocuklar ve hassas kullanıcılar için dijital güvenliği artırmayı hedeflemektedir.</p>",
@@ -25,7 +31,14 @@
     "description": "İslam hukukunda Hanefi mezhebine odaklanarak yapay zekâ destekli bir fetva otomasyon sistemi geliştirmeyi hedeflemektedir.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+2",
     "githubUrl": "https://github.com/OmerTuregun/fatwa_automation",
-    "tags": ["AI", "NLP", "BERT", "T5", "GPT", "Python"],
+    "tags": [
+      "AI",
+      "NLP",
+      "BERT",
+      "T5",
+      "GPT",
+      "Python"
+    ],
     "modalContent": [
       "<p>Bu proje, İslam hukukunda Hanefi mezhebine odaklanarak yapay zekâ destekli bir fetva otomasyon sistemi geliştirmeyi hedeflemektedir. Doğal dil işleme (NLP) teknikleri kullanılarak, kullanıcı soruları yorumlanmakta ve ilgili fetvalar getirilmektedir.</p>",
       "<h5>Kullanılan Yöntemler:</h5>",
@@ -45,7 +58,14 @@
     "description": "ASP.NET Core, Docker ve 'Glassmorphism' tasarımıyla oluşturulan, JSON'dan beslenen dinamik ve interaktif portfolyo sitesi.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+3",
     "githubUrl": "https://github.com/OmerTuregun/portfolyo.git",
-    "tags": ["ASP.NET Core", "Docker", "Bootstrap", "CSS", "JSON", "C#"],
+    "tags": [
+      "ASP.NET Core",
+      "Docker",
+      "Bootstrap",
+      "CSS",
+      "JSON",
+      "C#"
+    ],
     "modalContent": [
       "<p>Şu anda incelemekte olduğunuz bu portfolyo projesi, modern web teknolojilerini kullanarak 'Glassmorphism' tasarım dilini benimseyen bir yapıdadır.</p>",
       "<h5>Teknik Detaylar:</h5>",
@@ -64,7 +84,13 @@
     "description": "İşaret dili alfabesini gerçek zamanlı olarak tanıyabilen CNN tabanlı bir model geliştirilmiştir.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+4",
     "githubUrl": "https://github.com/OmerTuregun/sign-language-recognition",
-    "tags": ["AI", "Makine Öğrenmesi", "CNN", "OpenCV", "TensorFlow"],
+    "tags": [
+      "AI",
+      "Makine Öğrenmesi",
+      "CNN",
+      "OpenCV",
+      "TensorFlow"
+    ],
     "modalContent": [
       "<p>Bu projede, işaret dili alfabesini gerçek zamanlı olarak tanıyabilen Evrişimli Sinir Ağı (CNN) tabanlı bir model geliştirilmiştir.</p>",
       "<p>Özel olarak oluşturulmuş bir veri setiyle eğitilen model, video akışı üzerinden el hareketlerini tespit edip sınıflandırmaktadır.</p>",
@@ -84,7 +110,13 @@
     "description": "Python (Flask) ve Folium kullanarak, Dijkstra algoritması ile İzmit'teki iki nokta arasındaki en kısa yolu bulan bir web uygulaması.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+5",
     "githubUrl": "https://github.com/OmerTuregun/route_planner",
-    "tags": ["Python", "Flask", "Dijkstra", "Folium", "Algoritma"],
+    "tags": [
+      "Python",
+      "Flask",
+      "Dijkstra",
+      "Folium",
+      "Algoritma"
+    ],
     "modalContent": [
       "<p>Bu proje, Python ve Flask web çatısı kullanılarak geliştirilmiş bir rota planlama aracıdır. İzmit için tanımlanmış düğüm (node) ve yolları kullanarak, Dijkstra'nın en kısa yol algoritmasını uygular.</p>",
       "<h5>Özellikler:</h5>",
@@ -107,7 +139,12 @@
     "description": "Google Scholar gibi platformlardan web scraping teknikleriyle makale arayan ve MongoDB'ye kaydeden bir web uygulaması.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+6",
     "githubUrl": null,
-    "tags": ["Web Scraping", "Python", "MongoDB", "Elasticsearch"],
+    "tags": [
+      "Web Scraping",
+      "Python",
+      "MongoDB",
+      "Elasticsearch"
+    ],
     "modalContent": [
       "<p>Google Scholar gibi platformlardan akademik makaleleri web scraping teknikleriyle arayan bir web uygulaması geliştirdim. Elde edilen makale bilgileri bir veritabanına kaydedilmektedir.</p>",
       "<h5>Özellikler:</h5>",
@@ -131,7 +168,12 @@
     "description": "Python (Django) ve SQLite kullanılarak geliştirilmiş, ilişkisel veritabanı prensiplerine uygun bir hastane yönetim sistemi.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+7",
     "githubUrl": null,
-    "tags": ["Python", "Django", "SQLite", "Veritabanı"],
+    "tags": [
+      "Python",
+      "Django",
+      "SQLite",
+      "Veritabanı"
+    ],
     "modalContent": [
       "<p>Bu proje, Python (Django) kullanılarak geliştirilmiş, SQLite veritabanı ile çalışan bir hastane yönetim sistemi.</p>",
       "<p>Sistem, hastaların kayıt olması, doktorlardan randevu alması, medikal raporlarını saklaması ve çeşitli sağlık işlemlerini merkezi bir web platformu üzerinden yönetmesini sağlamaktadır.</p>",
@@ -151,7 +193,14 @@
     "description": "Python (Flask) ve MySQL tabanlı, SPA benzeri, admin panelli ve Docker destekli ürün katalogu uygulaması.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+8",
     "githubUrl": "https://github.com/OmerTuregun/product_catalog",
-    "tags": ["Python", "Flask", "MySQL", "Docker", "Bootstrap 5", "JavaScript"],
+    "tags": [
+      "Python",
+      "Flask",
+      "MySQL",
+      "Docker",
+      "Bootstrap 5",
+      "JavaScript"
+    ],
     "modalContent": [
       "<p>Flask + MySQL tabanlı, tek sayfa (SPA benzeri) bir ürün katalog uygulaması. Sitede alışveriş yapılmaz; ürünlerin fiyatı, görseli, açıklaması ve stok durumu listelenir.</p>",
       "<p>Admin kullanıcı, arayüzden dosya yükleyerek ürün ekleyebilir. Diğer kullanıcılar yalnızca görüntüler ve arama/filtre yapar.</p>",
@@ -168,6 +217,222 @@
       "<strong>Veritabanı:</strong> MySQL 8<br>",
       "<strong>Frontend:</strong> Bootstrap 5, vanilla JS</p>"
     ]
+  },
+  {
+    "id": 9,
+    "dateRange": "11.2025 - 02.2026",
+    "title": "UTARGET - Süreç Performans Göstergesi ve Hedef Takip Sistemi",
+    "description": "Organizasyonların süreç performans göstergelerini ve hedeflerini hiyerarşik olarak (Süreçler -> Hedefler -> Alt Aksiyonlar) takip eden yönetim sistemi. Node.js (Express) ve MySQL ile geliştirildi.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+9",
+    "githubUrl": null,
+    "tags": [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "JWT",
+      "Docker"
+    ],
+    "modalContent": [
+      "<p>Organizasyonların süreç performans göstergelerini ve hedeflerini hiyerarşik bir yapı içinde izlemek için geliştirilen yönetim sistemi.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>Hiyerarşik veri yapısı: Süreçler -> Hedefler -> Alt Aksiyonlar.</li>",
+      "<li>Yıl bazlı tanımlama ve esnek takip sıklığı: aylık, çeyrek ve yıllık.</li>",
+      "<li>Deadline tolerans sistemi ile daha esnek süreç takibi.</li>",
+      "<li>JWT authentication, EJS rendering ve Docker deployment.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 10,
+    "dateRange": "10.2025 - 11.2025",
+    "title": "PREDICO - Kestirici Bakım Takip Sistemi",
+    "description": "Endüstriyel makinelerin bakım süreçlerini dijitalleştiren bakım yönetim sistemi. Node.js (Express) ve MySQL ile geliştirildi.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+10",
+    "githubUrl": null,
+    "tags": [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "JWT",
+      "PDF Raporlama",
+      "Docker"
+    ],
+    "modalContent": [
+      "<p>Endüstriyel makinelerin bakım süreçlerini dijitalleştirmek için geliştirilen bakım yönetim sistemi.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>Makine kayıt yönetimi ve bakım planlaması.</li>",
+      "<li>Uyarı sistemi ile bakım süreçlerinin proaktif takibi.</li>",
+      "<li>PDF raporlama desteği ve Docker deployment.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 11,
+    "dateRange": "01.2026 - 02.2026",
+    "title": "IS-TAKIP - İş Takip Uygulaması",
+    "description": "UTARGET'e benzer mimaride, firma içi süreçleri (Desen/Yanak/Diğer) takip eden iş takip uygulaması.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+11",
+    "githubUrl": null,
+    "tags": [
+      "Node.js",
+      "Express",
+      "EJS",
+      "Bootstrap 5"
+    ],
+    "modalContent": [
+      "<p>Firma içi süreçleri takip etmek için UTARGET ile benzer mimaride geliştirilen iş takip uygulaması.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>UTARGET ile ortak mimari yaklaşım.</li>",
+      "<li>Desen, Yanak ve diğer süreçler için süreç bazlı takip ekranları.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 12,
+    "dateRange": "05.2026 - 06.2026",
+    "title": "VisitPass - İnşaat Sahası Giriş Yönetim Sistemi",
+    "description": "İnşaat sahasına giriş yapan müteahhit firma ve çalışanlarının evrak/belge onay sürecini yöneten, rol bazlı çok kullanıcılı sistem.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+12",
+    "githubUrl": null,
+    "tags": [
+      "PHP",
+      "MySQL",
+      "Docker",
+      "CSRF Koruması",
+      "Rate Limiting"
+    ],
+    "modalContent": [
+      "<p>İnşaat sahasına giriş yapan müteahhit firmalar ve çalışanları için belge onay süreçlerini yöneten rol bazlı çok kullanıcılı sistem.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>4 kullanıcı rolü: ISG admin, ISG kullanıcı, müteahhit yetkilisi ve müteahhit çalışanı.</li>",
+      "<li>2 aşamalı belge onay akışı ile kontrollü süreç yönetimi.</li>",
+      "<li>CSRF koruması, rate limiting ve dosya MIME doğrulaması gibi güvenlik katmanları.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 13,
+    "dateRange": "2025 - Devam Ediyor",
+    "title": "IOT-D - Kalite Veriler Modülü ve Raporları",
+    "description": "UZER Makina bünyesinde, fabrikadaki lastik kalite verilerinin (ölçüm, limit kontrolü, üretim adedi) takibi ve günlük/özet raporlanmasını sağlayan modül.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+13",
+    "githubUrl": null,
+    "tags": [
+      "ASP.NET Core MVC",
+      "MSSQL",
+      "C#"
+    ],
+    "modalContent": [
+      "<p>Fabrikadaki lastik kalite verilerinin takibi ve raporlanması için geliştirilen şirket içi modül.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>Ölçüm ve limit kontrol ekranları.</li>",
+      "<li>Günlük ve özet raporlar ile veri görünürlüğü.</li>",
+      "<li>Üretim adedi eşleştirme süreçleri.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 14,
+    "dateRange": "01.2026 - 02.2026",
+    "title": "QR_Fabrika_SaaS - Multi-Tenant Fabrika Varlık Yönetim Sistemi",
+    "description": "Fabrikalardaki makinelerin QR kod tabanlı takibini sağlayan multi-tenant SaaS varlık yönetim sistemi.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+14",
+    "githubUrl": null,
+    "tags": [
+      ".NET 8",
+      "EF Core",
+      "PostgreSQL",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase"
+    ],
+    "modalContent": [
+      "<p>Fabrikalardaki makinelerin QR kod tabanlı takibini sağlayan multi-tenant SaaS varlık yönetim sistemi.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>Onion Architecture ile ölçeklenebilir sistem tasarımı.</li>",
+      "<li>QR kod üretimi ve okuma akışları.</li>",
+      "<li>Supabase real-time bildirimler ve Docker containerization.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 15,
+    "dateRange": "02.2026 - 07.2026",
+    "title": "HocaPuan (Hocanı Yorumla)",
+    "description": "Üniversite hocaları için anonim değerlendirme ve yorum platformu; içerik moderasyonu ile topluluk güvenliğini koruyor.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+15",
+    "githubUrl": "https://github.com/OmerTuregun/hoca-puan",
+    "tags": [
+      "ASP.NET Core (.NET 10)",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "JWT"
+    ],
+    "modalContent": [
+      "<p>Üniversite hocaları için anonim değerlendirme ve yorum yapılabilen, içerik moderasyonu odaklı topluluk platformu.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>Türkçe küfür ve hakaret tespiti için fuzzy matching tabanlı moderasyon.</li>",
+      "<li>YÖK Atlas veri entegrasyonu.</li>",
+      "<li>JWT + CSRF koruması ve GitHub Actions CI entegrasyonu.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 16,
+    "dateRange": "07.2024 - 06.2025",
+    "title": "KIBAREYE - Yapay Zeka Destekli Fabrika Güvenlik Sistemi",
+    "description": "Jetson tabanlı kameralarla insan varlığı tespit ederek iş kazalarını önlemeyi amaçlayan fabrika güvenlik sistemi.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+16",
+    "githubUrl": null,
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React",
+      "WebSocket",
+      "Jetson"
+    ],
+    "modalContent": [
+      "<p>Jetson tabanlı kameralarla insan varlığı tespit ederek iş kazalarını önlemeyi amaçlayan fabrika güvenlik sistemi.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>Gerçek zamanlı insan tespiti.</li>",
+      "<li>WebSocket ile canlı veri akışı.</li>",
+      "<li>Tespit doğruluğunu iyileştirmeye yönelik geliştirmeler.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 17,
+    "dateRange": "04.2026 - 05.2026",
+    "title": "LİVA Halısaha Turnuvası - Turnuva Yönetim Platformu",
+    "description": "Kocaeli Üniversitesi LİVA Kulübü için 12 takım ve 117 oyuncunun katıldığı halısaha turnuvasının organizasyonunu üstlenip dijital altyapısını sıfırdan geliştirdim.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Proje+17",
+    "githubUrl": null,
+    "tags": [
+      "React",
+      "TypeScript",
+      "ASP.NET Core 8",
+      "PostgreSQL",
+      "Docker",
+      "Nginx"
+    ],
+    "modalContent": [
+      "<p>Kocaeli Üniversitesi LİVA Kulübü için halısaha turnuvasının organizasyonunu ve dijital altyapısını uçtan uca geliştirdiğim platform.</p>",
+      "<h5>Öne Çıkan Özellikler:</h5>",
+      "<ul>",
+      "<li>Grup + eleme turu formatı, puan durumu, fikstür, gol/asist/kart istatistikleri ve şampiyonluk ekranı.</li>",
+      "<li>Admin paneli ve Node.js script'leriyle otomatik kural kitapçığı, fikstür ve istatistik kağıdı üretimi (PDF/DOCX).</li>",
+      "<li>Let's Encrypt ile Ubuntu VPS deployment.</li>",
+      "</ul>"
+    ]
   }
 ]
-

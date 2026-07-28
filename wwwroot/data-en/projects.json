@@ -6,7 +6,12 @@
     "githubUrl": "https://github.com/didarbilgin/RealTimeContentCensorship",
     "title": "Real-Time Content Censorship",
     "description": "An AI system that filters explicit, violent, and slang content on mobile devices based on user preference.",
-    "tags": ["Machine Learning", "YOLOv4", "BERT", "TensorFlow Lite"],
+    "tags": [
+      "Machine Learning",
+      "YOLOv4",
+      "BERT",
+      "TensorFlow Lite"
+    ],
     "modalContent": [
       "<p>This project aims to develop an AI-powered content censorship system that detects and filters explicit, violent, and slang content in real-time based on user preferences. YOLO and CNN will be used for visual analysis, and BERT for text content.</p>",
       "<h5>Methods Used:</h5>",
@@ -25,7 +30,13 @@
     "githubUrl": "https://github.com/OmerTuregun/fatwa_automation",
     "title": "Fatwa Automation in Islamic Law (Hanafi)",
     "description": "An AI system focused on the Hanafi school, answering fatwa queries using NLP and Knowledge Graphs.",
-    "tags": ["NLP", "BERT", "T5", "GPT", "Knowledge Graphs"],
+    "tags": [
+      "NLP",
+      "BERT",
+      "T5",
+      "GPT",
+      "Knowledge Graphs"
+    ],
     "modalContent": [
       "<p>This project aims to develop an AI-powered fatwa automation system focused on the Hanafi school of Islamic law.</p>",
       "<h5>Methods Used:</h5>",
@@ -46,7 +57,13 @@
     "githubUrl": "https://github.com/OmerTuregun/portfolyo",
     "title": "Personal Portfolio Website (This Site)",
     "description": "My personal portfolio site built with ASP.NET Core MVC, Docker, and dynamic content fed from JSON.",
-    "tags": ["ASP.NET Core", "Docker", "Bootstrap", "JavaScript", "JSON"],
+    "tags": [
+      "ASP.NET Core",
+      "Docker",
+      "Bootstrap",
+      "JavaScript",
+      "JSON"
+    ],
     "modalContent": [
       "<p>This website you are currently browsing was designed and coded by me to showcase modern web technologies.</p>",
       "<h5>Technical Details:</h5>",
@@ -67,7 +84,12 @@
     "githubUrl": "https://github.com/OmerTuregun/sign-language-recognition",
     "title": "Real-Time Sign Language Recognition Model",
     "description": "A CNN-based model that recognizes the sign language alphabet in real-time. Used OpenCV and TensorFlow Lite.",
-    "tags": ["CNN", "OpenCV", "TensorFlow Lite", "Image Processing"],
+    "tags": [
+      "CNN",
+      "OpenCV",
+      "TensorFlow Lite",
+      "Image Processing"
+    ],
     "modalContent": [
       "<p>In this project, a CNN-based model capable of recognizing the sign language alphabet in real-time was developed.</p>",
       "<h5>Methods Used:</h5>",
@@ -85,7 +107,13 @@
     "githubUrl": "https://github.com/OmerTuregun/route_planner",
     "title": "Izmit Route Planner (Kocaeli Bus)",
     "description": "A web application developed with Flask and Docker, finding the best route using Kocaeli's public transport data with the A* algorithm.",
-    "tags": ["Python", "Flask", "A* Algorithm", "Docker", "Web Scraping"],
+    "tags": [
+      "Python",
+      "Flask",
+      "A* Algorithm",
+      "Docker",
+      "Web Scraping"
+    ],
     "modalContent": [
       "<p>This project is a web application that performs the most efficient route planning for Kocaeli (Izmit) using public transportation data.</p>",
       "<h5>Technical Details:</h5>",
@@ -105,7 +133,12 @@
     "githubUrl": null,
     "title": "Academic Article Search and Web Scraping",
     "description": "A web app that scrapes articles from Google Scholar, saves them to MongoDB, and allows searching via Elasticsearch.",
-    "tags": ["Web Scraping", "MongoDB", "Elasticsearch", "Python"],
+    "tags": [
+      "Web Scraping",
+      "MongoDB",
+      "Elasticsearch",
+      "Python"
+    ],
     "modalContent": [
       "<p>I developed a web application that searches for academic articles from platforms like Google Scholar using web scraping techniques.</p>",
       "<h5>Features:</h5>",
@@ -123,7 +156,12 @@
     "githubUrl": null,
     "title": "Patient Tracking and Management System",
     "description": "A hospital management system developed with Python (Django) and SQLite, adhering to relational database principles.",
-    "tags": ["Python", "Django", "SQLite", "Relational Database"],
+    "tags": [
+      "Python",
+      "Django",
+      "SQLite",
+      "Relational Database"
+    ],
     "modalContent": [
       "<p>This project is a hospital management system developed using Python (Django) and running on an SQLite database. It was developed in accordance with relational database normalization principles.</p>",
       "<h5>Features:</h5>",
@@ -141,7 +179,13 @@
     "githubUrl": "https://github.com/OmerTuregun/product_catalog",
     "title": "Product Catalog Application (Flask)",
     "description": "A SPA-like product listing site with Flask, MySQL, and Docker Compose. Includes an admin panel and file upload features.",
-    "tags": ["Python", "Flask", "MySQL", "Docker", "SQLAlchemy"],
+    "tags": [
+      "Python",
+      "Flask",
+      "MySQL",
+      "Docker",
+      "SQLAlchemy"
+    ],
     "modalContent": [
       "<p>A Flask + MySQL based, single-page (SPA-like) product catalog application. The site is not for shopping; it lists products' price, image, description, and stock status.</p>",
       "<h5>Features:</h5>",
@@ -157,6 +201,223 @@
       "<li><strong>Database:</strong> MySQL 8</li>",
       "<li><strong>Frontend:</strong> Bootstrap 5, Vanilla JS</li>",
       "<li><strong>Deployment:</strong> Docker Compose</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 9,
+    "dateRange": "11.2025 - 02.2026",
+    "title": "UTARGET - Process Performance Indicator and Goal Tracking System",
+    "description": "A management system that tracks organizations' process performance indicators and goals hierarchically (Processes -> Goals -> Sub-actions). Built with Node.js (Express) and MySQL.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+9",
+    "githubUrl": null,
+    "tags": [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "JWT",
+      "Docker"
+    ],
+    "modalContent": [
+      "<p>A management system developed to track organizational process performance indicators and goals within a hierarchical structure.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Hierarchical data structure: Processes -> Goals -> Sub-actions.</li>",
+      "<li>Year-based definitions and flexible tracking frequency: monthly, quarterly, and yearly.</li>",
+      "<li>Deadline tolerance system for more flexible process monitoring.</li>",
+      "<li>JWT authentication, EJS rendering, and Docker deployment.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 10,
+    "dateRange": "10.2025 - 11.2025",
+    "title": "PREDICO - Predictive Maintenance Tracking System",
+    "description": "A maintenance management system that digitizes industrial machine maintenance workflows. Built with Node.js (Express) and MySQL.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+10",
+    "githubUrl": null,
+    "tags": [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "JWT",
+      "PDF Reporting",
+      "Docker"
+    ],
+    "modalContent": [
+      "<p>A maintenance management system developed to digitize industrial machine maintenance workflows.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Machine registry management and maintenance planning.</li>",
+      "<li>Alert system for proactive maintenance tracking.</li>",
+      "<li>PDF reporting support and Docker deployment.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 11,
+    "dateRange": "01.2026 - 02.2026",
+    "title": "IS-TAKIP - Work Tracking Application",
+    "description": "A work tracking application built with an architecture similar to UTARGET, used to track internal company processes (Pattern/Sidewall/Others).",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+11",
+    "githubUrl": null,
+    "tags": [
+      "Node.js",
+      "Express",
+      "EJS",
+      "Bootstrap 5"
+    ],
+    "modalContent": [
+      "<p>A work tracking application developed with a shared architectural approach similar to UTARGET for internal company workflows.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Shared architecture with UTARGET.</li>",
+      "<li>Process-based tracking screens for Pattern, Sidewall, and other workflows.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 12,
+    "dateRange": "05.2026 - 06.2026",
+    "title": "VisitPass - Construction Site Access Management System",
+    "description": "A role-based multi-user system that manages document approval workflows for contractor companies and employees entering a construction site.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+12",
+    "githubUrl": null,
+    "tags": [
+      "PHP",
+      "MySQL",
+      "Docker",
+      "CSRF Protection",
+      "Rate Limiting"
+    ],
+    "modalContent": [
+      "<p>A role-based multi-user system for managing document approval workflows for contractor companies and workers entering a construction site.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>4 user roles: OHS admin, OHS user, contractor manager, and contractor employee.</li>",
+      "<li>2-step document approval flow for controlled process management.</li>",
+      "<li>Security layers including CSRF protection, rate limiting, and file MIME validation.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 13,
+    "dateRange": "2025 - Ongoing",
+    "title": "IOT-D - Quality Data Module and Reports",
+    "description": "An internal module at UZER Makina that tracks tire quality data in the factory (measurements, limit checks, production quantities) and provides daily/summary reporting.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+13",
+    "githubUrl": null,
+    "tags": [
+      "ASP.NET Core MVC",
+      "MSSQL",
+      "C#"
+    ],
+    "modalContent": [
+      "<p>An internal module developed to track and report tire quality data on the factory floor.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Measurement and limit-control screens.</li>",
+      "<li>Daily and summary reports for operational visibility.</li>",
+      "<li>Production quantity matching workflows.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 14,
+    "dateRange": "01.2026 - 02.2026",
+    "title": "QR_Fabrika_SaaS - Multi-Tenant Factory Asset Management System",
+    "description": "A multi-tenant SaaS asset management system that enables QR code-based tracking of machines in factories.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+14",
+    "githubUrl": null,
+    "tags": [
+      ".NET 8",
+      "EF Core",
+      "PostgreSQL",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase"
+    ],
+    "modalContent": [
+      "<p>A multi-tenant SaaS asset management system that enables QR code-based machine tracking in factory environments.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Scalable system design with Onion Architecture.</li>",
+      "<li>QR code generation and scanning workflows.</li>",
+      "<li>Supabase real-time notifications and Docker containerization.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 15,
+    "dateRange": "02.2026 - 07.2026",
+    "title": "HocaPuan (Rate Your Professor)",
+    "description": "An anonymous review and comment platform for university instructors that protects community safety through content moderation.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+15",
+    "githubUrl": "https://github.com/OmerTuregun/hoca-puan",
+    "tags": [
+      "ASP.NET Core (.NET 10)",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "JWT"
+    ],
+    "modalContent": [
+      "<p>An anonymous instructor review and comment platform with a strong focus on moderation and community safety.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Fuzzy matching-based Turkish profanity and insult detection.</li>",
+      "<li>YOK Atlas data integration.</li>",
+      "<li>JWT + CSRF protection and GitHub Actions CI integration.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 16,
+    "dateRange": "07.2024 - 06.2025",
+    "title": "KIBAREYE - AI-Powered Factory Safety System",
+    "description": "A factory safety system that aims to prevent workplace accidents by detecting human presence through Jetson-based cameras.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+16",
+    "githubUrl": null,
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React",
+      "WebSocket",
+      "Jetson"
+    ],
+    "modalContent": [
+      "<p>A factory safety system designed to prevent workplace accidents by detecting human presence through Jetson-based cameras.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Real-time human detection.</li>",
+      "<li>Live data streaming via WebSocket.</li>",
+      "<li>Detection accuracy improvements.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 17,
+    "dateRange": "04.2026 - 05.2026",
+    "title": "LIVA Halisaha Tournament - Tournament Management Platform",
+    "description": "I led the organization of a football tournament for Kocaeli University's LIVA Club with 12 teams and 117 players, and built its digital infrastructure from scratch.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+17",
+    "githubUrl": null,
+    "tags": [
+      "React",
+      "TypeScript",
+      "ASP.NET Core 8",
+      "PostgreSQL",
+      "Docker",
+      "Nginx"
+    ],
+    "modalContent": [
+      "<p>A platform I built end-to-end for the organization and digital infrastructure of a football tournament for Kocaeli University's LIVA Club.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Group + knockout format, standings, fixtures, goal/assist/card statistics, and championship screen.</li>",
+      "<li>Admin panel plus automatic rulebook, fixture, and statistics sheet generation (PDF/DOCX) using Node.js scripts.</li>",
+      "<li>Ubuntu VPS deployment with Let's Encrypt.</li>",
       "</ul>"
     ]
   }
