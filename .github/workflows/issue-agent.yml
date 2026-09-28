@@ -123,6 +123,7 @@ jobs:
         run: |
           if sudo -n /usr/local/sbin/deploy-portfolyo; then
             gh issue comment "$ISSUE_NUMBER" --body "Merge edildi ve canlıya deploy edildi: $PR_URL"
+            gh issue close "$ISSUE_NUMBER"
           else
             gh issue comment "$ISSUE_NUMBER" --body "Merge edildi ama deploy başarısız oldu, site önceki sürüme geri alındı. Log: $RUN_URL"
             exit 1
