@@ -56,6 +56,7 @@ jobs:
         run: dotnet build My-Portfolyo.csproj -c Release -nologo
 
       - name: PR aç
+        id: pr
         env:
           BUILD_OUTCOME: ${{ steps.build.outcome }}
         run: |
@@ -88,7 +89,7 @@ jobs:
 
           $BUILD_LINE
 
-          Merge edildiğinde canlıya otomatik deploy edilir.
+          Build başarılıysa ajan bu PR'ı kendisi merge edip canlıya deploy eder.
 
           ## Ajanın özeti
 
@@ -101,7 +102,31 @@ jobs:
           else
             PR_URL=$(gh pr create --base main --head "$BRANCH" --title "$ISSUE_TITLE" --body-file "$RUNNER_TEMP/pr-body.md" $DRAFT)
           fi
-          gh issue comment "$ISSUE_NUMBER" --body "PR hazır: $PR_URL ($BUILD_LINE)"
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+          if [ "$BUILD_OUTCOME" != "success" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body "PR taslak olarak açıldı, build başarısız olduğu için merge edilmedi: $PR_URL"
+          fi
+
+      - name: Merge et
+        if: steps.pr.outputs.url != '' && steps.build.outcome == 'success'
+        env:
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: |
+          gh api -X PUT "repos/$GITHUB_REPOSITORY/pulls/${PR_URL##*/}/merge" -f merge_method=squash >/dev/null
+          git push -q origin --delete "$BRANCH" || true
+
+      # GITHUB_TOKEN ile yapılan merge Deploy workflow'unu tetiklemez, bu yüzden deploy burada yapılır.
+      - name: Canlıya deploy et
+        if: steps.pr.outputs.url != '' && steps.build.outcome == 'success'
+        env:
+          PR_URL: ${{ steps.pr.outputs.url }}
+        run: |
+          if sudo -n /usr/local/sbin/deploy-portfolyo; then
+            gh issue comment "$ISSUE_NUMBER" --body "Merge edildi ve canlıya deploy edildi: $PR_URL"
+          else
+            gh issue comment "$ISSUE_NUMBER" --body "Merge edildi ama deploy başarısız oldu, site önceki sürüme geri alındı. Log: $RUN_URL"
+            exit 1
+          fi
 
       - name: Hata bildir
         if: failure()
