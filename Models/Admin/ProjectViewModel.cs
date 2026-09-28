@@ -25,7 +25,7 @@ namespace My_Portfolyo.Models.Admin
 
         [Display(Name = "Görsel URL")]
         [JsonPropertyName("imageUrl")]
-        public string ImageUrl { get; set; } = string.Empty;
+        public string? ImageUrl { get; set; }
 
         [Display(Name = "GitHub URL")]
         [Url(ErrorMessage = "Geçerli bir URL giriniz")]

@@ -16,32 +16,28 @@ namespace My_Portfolyo.Services
         {
             try
             {
-                // .env dosyasından direkt oku (DotNetEnv ile yüklenmiş olmalı)
-                var adminUsername = Environment.GetEnvironmentVariable("ADMIN_USERNAME") ?? "admin";
-                var adminPasswordHash = Environment.GetEnvironmentVariable("ADMIN_PASSWORD") ?? "";
+                // .env / environment değişkenlerinden oku
+                var adminUsername = (Environment.GetEnvironmentVariable("ADMIN_USERNAME") ?? "admin").Trim();
+                var adminPasswordHash = (Environment.GetEnvironmentVariable("ADMIN_PASSWORD") ?? "").Trim();
 
-                // Debug: Hash uzunluğunu logla
                 _logger.LogInformation($"Hash uzunluğu: {adminPasswordHash.Length}, Hash başlangıcı: {adminPasswordHash.Substring(0, Math.Min(30, adminPasswordHash.Length))}");
 
-                // Kullanıcı adı kontrolü
                 if (username != adminUsername)
                 {
                     _logger.LogWarning($"Geçersiz kullanıcı adı denemesi: {username}");
                     return false;
                 }
 
-                // Şifre hash kontrolü
                 if (string.IsNullOrEmpty(adminPasswordHash))
                 {
                     _logger.LogError("ADMIN_PASSWORD environment variable bulunamadı!");
                     return false;
                 }
 
-                // Eğer hash değilse (plain text), direkt karşılaştır (geçici çözüm)
+                // BCrypt değilse düz metin karşılaştır (trim edilmiş)
                 if (!adminPasswordHash.StartsWith("$2a$") && !adminPasswordHash.StartsWith("$2b$") && !adminPasswordHash.StartsWith("$2y$"))
                 {
                     _logger.LogWarning("ADMIN_PASSWORD BCrypt hash değil, plain text olarak kontrol ediliyor (güvenlik riski!)");
-                    // Plain text karşılaştırma (sadece development için)
                     bool isValid = password == adminPasswordHash;
                     if (isValid)
                     {

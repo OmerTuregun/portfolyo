@@ -1,0 +1,115 @@
+@model My_Portfolyo.Models.Admin.AboutViewModel
+@{
+    Layout = "_AdminLayout";
+    var lang = ViewData["Lang"]?.ToString() ?? "tr";
+    var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
+    ViewData["Title"] = "Hakkımda";
+    ViewData["PageTitle"] = $"Hakkımda ({currentLang.ToUpper()})";
+    var success = TempData["Success"]?.ToString();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <div class="lang-selector">
+        <a asp-controller="AdminAbout" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="tr" class="lang-btn @(currentLang == "tr" ? "active" : "")">Türkçe</a>
+        <a asp-controller="AdminAbout" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="en" class="lang-btn @(currentLang == "en" ? "active" : "")">English</a>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(success))
+{
+    <div class="alert-success-custom mb-3">@success</div>
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+<form method="post" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="@currentLang" id="aboutForm">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="contentLang" value="@currentLang" />
+
+    <div class="form-card mb-4">
+        <div class="mb-3">
+            <label asp-for="AboutMeText" class="form-label">Hakkımda Metni *</label>
+            <textarea asp-for="AboutMeText" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="AboutMeText" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FutureGoalText" class="form-label">Gelecek Hedefi *</label>
+            <textarea asp-for="FutureGoalText" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="FutureGoalText" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 style="color: var(--primary-light); margin: 0;">Sosyal Aktiviteler</h5>
+        <button type="button" class="btn btn-secondary-custom" id="addActivityBtn">
+            <i class="bi bi-plus"></i> Aktivite Ekle
+        </button>
+    </div>
+
+    <div id="activitiesContainer">
+        @if (Model.SocialActivities != null)
+        {
+            for (var i = 0; i < Model.SocialActivities.Count; i++)
+            {
+                var a = Model.SocialActivities[i];
+                <div class="form-card mb-3 activity-block">
+                    <div class="d-flex justify-content-between mb-2">
+                        <strong>Aktivite #@(i + 1)</strong>
+                        <button type="button" class="btn btn-sm btn-danger-custom remove-activity">Sil</button>
+                    </div>
+                    <input type="hidden" name="activityId" value="@a.Id" />
+                    <div class="mb-3">
+                        <label class="form-label">Başlık</label>
+                        <input type="text" name="activityTitle" class="form-control" value="@a.Title" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Görseller (satır satır veya virgülle)</label>
+                        <textarea name="activityImages" class="form-control" rows="4">@a.CarouselImagesInput</textarea>
+                    </div>
+                    <div class="mb-0">
+                        <label class="form-label">Açıklama HTML (satır satır)</label>
+                        <textarea name="activityDescription" class="form-control" rows="6">@a.DescriptionInput</textarea>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary-custom mt-2"><i class="bi bi-check-circle"></i> Kaydet</button>
+</form>
+
+@section Scripts {
+<script>
+    document.getElementById('addActivityBtn')?.addEventListener('click', function () {
+        const container = document.getElementById('activitiesContainer');
+        const count = container.querySelectorAll('.activity-block').length + 1;
+        const html = `
+        <div class="form-card mb-3 activity-block">
+            <div class="d-flex justify-content-between mb-2">
+                <strong>Aktivite #${count}</strong>
+                <button type="button" class="btn btn-sm btn-danger-custom remove-activity">Sil</button>
+            </div>
+            <input type="hidden" name="activityId" value="" />
+            <div class="mb-3">
+                <label class="form-label">Başlık</label>
+                <input type="text" name="activityTitle" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Görseller (satır satır veya virgülle)</label>
+                <textarea name="activityImages" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="mb-0">
+                <label class="form-label">Açıklama HTML (satır satır)</label>
+                <textarea name="activityDescription" class="form-control" rows="6"></textarea>
+            </div>
+        </div>`;
+        container.insertAdjacentHTML('beforeend', html);
+    });
+
+    document.getElementById('activitiesContainer')?.addEventListener('click', function (e) {
+        if (e.target.closest('.remove-activity')) {
+            e.target.closest('.activity-block')?.remove();
+        }
+    });
+</script>
+}

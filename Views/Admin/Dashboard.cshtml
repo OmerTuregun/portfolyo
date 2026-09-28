@@ -1,61 +1,84 @@
 @{
-    var currentLang = Context.Request.Query["lang"].ToString().ToLower();
-    if (string.IsNullOrEmpty(currentLang) || (currentLang != "tr" && currentLang != "en"))
-    {
-        currentLang = "tr";
-    }
-    var isTr = currentLang == "tr";
+    var contentLang = ViewData["ContentLang"]?.ToString() ?? "tr";
+    var isTr = contentLang == "tr";
+    var routeLang = ViewContext.RouteData.Values["lang"]?.ToString() ?? "tr";
 
     Layout = "_AdminLayout";
     ViewData["Title"] = isTr ? "Yönetim Paneli" : "Dashboard";
     ViewData["PageTitle"] = isTr ? "Yönetim Paneli" : "Dashboard";
+    ViewData["CurrentLang"] = contentLang;
+
+    var projectCount = ViewData["ProjectCount"] ?? 0;
+    var experienceCount = ViewData["ExperienceCount"] ?? 0;
+    var certificateCount = ViewData["CertificateCount"] ?? 0;
+    var referenceCount = ViewData["ReferenceCount"] ?? 0;
 }
 
-<div class="admin-content-inner">
-    <div class="row mb-4">
-        <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="bi bi-folder"></i>
-                </div>
-                <div class="stat-number" id="projectCount">-</div>
-                <div class="stat-label">@(isTr ? "Projeler" : "Projects")</div>
-            </div>
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-folder"></i></div>
+            <div class="stat-number">@projectCount</div>
+            <div class="stat-label">@(isTr ? "Projeler" : "Projects") (@contentLang.ToUpper())</div>
         </div>
-        <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="bi bi-briefcase"></i>
-                </div>
-                <div class="stat-number" id="experienceCount">-</div>
-                <div class="stat-label">@(isTr ? "Deneyimler" : "Experiences")</div>
-            </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-briefcase"></i></div>
+            <div class="stat-number">@experienceCount</div>
+            <div class="stat-label">@(isTr ? "Deneyimler" : "Experiences")</div>
         </div>
-        <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="bi bi-award"></i>
-                </div>
-                <div class="stat-number" id="certificateCount">-</div>
-                <div class="stat-label">@(isTr ? "Sertifikalar" : "Certificates")</div>
-            </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-award"></i></div>
+            <div class="stat-number">@certificateCount</div>
+            <div class="stat-label">@(isTr ? "Sertifikalar" : "Certificates")</div>
         </div>
-        <div class="col-md-3 mb-3">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="bi bi-globe"></i>
-                </div>
-                <div class="stat-number">2</div>
-                <div class="stat-label">@(isTr ? "Diller (TR/EN)" : "Languages (TR/EN)")</div>
-            </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="bi bi-people"></i></div>
+            <div class="stat-number">@referenceCount</div>
+            <div class="stat-label">@(isTr ? "Referanslar" : "References")</div>
         </div>
     </div>
 </div>
 
-<script>
-    // İstatistikleri yükle (ileride API ile)
-    // Şimdilik placeholder
-    document.getElementById('projectCount').textContent = '8';
-    document.getElementById('experienceCount').textContent = '4';
-    document.getElementById('certificateCount').textContent = '10';
-</script>
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <a class="action-card" asp-controller="AdminProjects" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@contentLang">
+            <div class="action-icon"><i class="bi bi-folder"></i></div>
+            <h5>@(isTr ? "Projeleri Yönet" : "Manage Projects")</h5>
+            <p class="mb-0" style="opacity:0.7;">@(isTr ? "Ekle, düzenle, sil" : "Add, edit, delete")</p>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a class="action-card" asp-controller="AdminExperience" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@contentLang">
+            <div class="action-icon"><i class="bi bi-briefcase"></i></div>
+            <h5>@(isTr ? "Deneyimleri Yönet" : "Manage Experiences")</h5>
+            <p class="mb-0" style="opacity:0.7;">@(isTr ? "Eğitim, iş, staj, dil" : "Education, work, internship, languages")</p>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a class="action-card" asp-controller="AdminCertificates" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@contentLang">
+            <div class="action-icon"><i class="bi bi-award"></i></div>
+            <h5>@(isTr ? "Sertifikaları Yönet" : "Manage Certificates")</h5>
+            <p class="mb-0" style="opacity:0.7;">@(isTr ? "Ekle, düzenle, sil" : "Add, edit, delete")</p>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a class="action-card" asp-controller="AdminReferences" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@contentLang">
+            <div class="action-icon"><i class="bi bi-people"></i></div>
+            <h5>@(isTr ? "Referansları Yönet" : "Manage References")</h5>
+            <p class="mb-0" style="opacity:0.7;">@(isTr ? "Ekle, düzenle, sil" : "Add, edit, delete")</p>
+        </a>
+    </div>
+    <div class="col-md-4 mb-3">
+        <a class="action-card" asp-controller="AdminAbout" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@contentLang">
+            <div class="action-icon"><i class="bi bi-person-badge"></i></div>
+            <h5>@(isTr ? "Hakkımda Düzenle" : "Edit About")</h5>
+            <p class="mb-0" style="opacity:0.7;">@(isTr ? "Metin ve sosyal aktiviteler" : "Text and social activities")</p>
+        </a>
+    </div>
+</div>

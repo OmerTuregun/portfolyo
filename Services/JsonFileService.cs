@@ -93,7 +93,8 @@ namespace My_Portfolyo.Services
                     };
 
                     var jsonContent = JsonSerializer.Serialize(data, options);
-                    File.WriteAllText(filePath, jsonContent, System.Text.Encoding.UTF8);
+                    // BOM olmadan yaz — tarayıcı fetch ve JSON parser'lar için daha güvenli
+                    File.WriteAllText(filePath, jsonContent, new System.Text.UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
                     
                     _logger.LogInformation($"JSON dosyası yazıldı: {filePath}");
                 }

@@ -1,0 +1,169 @@
+@{
+    var lang = ViewContext.RouteData.Values["lang"]?.ToString()?.ToLower() ?? "tr";
+    if (lang != "tr" && lang != "en") { lang = "tr"; }
+    var isTr = lang == "tr";
+    var year = DateTime.Now.Year;
+}
+
+<footer class="site-footer" role="contentinfo">
+    <div class="container site-footer-inner">
+        <div class="footer-top">
+            <nav class="footer-nav" aria-label="@(isTr ? "Sayfa menüsü" : "Page menu")">
+                <a asp-controller="Home" asp-action="Index" asp-route-lang="@lang">@(isTr ? "Anasayfa" : "Home")</a>
+                <a asp-controller="Home" asp-action="AboutMe" asp-route-lang="@lang">@(isTr ? "Hakkımda" : "About")</a>
+                <a asp-controller="Home" asp-action="Projects" asp-route-lang="@lang">@(isTr ? "Projeler" : "Projects")</a>
+                <a asp-controller="Home" asp-action="Experience" asp-route-lang="@lang">@(isTr ? "Deneyim" : "Experience")</a>
+                <a asp-controller="Home" asp-action="Contact" asp-route-lang="@lang">@(isTr ? "İletişim" : "Contact")</a>
+            </nav>
+
+            <div class="footer-social" aria-label="@(isTr ? "Sosyal medya" : "Social media")">
+                <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="https://github.com/OmerTuregun" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a href="https://medium.com/@@trkuraf" target="_blank" rel="noopener" aria-label="Medium" title="Medium">
+                    <i class="bi bi-medium"></i>
+                </a>
+                <a href="https://www.instagram.com/omerfarukturegun" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://x.com/o_farukturegun" target="_blank" rel="noopener" aria-label="X" title="X">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="mailto:trkuraf@gmail.com" aria-label="Email" title="Email">
+                    <i class="bi bi-envelope"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© @year Ömer Faruk Türegün</span>
+            <span class="footer-sep" aria-hidden="true">·</span>
+            <span>@(isTr ? "Tüm hakları saklıdır." : "All rights reserved.")</span>
+        </div>
+    </div>
+</footer>
+<style id="mobile-force-styles">
+@@media (max-width: 991.98px) {
+    html { font-size: 22px !important; }
+    body { font-size: 1.15rem !important; }
+
+    .container, .container-fluid, section .container, main .container {
+        max-width: 100% !important;
+        padding-left: 0.55rem !important;
+        padding-right: 0.55rem !important;
+    }
+
+    #hero .hero-card {
+        min-height: 17.5rem !important;
+        padding: 2.5rem 1.1rem !important;
+    }
+    #hero .row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        min-height: 14.5rem !important;
+    }
+    #hero .col-lg-7, #hero .hero-text {
+        order: 1 !important;
+        flex: 1 1 52% !important;
+        max-width: 52% !important;
+        width: 52% !important;
+    }
+    #hero .col-lg-5 {
+        order: 2 !important;
+        flex: 0 0 46% !important;
+        max-width: 46% !important;
+        width: 46% !important;
+        margin-bottom: 0 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+    }
+    #hero .hero-text h2 { font-size: clamp(0.72rem, 2.8vw, 0.95rem) !important; white-space: nowrap !important; letter-spacing: -0.01em !important; line-height: 1.25 !important; margin-bottom: 0.35rem !important; }
+    #hero .hero-text h1 { font-size: 1.95rem !important; line-height: 1.1 !important; margin: 0.45rem 0 1.2rem !important; }
+    #hero .hero-text .btn { font-size: 0.9rem !important; padding: 0.65rem 0.8rem !important; min-height: 2.5rem !important; white-space: nowrap !important; }
+    #hero .hero-text .d-flex { flex-direction: row !important; flex-wrap: wrap !important; align-items: center !important; gap: 0.45rem !important; }
+    #hero .hero-image-frame {
+        width: min(48vw, 220px) !important;
+        height: min(48vw, 220px) !important;
+        max-width: 220px !important;
+        max-height: 220px !important;
+        margin: 0 !important;
+        border-radius: 50% !important;
+        background: transparent !important;
+        overflow: hidden !important;
+    }
+    #hero .hero-image-frame img {
+        object-fit: cover !important;
+        object-position: center center !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .navbar > .container, .navbar > .container-fluid {
+        position: relative !important;
+        justify-content: flex-end !important;
+        align-items: flex-start !important;
+        min-height: 3.4rem !important;
+        padding-top: 0.55rem !important;
+        padding-bottom: 0.55rem !important;
+    }
+    .navbar-brand {
+        position: absolute !important;
+        left: 50% !important;
+        top: 0.85rem !important;
+        bottom: auto !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        text-align: center !important;
+        max-width: calc(100% - 4.5rem) !important;
+        font-size: 1.05rem !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+        z-index: 5 !important;
+    }
+    .navbar-toggler { position: relative !important; z-index: 6 !important; margin-left: auto !important; margin-top: 0.1rem !important; }
+    .navbar-collapse { width: 100% !important; flex-basis: 100% !important; margin-top: 0.35rem !important; }
+
+    .glass-card, .reference-card, .about-teaser-card, .timeline-content, .certificate-card, .language-card, .card {
+        width: 100% !important; max-width: 100% !important; padding: 1.5rem 1.2rem !important;
+    }
+    .glass-card h4, .glass-card h5, .project-card-body h4, .project-card-body .fw-bold,
+    .about-teaser-card h2, .reference-name, .mini-timeline-title, .timeline-title, .certificate-title, .language-title, .card-title {
+        font-size: 1.55rem !important;
+    }
+    .glass-card p, .project-card-body p, .about-teaser-card p, .text-white-50,
+    .reference-title, .reference-company, .timeline-description, .timeline-company, .timeline-date,
+    .mini-timeline-date, .mini-timeline-company, .certificate-skills, .language-level, .service-list li, #expertise h5 {
+        font-size: 1.25rem !important;
+    }
+    .project-tags li, .badge { font-size: 1.1rem !important; }
+    .btn, .btn-primary-light, .btn-dark-accent, a.btn { font-size: 1.2rem !important; }
+    .progress { height: 1.75rem !important; }
+    .progress-bar { font-size: 1.05rem !important; }
+
+    .col-lg-4, .col-lg-3, .col-md-6, .col-md-10, .col-lg-8 {
+        width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important;
+    }
+    #hero .col-lg-7 { flex: 1 1 52% !important; max-width: 52% !important; width: 52% !important; }
+    #hero .col-lg-5 { flex: 0 0 46% !important; max-width: 46% !important; width: 46% !important; }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-width='3.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+    .navbar-toggler { border: 2px solid rgba(255,255,255,.85) !important; }
+}
+@@media (max-width: 576px) {
+    html { font-size: 23px !important; }
+    #hero .hero-card { min-height: 19.5rem !important; padding: 2.75rem 0.95rem !important; }
+    #hero .hero-text h1 { font-size: 2.05rem !important; }
+    #hero .hero-text h2 { font-size: clamp(0.68rem, 2.6vw, 0.9rem) !important; white-space: nowrap !important; }
+    .glass-card h4, .project-card-body h4, .reference-name, .timeline-title { font-size: 1.65rem !important; }
+    .glass-card p, .project-card-body p, .about-teaser-card p, .timeline-description { font-size: 1.3rem !important; }
+}
+</style>
+<script>
+    document.body.classList.add('has-site-footer');
+</script>

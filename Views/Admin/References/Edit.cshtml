@@ -1,0 +1,37 @@
+@model My_Portfolyo.Models.Admin.ReferenceViewModel
+@{
+    Layout = "_AdminLayout";
+    var lang = ViewData["Lang"]?.ToString() ?? "tr";
+    var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
+    ViewData["Title"] = "Referans Düzenle";
+    ViewData["PageTitle"] = $"Referans Düzenle ({currentLang.ToUpper()})";
+}
+
+<div class="mb-4">
+    <a asp-controller="AdminReferences" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-secondary-custom">
+        <i class="bi bi-arrow-left"></i> Geri
+    </a>
+</div>
+
+<div class="form-card">
+    <form method="post" asp-action="Edit" asp-route-id="@Model.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="contentLang" value="@currentLang" />
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">İsim *</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Ünvan *</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Company" class="form-label">Şirket *</label>
+            <input asp-for="Company" class="form-control" />
+            <span asp-validation-for="Company" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-circle"></i> Güncelle</button>
+    </form>
+</div>

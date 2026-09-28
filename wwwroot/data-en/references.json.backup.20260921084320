@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Serdar ÇALIŞKAN",
+    "title": "Director of Industrial Applications and Data Analytics",
+    "company": "KİBAR HOLDİNG"
+  },
+  {
+    "id": 2,
+    "name": "Ali ÖZMERAL",
+    "title": "Software Development Executive",
+    "company": "Assan Bilişim"
+  },
+  {
+    "id": 3,
+    "name": "İrfan MEVSİM",
+    "title": "Software Development Executive",
+    "company": "Assan Bilişim"
+  },
+  {
+    "id": 4,
+    "name": "Feyza SANLIK HOCAOĞLU",
+    "title": "Senior Software Development Specialist",
+    "company": "YAŞAR BİLGİ"
+  },
+  {
+    "id": 5,
+    "name": "Enes  SETTAŞI",
+    "title": "Software Development Specialist",
+    "company": "Assan Bilişim"
+  }
+]

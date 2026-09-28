@@ -1,0 +1,362 @@
+/* ===== MOBİL: yazılar BÜYÜK, kenarlar dar, hero yüksek ===== */
+
+/* Hamburger — beyaz kalın çizgi */
+.navbar-toggler {
+    border: 2px solid rgba(255, 255, 255, 0.85) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.5rem 0.65rem !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+.navbar-toggler-icon {
+    width: 1.6em !important;
+    height: 1.6em !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+@media (max-width: 991.98px) {
+    html {
+        font-size: 22px !important;
+    }
+
+    body {
+        font-size: 1.15rem !important;
+        line-height: 1.55 !important;
+    }
+
+    /* Kenar boşluğu minimum */
+    .container,
+    .container-fluid,
+    section .container,
+    main .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 0.55rem !important;
+        padding-right: 0.55rem !important;
+    }
+
+    .row {
+        --bs-gutter-x: 0.55rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Genel başlıklar */
+    h1, .display-5, .display-6 { font-size: 2.1rem !important; }
+    h2 { font-size: 1.85rem !important; }
+    h3, h4, h5 { font-size: 1.4rem !important; }
+    p, li, label, .lead, .text-white-50 { font-size: 1.2rem !important; }
+
+    .navbar-brand {
+        font-size: 1.05rem !important;
+        max-width: calc(100% - 4.5rem) !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 0.85rem !important;
+        bottom: auto !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        text-align: center !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+        z-index: 5 !important;
+        pointer-events: auto !important;
+    }
+
+    .navbar > .container,
+    .navbar > .container-fluid {
+        position: relative !important;
+        justify-content: flex-end !important;
+        align-items: flex-start !important;
+        min-height: 3.4rem !important;
+        padding-top: 0.55rem !important;
+        padding-bottom: 0.55rem !important;
+    }
+
+    .navbar-toggler {
+        position: relative !important;
+        z-index: 6 !important;
+        margin-left: auto !important;
+        margin-top: 0.1rem !important;
+    }
+
+    /* Menü açılınca marka kaymasın — collapse alta aksın */
+    .navbar-collapse {
+        width: 100% !important;
+        flex-basis: 100% !important;
+        margin-top: 0.35rem !important;
+    }
+    .navbar .nav-link { font-size: 1.25rem !important; padding: 1rem !important; }
+
+    /* ========== HERO: web düzeni + ~%70 daha yüksek ========== */
+    #hero .hero-card {
+        min-height: 17rem !important;
+        padding: 2.4rem 1.1rem !important;
+        margin-top: 0.85rem !important;
+        margin-bottom: 1.75rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #hero .row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        min-height: 14rem !important;
+        --bs-gutter-x: 0.65rem !important;
+    }
+
+    #hero .hero-text,
+    #hero .col-lg-7 {
+        order: 1 !important;
+        flex: 1 1 56% !important;
+        width: 56% !important;
+        max-width: 56% !important;
+    }
+
+    #hero .col-lg-5 {
+        order: 2 !important;
+        flex: 0 0 46% !important;
+        width: 46% !important;
+        max-width: 46% !important;
+        margin-bottom: 0 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+    }
+
+    #hero .hero-text h2 {
+        font-size: clamp(0.72rem, 2.8vw, 0.95rem) !important;
+        margin-bottom: 0.35rem !important;
+        line-height: 1.25 !important;
+        white-space: nowrap !important;
+        letter-spacing: -0.01em !important;
+    }
+
+    #hero .hero-text h1 {
+        font-size: 1.85rem !important;
+        margin: 0.4rem 0 1.15rem !important;
+        line-height: 1.1 !important;
+    }
+
+    #hero .hero-text .btn {
+        font-size: 0.9rem !important;
+        padding: 0.65rem 0.8rem !important;
+        min-height: 2.5rem !important;
+        font-weight: 700 !important;
+        white-space: nowrap !important;
+    }
+
+    #hero .hero-text .d-flex {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 0.45rem !important;
+    }
+
+    #hero .hero-image-frame {
+        width: min(48vw, 220px) !important;
+        height: min(48vw, 220px) !important;
+        max-width: 220px !important;
+        max-height: 220px !important;
+        margin: 0 !important;
+        border-width: 3px !important;
+        border-radius: 50% !important;
+        background: transparent !important;
+        overflow: hidden !important;
+    }
+
+    #hero .hero-image-frame img {
+        object-fit: cover !important;
+        object-position: center center !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    #hero .hero-image-frame::before {
+        border-radius: 50% !important;
+    }
+
+    /* ========== KART / KUTU İÇİ YAZILAR ========== */
+    .glass-card,
+    .reference-card,
+    .about-teaser-card,
+    .form-card,
+    .section-card,
+    .card,
+    .timeline-content,
+    .certificate-card,
+    .language-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.5rem 1.2rem !important;
+        font-size: 1.25rem !important;
+    }
+
+    .glass-card h4,
+    .glass-card h5,
+    .glass-card .fw-bold,
+    .project-card-body h4,
+    .project-card-body .fw-bold,
+    .about-teaser-card h2,
+    .about-teaser-card .fw-bold,
+    .reference-name,
+    .reference-card .reference-name,
+    .mini-timeline-title,
+    .timeline-title,
+    .timeline-content h4,
+    .certificate-title,
+    .language-title,
+    .card-title {
+        font-size: 1.55rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .glass-card p,
+    .glass-card .text-white-50,
+    .project-card-body p,
+    .about-teaser-card p,
+    .reference-title,
+    .reference-company,
+    .mini-timeline-date,
+    .mini-timeline-company,
+    .timeline-date,
+    .timeline-company,
+    .timeline-description,
+    .certificate-provider,
+    .certificate-date,
+    .certificate-skills,
+    .language-level,
+    .service-list li {
+        font-size: 1.25rem !important;
+        line-height: 1.55 !important;
+    }
+
+    .project-tags li,
+    .badge,
+    .timeline-content .project-tags li,
+    .glass-card .badge {
+        font-size: 1.1rem !important;
+        padding: 0.5rem 0.85rem !important;
+    }
+
+    .btn,
+    .btn-primary-light,
+    .btn-dark-accent,
+    .social-btn,
+    a.btn {
+        font-size: 1.2rem !important;
+        padding: 0.9rem 1.25rem !important;
+    }
+
+    /* Progress bar etiketleri */
+    #expertise h5,
+    .progress + h5,
+    h5.text-white-50 {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .progress {
+        height: 1.75rem !important;
+    }
+
+    .progress-bar {
+        font-size: 1.05rem !important;
+    }
+
+    /* Kolonlar tam genişlik (hero hariç) */
+    .col-lg-4,
+    .col-lg-3,
+    .col-md-6,
+    .col-md-10,
+    .col-lg-8 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    #hero .col-lg-7,
+    #hero .col-lg-5 {
+        flex: unset !important;
+    }
+
+    #hero .col-lg-7 {
+        flex: 1 1 52% !important;
+        max-width: 52% !important;
+        width: 52% !important;
+    }
+
+    #hero .col-lg-5 {
+        flex: 0 0 46% !important;
+        max-width: 46% !important;
+        width: 46% !important;
+    }
+
+    .mini-timeline-card-wrapper { width: 100% !important; flex: 1 1 100% !important; }
+    .mini-timeline-container { gap: 0.75rem !important; }
+
+    .timeline-item { padding-left: 3.25rem !important; }
+    .timeline-group-header { padding-left: 0.5rem !important; }
+    .timeline-group-header h2 { font-size: 1.5rem !important; }
+
+    .form-control, input, textarea, select {
+        font-size: 1.2rem !important;
+        min-height: 3.1rem !important;
+        padding: 0.9rem 1rem !important;
+    }
+
+    .py-5 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+
+    .site-footer .footer-brand { font-size: 1.2rem !important; }
+    .site-footer .footer-nav a { font-size: 1.05rem !important; }
+    .site-footer .footer-bottom { font-size: 0.9rem !important; }
+}
+
+@media (max-width: 576px) {
+    html { font-size: 23px !important; }
+
+    .container,
+    .container-fluid,
+    section .container,
+    main .container {
+        padding-left: 0.45rem !important;
+        padding-right: 0.45rem !important;
+    }
+
+    #hero .hero-card {
+        min-height: 19rem !important;
+        padding: 2.6rem 0.95rem !important;
+    }
+
+    #hero .row { min-height: 15.5rem !important; }
+
+    #hero .hero-text h2 { font-size: clamp(0.72rem, 2.8vw, 0.95rem) !important; white-space: nowrap !important; letter-spacing: -0.01em !important; }
+    #hero .hero-text h1 { font-size: 1.95rem !important; }
+    #hero .hero-text .btn { font-size: 0.85rem !important; padding: 0.55rem 0.7rem !important; min-height: 2.35rem !important; }
+    #hero .hero-text .d-flex { flex-direction: row !important; flex-wrap: wrap !important; gap: 0.4rem !important; }
+
+    #hero .hero-image-frame {
+        width: min(46vw, 200px) !important;
+        height: min(46vw, 200px) !important;
+        max-width: 200px !important;
+        max-height: 200px !important;
+        border-radius: 50% !important;
+    }
+
+    .glass-card h4,
+    .project-card-body h4,
+    .reference-name,
+    .timeline-title,
+    .card-title {
+        font-size: 1.6rem !important;
+    }
+
+    .glass-card p,
+    .project-card-body p,
+    .about-teaser-card p,
+    .timeline-description,
+    .reference-title,
+    .reference-company {
+        font-size: 1.3rem !important;
+    }
+}

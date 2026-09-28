@@ -1,0 +1,260 @@
+@{
+    Layout = null;
+    var username = Context.Session.GetString("AdminUsername") ?? "Admin";
+    var routeLang = ViewContext.RouteData.Values["lang"]?.ToString() ?? "tr";
+    var currentLang = Context.Request.Query["contentLang"].ToString().ToLower();
+    if (string.IsNullOrEmpty(currentLang))
+    {
+        currentLang = Context.Request.Query["lang"].ToString().ToLower();
+    }
+    if (string.IsNullOrEmpty(currentLang) || (currentLang != "tr" && currentLang != "en"))
+    {
+        currentLang = ViewData["CurrentLang"]?.ToString()?.ToLower() ?? "tr";
+    }
+    if (currentLang != "tr" && currentLang != "en") currentLang = "tr";
+    var isTr = currentLang == "tr";
+    var controllerName = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - @(isTr ? "Yönetim Paneli" : "Admin Panel")</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-light: #90EE90;
+            --bg-dark: #0D1117;
+            --glass-bg: rgba(22, 27, 34, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: #E6EDF3;
+            min-height: 100vh;
+        }
+
+        .admin-wrapper { display: flex; min-height: 100vh; }
+
+        .admin-sidebar {
+            width: 260px;
+            background: #05070b;
+            border-right: 1px solid var(--glass-border);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .admin-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .admin-logo-icon {
+            width: 36px; height: 36px; border-radius: 0.75rem;
+            background: var(--primary-light); display: flex; align-items: center; justify-content: center;
+            color: var(--bg-dark);
+        }
+        .admin-logo-text { font-weight: 800; font-size: 1.1rem; }
+
+        .admin-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+        .admin-menu a {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.6rem 0.85rem; border-radius: 0.6rem;
+            color: #E6EDF3; text-decoration: none; font-weight: 500; transition: all 0.2s ease;
+        }
+        .admin-menu a:hover { background: rgba(255, 255, 255, 0.06); color: var(--primary-light); }
+        .admin-menu a.active { background: rgba(144, 238, 144, 0.16); color: var(--primary-light); }
+        .admin-menu-icon { width: 22px; text-align: center; }
+
+        .admin-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        .admin-topbar {
+            padding: 1rem 2rem; border-bottom: 1px solid var(--glass-border);
+            display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .admin-topbar h1 { font-size: 1.35rem; margin: 0; font-weight: 800; }
+        .admin-topbar-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+        .admin-content { padding: 1.5rem 2rem 2.5rem; }
+
+        .stat-card, .action-card, .table-card, .form-card, .section-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            height: 100%;
+        }
+        .action-card { text-decoration: none; color: inherit; display: block; transition: all 0.3s ease; }
+        .action-card:hover {
+            transform: translateY(-4px); border-color: var(--primary-light);
+            box-shadow: 0 8px 24px rgba(144, 238, 144, 0.2); color: inherit;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px); border-color: var(--primary-light);
+            box-shadow: 0 8px 24px rgba(144, 238, 144, 0.2);
+            transition: all 0.3s ease;
+        }
+        .stat-icon {
+            width: 56px; height: 56px; background: var(--primary-light); color: var(--bg-dark);
+            border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 1rem;
+        }
+        .stat-number { font-size: 2rem; font-weight: 900; color: var(--primary-light); margin: 0.5rem 0; }
+        .stat-label { color: #E6EDF3; opacity: 0.7; font-size: 0.9rem; }
+        .action-icon { font-size: 2.4rem; color: var(--primary-light); margin-bottom: 0.75rem; }
+
+        .lang-selector { display: flex; gap: 0.5rem; }
+        .lang-btn {
+            padding: 0.45rem 0.9rem; border-radius: 0.5rem; text-decoration: none;
+            border: 1px solid var(--glass-border); color: #E6EDF3; font-weight: 600; font-size: 0.9rem;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--primary-light); color: var(--bg-dark); border-color: var(--primary-light);
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-light); color: var(--bg-dark); border: none;
+            font-weight: 700; padding: 0.55rem 1.25rem; border-radius: 0.5rem; text-decoration: none; display: inline-block;
+        }
+        .btn-primary-custom:hover { background: #7dd87d; color: var(--bg-dark); }
+        .btn-secondary-custom {
+            background: rgba(255, 255, 255, 0.08); color: #E6EDF3;
+            border: 1px solid var(--glass-border); border-radius: 0.5rem; padding: 0.45rem 0.9rem; text-decoration: none;
+        }
+        .btn-secondary-custom:hover { color: var(--primary-light); border-color: var(--primary-light); }
+        .btn-danger-custom {
+            background: rgba(255, 107, 107, 0.15); color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.35); border-radius: 0.5rem; padding: 0.45rem 0.9rem;
+        }
+
+        .table { color: #E6EDF3; --bs-table-bg: transparent; --bs-table-color: #E6EDF3; }
+        .table thead th { border-bottom-color: var(--glass-border); color: var(--primary-light); }
+        .table td, .table th { border-color: var(--glass-border); vertical-align: middle; }
+
+        .form-label { color: #E6EDF3; font-weight: 600; margin-bottom: 0.5rem; }
+        .form-control, .form-select, textarea.form-control {
+            background: rgba(13, 17, 23, 0.8); border: 1px solid var(--glass-border);
+            color: #E6EDF3; padding: 0.7rem 1rem; border-radius: 0.5rem;
+        }
+        .form-control:focus, .form-select:focus, textarea.form-control:focus {
+            background: rgba(13, 17, 23, 0.9); border-color: var(--primary-light);
+            color: #E6EDF3; box-shadow: 0 0 0 0.2rem rgba(144, 238, 144, 0.25);
+        }
+        .help-text { font-size: 0.875rem; opacity: 0.7; margin-top: 0.25rem; }
+        .text-danger { color: #ff6b6b !important; }
+        .alert-success-custom {
+            background: rgba(144, 238, 144, 0.12); border: 1px solid rgba(144, 238, 144, 0.35);
+            color: var(--primary-light); border-radius: 0.75rem; padding: 0.85rem 1rem;
+        }
+
+        @@media (max-width: 900px) {
+            .admin-wrapper { flex-direction: column; }
+            .admin-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); }
+            .admin-content, .admin-topbar { padding-left: 1rem; padding-right: 1rem; }
+        }
+    </style>
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="admin-wrapper">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <div class="admin-logo-icon"><i class="bi bi-shield-lock-fill"></i></div>
+                <div class="admin-logo-text">@(isTr ? "Yönetim Paneli" : "Admin Panel")</div>
+            </div>
+
+            <ul class="admin-menu">
+                <li>
+                    <a asp-controller="Admin" asp-action="Dashboard" asp-route-lang="@routeLang"
+                       class="@(controllerName == "Admin" ? "active" : "")">
+                        <span class="admin-menu-icon"><i class="bi bi-speedometer2"></i></span>
+                        <span>@(isTr ? "Kontrol Paneli" : "Dashboard")</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="AdminProjects" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@currentLang"
+                       class="@(controllerName == "AdminProjects" ? "active" : "")">
+                        <span class="admin-menu-icon"><i class="bi bi-folder"></i></span>
+                        <span>@(isTr ? "Projeler" : "Projects")</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="AdminExperience" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@currentLang"
+                       class="@(controllerName == "AdminExperience" ? "active" : "")">
+                        <span class="admin-menu-icon"><i class="bi bi-briefcase"></i></span>
+                        <span>@(isTr ? "Deneyimler" : "Experiences")</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="AdminCertificates" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@currentLang"
+                       class="@(controllerName == "AdminCertificates" ? "active" : "")">
+                        <span class="admin-menu-icon"><i class="bi bi-award"></i></span>
+                        <span>@(isTr ? "Sertifikalar" : "Certificates")</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="AdminExperience" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@currentLang" asp-route-type="Diller"
+                       class="">
+                        <span class="admin-menu-icon"><i class="bi bi-translate"></i></span>
+                        <span>@(isTr ? "Diller" : "Languages")</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="AdminReferences" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@currentLang"
+                       class="@(controllerName == "AdminReferences" ? "active" : "")">
+                        <span class="admin-menu-icon"><i class="bi bi-people"></i></span>
+                        <span>@(isTr ? "Referanslar" : "References")</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="AdminAbout" asp-action="Index" asp-route-lang="@routeLang" asp-route-contentLang="@currentLang"
+                       class="@(controllerName == "AdminAbout" ? "active" : "")">
+                        <span class="admin-menu-icon"><i class="bi bi-person-badge"></i></span>
+                        <span>@(isTr ? "Hakkımda" : "About")</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <div class="admin-main">
+            <header class="admin-topbar">
+                <div>
+                    <h1>@(ViewData["PageTitle"] ?? (isTr ? "Yönetim Paneli" : "Admin Panel"))</h1>
+                    <small style="opacity: 0.7;">@(isTr ? "Hoş geldiniz" : "Welcome"), @username</small>
+                </div>
+                <div class="admin-topbar-right">
+                    <div class="btn-group admin-lang-group" role="group">
+                        <a href="?contentLang=tr" class="btn btn-sm @(currentLang == "tr" ? "btn-primary" : "btn-outline-secondary")"
+                           style="background: @(currentLang == "tr" ? "var(--primary-light)" : "transparent"); color: @(currentLang == "tr" ? "var(--bg-dark)" : "#E6EDF3"); border-color: var(--glass-border);">
+                            TR
+                        </a>
+                        <a href="?contentLang=en" class="btn btn-sm @(currentLang == "en" ? "btn-primary" : "btn-outline-secondary")"
+                           style="background: @(currentLang == "en" ? "var(--primary-light)" : "transparent"); color: @(currentLang == "en" ? "var(--bg-dark)" : "#E6EDF3"); border-color: var(--glass-border);">
+                            EN
+                        </a>
+                    </div>
+                    <form method="post" asp-controller="Admin" asp-action="Logout" asp-route-lang="@routeLang" style="display: inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm" style="background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3); color: #ff6b6b;">
+                            <i class="bi bi-box-arrow-right"></i> @(isTr ? "Çıkış" : "Sign out")
+                        </button>
+                    </form>
+                </div>
+            </header>
+
+            <main class="admin-content">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

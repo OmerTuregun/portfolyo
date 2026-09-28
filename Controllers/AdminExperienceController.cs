@@ -199,7 +199,7 @@ namespace My_Portfolyo.Controllers
                 ViewData["Lang"] = lang ?? "tr";
                 ViewData["Type"] = experienceType;
                 ViewData["Types"] = new List<string> { "Eğitim", "İş Deneyimi", "Stajlar", "Diller" };
-                return View(model);
+                return View("~/Views/Admin/Experience/Create.cshtml", model);
             }
         }
 
@@ -382,7 +382,7 @@ namespace My_Portfolyo.Controllers
                 ViewData["Lang"] = lang ?? "tr";
                 ViewData["Type"] = experienceType;
                 ViewData["Types"] = new List<string> { "Eğitim", "İş Deneyimi", "Stajlar", "Diller" };
-                return View(model);
+                return View("~/Views/Admin/Experience/Edit.cshtml", model);
             }
         }
 

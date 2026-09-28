@@ -1,0 +1,61 @@
+@model List<My_Portfolyo.Models.Admin.CertificateViewModel>
+@{
+    Layout = "_AdminLayout";
+    var lang = ViewData["Lang"]?.ToString() ?? "tr";
+    var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
+    ViewData["Title"] = "Sertifikalar";
+    ViewData["PageTitle"] = "Sertifikalar";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <div class="lang-selector">
+        <a asp-controller="AdminCertificates" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="tr" class="lang-btn @(currentLang == "tr" ? "active" : "")">Türkçe</a>
+        <a asp-controller="AdminCertificates" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="en" class="lang-btn @(currentLang == "en" ? "active" : "")">English</a>
+    </div>
+    <a asp-controller="AdminCertificates" asp-action="Create" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-primary-custom">
+        <i class="bi bi-plus-circle"></i> Yeni Sertifika
+    </a>
+</div>
+
+<div class="table-card">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Başlık</th>
+                    <th>Kurum</th>
+                    <th>Tarih</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.Provider</td>
+                        <td>@item.Date</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a asp-controller="AdminCertificates" asp-action="Edit" asp-route-id="@item.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-sm btn-secondary-custom">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <form method="post" asp-action="Delete" asp-route-id="@item.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" style="display:inline;" onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-sm btn-danger-custom"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="text-center py-5" style="opacity:0.7;">Henüz sertifika yok.</div>
+    }
+</div>

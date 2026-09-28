@@ -1,0 +1,49 @@
+@model My_Portfolyo.Models.Admin.CertificateViewModel
+@{
+    Layout = "_AdminLayout";
+    var lang = ViewData["Lang"]?.ToString() ?? "tr";
+    var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
+    ViewData["Title"] = "Yeni Sertifika";
+    ViewData["PageTitle"] = $"Yeni Sertifika ({currentLang.ToUpper()})";
+}
+
+<div class="mb-4">
+    <a asp-controller="AdminCertificates" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-secondary-custom">
+        <i class="bi bi-arrow-left"></i> Geri
+    </a>
+</div>
+
+<div class="form-card">
+    <form method="post" asp-action="Create" asp-route-lang="@lang" asp-route-contentLang="@currentLang">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="contentLang" value="@currentLang" />
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Başlık *</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Provider" class="form-label">Kurum *</label>
+                <input asp-for="Provider" class="form-control" />
+                <span asp-validation-for="Provider" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label asp-for="Date" class="form-label">Tarih *</label>
+                <input asp-for="Date" class="form-control" placeholder="Yayınlanma: Eyl 2025" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SkillsInput" class="form-label">Beceriler</label>
+            <input asp-for="SkillsInput" class="form-control" placeholder="Python, Docker, Linux" />
+            <div class="help-text">Virgülle ayırın</div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImageUrl" class="form-label">Görsel URL</label>
+            <input asp-for="ImageUrl" class="form-control" placeholder="~/img/certificates/..." />
+        </div>
+        <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-circle"></i> Kaydet</button>
+    </form>
+</div>

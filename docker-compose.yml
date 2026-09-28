@@ -10,13 +10,26 @@ services:
     container_name: portfolio-web-prod
     restart: unless-stopped
     ports:
-      - "5001:5001"
+      # Faz 1: public via host nginx (omerfarukturegun.com.tr) only
+      - "127.0.0.1:5001:5001"
+    env_file:
+      - .env
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:5001
+    volumes:
+      # Admin kayıtlarının kalıcı olması için JSON içerik bind-mount
+      - ./wwwroot/data:/app/wwwroot/data
+      - ./wwwroot/data-en:/app/wwwroot/data-en
+      - ./wwwroot/css:/app/wwwroot/css
+      - ./wwwroot/img:/app/wwwroot/img
+      - ./.env:/app/.env:ro
     networks:
       - portfolio-network
-    # Production için volume mapping yok (optimize edilmiş image)
+    labels:
+      - "com.omer.project=portfolio"
+      - "com.omer.env=prod"
+      - "com.omer.role=frontend"
 
 networks:
   portfolio-network:

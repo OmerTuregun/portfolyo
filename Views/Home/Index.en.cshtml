@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = null;
 }
 
@@ -11,7 +11,8 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="~/css/site-footer.css" asp-append-version="true" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
@@ -105,10 +106,10 @@
         }
 
         .hero-image-frame {
-            width: 300px; 
+            width: 300px;
             height: 300px;
-            
-            @@media (min-width: 992px) { 
+
+            @@media (min-width: 992px) {
                 width: 400px;
                 height: 400px;
             }
@@ -117,25 +118,28 @@
             margin: 0 auto;
             border-radius: 50%;
             overflow: hidden;
-            border: 5px solid var(--primary-light);
-            background-color: #333;
+            border: 4px solid rgba(13, 17, 23, 0.18);
+            background-color: transparent;
+            box-shadow: 0 10px 28px rgba(13, 17, 23, 0.18);
             z-index: 2;
         }
         .hero-image-frame img {
             width: 100%;
             height: 100%;
-            object-fit: cover; 
+            object-fit: cover;
+            object-position: center center;
+            display: block;
         }
         .hero-image-frame::before {
             content: '';
             position: absolute;
-            width: 110%; 
+            width: 110%;
             height: 110%;
             top: -5%;
             left: -5%;
-            border: 2px dashed var(--primary-light);
+            border: 2px dashed rgba(13, 17, 23, 0.28);
             border-radius: 50%;
-            animation: spin 30s linear infinite; 
+            animation: spin 30s linear infinite;
             z-index: -1;
         }
 
@@ -386,25 +390,9 @@
             }
         }
 
-        @@media (max-width: 576px) {
-    
-            /* Navbar'daki "Kişisel Web Sayfama Hoşgeldiniz" yazısını küçült */
-            .navbar-brand {
-                font-size: 1.1rem !important;
-            }
-            
-            /* Hero Karttaki "YAZILIM GELİŞTİRİCİ" yazısını küçült */
-            .hero-text h1 {
-                font-size: 2.2rem !important; /* 3.5rem'den 2.2rem'e */
-            }
-
-            /* Hero Karttaki "Merhaba, ben..." yazısını küçült */
-            .hero-text h2 {
-                font-size: 1.1rem !important; /* 1.5rem'den 1.1rem'e */
-            }
-        }
 
     </style>
+    <link href="~/css/site-mobile.css" asp-append-version="true" rel="stylesheet">
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100" class="bg-dark text-white">
 
@@ -804,14 +792,16 @@
                 }
                 allProjects = await response.json();
 
-                // Sort by ID (smaller ID at the top)
+                // Featured 3 projects on homepage (fixed order)
+                const featuredIds = [18, 15, 1];
+                const byId = new Map(allProjects.map(p => [p.id, p]));
+                const projectsToShow = featuredIds.map(id => byId.get(id)).filter(Boolean);
+
+                // Keep all projects sorted by ID for modal lookups
                 allProjects.sort((a, b) => (a.id || 0) - (b.id || 0));
                 
-                // FOR HOMEPAGE: Get only first 3 projects
-                const projectsToShow = allProjects.slice(0, 3); 
-                
                 const container = document.getElementById('home-projects-container');
-                container.innerHTML = ''; // Clear
+                container.innerHTML = '';
                 
                 projectsToShow.forEach(project => {
                     container.innerHTML += createProjectCardHTML(project);
@@ -944,7 +934,7 @@
 
         async function fetchReferences() {
             try {
-                const response = await fetch('/data-en/references.json');
+                const response = await fetch(`/data-en/references.json?v=${Date.now()}`);
                 if (!response.ok) {
                     throw new Error('Reference data could not be retrieved');
                 }
@@ -1015,5 +1005,6 @@
         }
 
     </script>
+    <partial name="_SiteFooter" />
 </body>
 </html>

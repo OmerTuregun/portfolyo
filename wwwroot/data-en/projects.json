@@ -1,11 +1,59 @@
 [
   {
+    "id": 18,
+    "dateRange": "08.2026 - 09.2026",
+    "title": "Bilişim Postası - Automated AI Content Platform",
+    "description": "An automated content platform powered by an n8n + Claude API AI agent pipeline that collects, summarizes, translates, and publishes tech and AI news bilingually (TR/EN) on bilisimpostasi.com.tr.",
+    "tags": [
+      "n8n",
+      "Claude API",
+      "Astro",
+      "LibreTranslate",
+      "Docker",
+      "Umami"
+    ],
+    "modalContent": [
+      "<p>An end-to-end automated agent system for tech and AI news: n8n workflows handle the entire pipeline from collection and summarization to translation and publishing.</p>",
+      "<h5>Key Features:</h5>",
+      "<ul>",
+      "<li>News collection, summarization, and TR/EN translation automation powered by n8n + Claude API and LibreTranslate.</li>",
+      "<li>Automated cover image generation (Unsplash → Cloudflare R2) and bilingual (TR/EN) publishing on an Astro static site, with PWA support, Pagefind search, and RSS.</li>",
+      "<li>Automated notifications via email (Resend), Telegram, and a Twitter queue; analytics tracking with Umami.</li>",
+      "<li>Deployed to a VPS with Docker Compose, with a build + rsync automated publishing pipeline.</li>",
+      "</ul>"
+    ]
+  },
+  {
+    "id": 15,
+    "dateRange": "02.2026 - 07.2026",
+    "title": "HocaPuan (Rate Your Professor)",
+    "description": "An anonymous review and comment platform for university instructors that protects community safety through content moderation.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+15",
+    "githubUrl": "https://github.com/OmerTuregun/hoca-puan",
+    "tags": [
+      "ASP.NET Core (.NET 10)",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "JWT"
+    ],
+    "modalContent": [
+      "<p>An anonymous instructor review and comment platform with a strong focus on moderation and community safety.</p>",
+      "<h5>Highlights:</h5>",
+      "<ul>",
+      "<li>Fuzzy matching-based Turkish profanity and insult detection.</li>",
+      "<li>YOK Atlas data integration.</li>",
+      "<li>JWT + CSRF protection and GitHub Actions CI integration.</li>",
+      "</ul>"
+    ]
+  },
+  {
     "id": 1,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+1",
     "dateRange": "01.2025 - 06.2025",
-    "githubUrl": "https://github.com/didarbilgin/RealTimeContentCensorship",
     "title": "Real-Time Content Censorship",
     "description": "An AI system that filters explicit, violent, and slang content on mobile devices based on user preference.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+1",
+    "githubUrl": "https://github.com/didarbilgin/RealTimeContentCensorship",
     "tags": [
       "Machine Learning",
       "YOLOv4",
@@ -25,11 +73,11 @@
   },
   {
     "id": 2,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+2",
     "dateRange": "01.2025 - Ongoing",
-    "githubUrl": "https://github.com/OmerTuregun/fatwa_automation",
     "title": "Fatwa Automation in Islamic Law (Hanafi)",
     "description": "An AI system focused on the Hanafi school, answering fatwa queries using NLP and Knowledge Graphs.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+2",
+    "githubUrl": "https://github.com/OmerTuregun/fatwa_automation",
     "tags": [
       "NLP",
       "BERT",
@@ -52,11 +100,11 @@
   },
   {
     "id": 3,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+3",
     "dateRange": "10.2025 - 11.2025",
-    "githubUrl": "https://github.com/OmerTuregun/portfolyo",
     "title": "Personal Portfolio Website (This Site)",
     "description": "My personal portfolio site built with ASP.NET Core MVC, Docker, and dynamic content fed from JSON.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+3",
+    "githubUrl": "https://github.com/OmerTuregun/portfolyo",
     "tags": [
       "ASP.NET Core",
       "Docker",
@@ -79,11 +127,11 @@
   },
   {
     "id": 4,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+4",
     "dateRange": "11.2024 - 12.2024",
-    "githubUrl": "https://github.com/OmerTuregun/sign-language-recognition",
     "title": "Real-Time Sign Language Recognition Model",
     "description": "A CNN-based model that recognizes the sign language alphabet in real-time. Used OpenCV and TensorFlow Lite.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+4",
+    "githubUrl": "https://github.com/OmerTuregun/sign-language-recognition",
     "tags": [
       "CNN",
       "OpenCV",
@@ -102,11 +150,11 @@
   },
   {
     "id": 5,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+5",
     "dateRange": "03.2025 - 04.2025",
-    "githubUrl": "https://github.com/OmerTuregun/route_planner",
     "title": "Izmit Route Planner (Kocaeli Bus)",
     "description": "A web application developed with Flask and Docker, finding the best route using Kocaeli's public transport data with the A* algorithm.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+5",
+    "githubUrl": "https://github.com/OmerTuregun/route_planner",
     "tags": [
       "Python",
       "Flask",
@@ -128,11 +176,10 @@
   },
   {
     "id": 6,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+6",
     "dateRange": "04.2024 - 05.2024",
-    "githubUrl": null,
     "title": "Academic Article Search and Web Scraping",
     "description": "A web app that scrapes articles from Google Scholar, saves them to MongoDB, and allows searching via Elasticsearch.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+6",
     "tags": [
       "Web Scraping",
       "MongoDB",
@@ -151,11 +198,10 @@
   },
   {
     "id": 7,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+7",
     "dateRange": "04.2024 - 05.2024",
-    "githubUrl": null,
     "title": "Patient Tracking and Management System",
     "description": "A hospital management system developed with Python (Django) and SQLite, adhering to relational database principles.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+7",
     "tags": [
       "Python",
       "Django",
@@ -174,11 +220,11 @@
   },
   {
     "id": 8,
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+8",
     "dateRange": "08.2025",
-    "githubUrl": "https://github.com/OmerTuregun/product_catalog",
     "title": "Product Catalog Application (Flask)",
     "description": "A SPA-like product listing site with Flask, MySQL, and Docker Compose. Includes an admin panel and file upload features.",
+    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+8",
+    "githubUrl": "https://github.com/OmerTuregun/product_catalog",
     "tags": [
       "Python",
       "Flask",
@@ -210,7 +256,6 @@
     "title": "UTARGET - Process Performance Indicator and Goal Tracking System",
     "description": "A management system that tracks organizations' process performance indicators and goals hierarchically (Processes -> Goals -> Sub-actions). Built with Node.js (Express) and MySQL.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+9",
-    "githubUrl": null,
     "tags": [
       "Node.js",
       "Express",
@@ -235,7 +280,6 @@
     "title": "PREDICO - Predictive Maintenance Tracking System",
     "description": "A maintenance management system that digitizes industrial machine maintenance workflows. Built with Node.js (Express) and MySQL.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+10",
-    "githubUrl": null,
     "tags": [
       "Node.js",
       "Express",
@@ -260,7 +304,6 @@
     "title": "IS-TAKIP - Work Tracking Application",
     "description": "A work tracking application built with an architecture similar to UTARGET, used to track internal company processes (Pattern/Sidewall/Others).",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+11",
-    "githubUrl": null,
     "tags": [
       "Node.js",
       "Express",
@@ -282,7 +325,6 @@
     "title": "VisitPass - Construction Site Access Management System",
     "description": "A role-based multi-user system that manages document approval workflows for contractor companies and employees entering a construction site.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+12",
-    "githubUrl": null,
     "tags": [
       "PHP",
       "MySQL",
@@ -306,7 +348,6 @@
     "title": "IOT-D - Quality Data Module and Reports",
     "description": "An internal module at UZER Makina that tracks tire quality data in the factory (measurements, limit checks, production quantities) and provides daily/summary reporting.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+13",
-    "githubUrl": null,
     "tags": [
       "ASP.NET Core MVC",
       "MSSQL",
@@ -328,7 +369,6 @@
     "title": "QR_Fabrika_SaaS - Multi-Tenant Factory Asset Management System",
     "description": "A multi-tenant SaaS asset management system that enables QR code-based tracking of machines in factories.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+14",
-    "githubUrl": null,
     "tags": [
       ".NET 8",
       "EF Core",
@@ -349,36 +389,11 @@
     ]
   },
   {
-    "id": 15,
-    "dateRange": "02.2026 - 07.2026",
-    "title": "HocaPuan (Rate Your Professor)",
-    "description": "An anonymous review and comment platform for university instructors that protects community safety through content moderation.",
-    "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+15",
-    "githubUrl": "https://github.com/OmerTuregun/hoca-puan",
-    "tags": [
-      "ASP.NET Core (.NET 10)",
-      "PostgreSQL",
-      "React",
-      "TypeScript",
-      "JWT"
-    ],
-    "modalContent": [
-      "<p>An anonymous instructor review and comment platform with a strong focus on moderation and community safety.</p>",
-      "<h5>Highlights:</h5>",
-      "<ul>",
-      "<li>Fuzzy matching-based Turkish profanity and insult detection.</li>",
-      "<li>YOK Atlas data integration.</li>",
-      "<li>JWT + CSRF protection and GitHub Actions CI integration.</li>",
-      "</ul>"
-    ]
-  },
-  {
     "id": 16,
     "dateRange": "07.2024 - 06.2025",
     "title": "KIBAREYE - AI-Powered Factory Safety System",
     "description": "A factory safety system that aims to prevent workplace accidents by detecting human presence through Jetson-based cameras.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+16",
-    "githubUrl": null,
     "tags": [
       "Python",
       "FastAPI",
@@ -402,7 +417,6 @@
     "title": "LIVA Halisaha Tournament - Tournament Management Platform",
     "description": "I led the organization of a football tournament for Kocaeli University's LIVA Club with 12 teams and 117 players, and built its digital infrastructure from scratch.",
     "imageUrl": "https://placehold.co/600x400/90EE90/0D1117?text=Project+17",
-    "githubUrl": null,
     "tags": [
       "React",
       "TypeScript",
