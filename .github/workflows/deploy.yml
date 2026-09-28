@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, portfolyo]
+    timeout-minutes: 20
+    steps:
+      - name: Canlıya deploy et
+        run: sudo -n /usr/local/sbin/deploy-portfolyo
