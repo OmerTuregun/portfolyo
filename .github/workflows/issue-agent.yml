@@ -1,0 +1,109 @@
+name: Issue Agent
+
+on:
+  issues:
+    types: [labeled]
+
+concurrency:
+  group: issue-agent-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  agent:
+    if: github.event.label.name == 'agent' && github.event.sender.login == github.repository_owner
+    runs-on: [self-hosted, portfolyo]
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      ISSUE_TITLE: ${{ github.event.issue.title }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+      BRANCH: agent/issue-${{ github.event.issue.number }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Başladığını bildir
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Ajan bu issue üzerinde çalışmaya başladı. Canlı log: $RUN_URL"
+
+      - name: Ajanı çalıştır
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          git checkout -B "$BRANCH"
+          cat > "$RUNNER_TEMP/prompt.md" <<EOF
+          GitHub issue #$ISSUE_NUMBER üzerinde çalışıyorsun. Önce AGENTS.md dosyasını oku ve kurallarına uy.
+
+          Başlık: $ISSUE_TITLE
+
+          $ISSUE_BODY
+
+          İşin bitince son mesajında yaptığın değişikliklerin kısa bir Türkçe özetini yaz.
+          EOF
+          ~/.local/bin/agent -p --force --trust --output-format text "$(cat "$RUNNER_TEMP/prompt.md")" | tee "$RUNNER_TEMP/agent-output.md"
+
+      - name: Build kontrolü
+        id: build
+        continue-on-error: true
+        run: dotnet build My-Portfolyo.csproj -c Release -nologo
+
+      - name: PR aç
+        env:
+          BUILD_OUTCOME: ${{ steps.build.outcome }}
+        run: |
+          SUMMARY=$(head -c 60000 "$RUNNER_TEMP/agent-output.md")
+          if [ -z "$(git status --porcelain)" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body-file - <<EOF
+          Ajan kodda bir değişiklik yapmadı.
+
+          $SUMMARY
+          EOF
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "$ISSUE_TITLE (#$ISSUE_NUMBER)"
+          git push -q -f origin "$BRANCH"
+
+          if [ "$BUILD_OUTCOME" = "success" ]; then
+            BUILD_LINE="Build: başarılı"
+            DRAFT=""
+          else
+            BUILD_LINE="Build: BAŞARISIZ, merge etmeden önce kontrol et ($RUN_URL)"
+            DRAFT="--draft"
+          fi
+
+          cat > "$RUNNER_TEMP/pr-body.md" <<EOF
+          Closes #$ISSUE_NUMBER
+
+          $BUILD_LINE
+
+          Merge edildiğinde canlıya otomatik deploy edilir.
+
+          ## Ajanın özeti
+
+          $SUMMARY
+          EOF
+
+          if gh pr view "$BRANCH" --json state --jq .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/pr-body.md"
+            PR_URL=$(gh pr view "$BRANCH" --json url --jq .url)
+          else
+            PR_URL=$(gh pr create --base main --head "$BRANCH" --title "$ISSUE_TITLE" --body-file "$RUNNER_TEMP/pr-body.md" $DRAFT)
+          fi
+          gh issue comment "$ISSUE_NUMBER" --body "PR hazır: $PR_URL ($BUILD_LINE)"
+
+      - name: Hata bildir
+        if: failure()
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Ajan çalışırken hata oluştu. Log: $RUN_URL"
