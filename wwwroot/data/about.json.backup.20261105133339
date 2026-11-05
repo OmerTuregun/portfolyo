@@ -1,0 +1,66 @@
+{
+  "aboutMeText": "Kocaeli Üniversitesi Bilgisayar Mühendisliği mezunuyum. Bilişim Vadisi bünyesindeki Mina Yapay Zeka Çözümleri'nde Yapay Zeka Yazılım Geliştirme Uzman Yardımcısı olarak kariyerime devam ediyorum. Azimli, bir sürecin başından sonuna kadar her noktasına değinebilen, sürekli üretken olmaya çalışan ve bu yolda kendine hedefler koyan bir insanım. Bunun yanında yakın çevremin talepleri doğrultusunda bağımsız web projeleri, yapay zeka tabanlı iş akışı takip uygulamaları da tasarlıyorum. Yazılım geliştirmenin dışında sporla iç içe olmayı, tarihi yerleri gezmeyi ve fotoğraf çekmeyi seviyorum.",
+  "futureGoalText": "İlgi alanım yapay zeka üzerine geliştirmeler yapmak, yeni süreçler ve projeler ortaya koymak; sürekli üretken kalarak bu alanda uzmanlaşıp Türkiye'de öne çıkan isimlerden biri olmak istiyorum.",
+  "socialActivities": [
+    {
+      "id": "kihmed",
+      "title": "KİHMED (Kocaeli İmam Hatip Mezunları Derneği)",
+      "carouselImages": [
+        "~/img/kihmed/3.jpg",
+        "~/img/kihmed/4.jpg",
+        "~/img/kihmed/5.jpg",
+        "~/img/kihmed/6.jpg",
+        "~/img/kihmed/7.jpg",
+        "~/img/kihmed/8.jpg",
+        "~/img/kihmed/9.jpg",
+        "~/img/kihmed/10.jpg",
+        "~/img/kihmed/11.jpg",
+        "~/img/kihmed/12.jpg",
+        "~/img/kihmed/13.jpg",
+        "~/img/kihmed/14.jpg",
+        "~/img/kihmed/15.jpg",
+        "~/img/kihmed/16.jpg",
+        "~/img/kihmed/17.jpg",
+        "~/img/kihmed/18.jpg",
+        "~/img/kihmed/19.jpg",
+        "~/img/kihmed/20.jpg",
+        "~/img/kihmed/21.jpg",
+        "~/img/kihmed/22.jpg",
+        "~/img/kihmed/23.jpg",
+        "~/img/kihmed/24.jpg",
+        "~/img/kihmed/25.jpg",
+        "~/img/kihmed/26.jpg"
+      ],
+      "description": [
+        "<h5>Görevlerim ve Faaliyetlerim:</h5>",
+        "<p>5 senedir Gençlik Komisyonu'nda aktif olarak görev yapmaktayım. Bu süre zarfında 3 sene 'Ortaokul Koordinatörlüğü' görevini yürüttüm.</p>",
+        "<ul>",
+        "<li>Ortaokul öğrencilerine liderlik, mentörlük ve koçluk yaparak sosyal hayata hazırlanmalarına yardımcı oldum.</li>",
+        "<li>Öğrenci gruplarının dini birikimlerine katkı sağlamak amacıyla çeşitli eğitim ve sosyal faaliyetler düzenledim.</li>",
+        "<li>Şu anda derneğin sosyal medya yönetim ekibinde yer alarak başkan yardımcılığı görevini sürdürmekteyim.</li>",
+        "</ul>"
+      ]
+    },
+    {
+      "id": "izmitgucu",
+      "title": "İzmitgücü FK",
+      "carouselImages": [
+        "~/img/izmitgucu/izmitgucu1.jpg",
+        "~/img/izmitgucu/izmitgucu2.jpg",
+        "~/img/izmitgucu/izmitgucu3.jpg",
+        "~/img/izmitgucu/izmitgucu4.jpg",
+        "~/img/izmitgucu/izmitgucu5.jpg",
+        "~/img/izmitgucu/izmitgucu6.jpg"
+      ],
+      "description": [
+        "<h5>Takımdaki Rolüm ve Başarılar:</h5>",
+        "<p>Arkadaşlarımla kurduğum ve her hafta aktif olarak futbol oynadığım bu takım, hayatımda büyük keyif aldığım bir alanı temsil ediyor. Takımın kaptanıyım ve forma numaram 4'tür.</p>",
+        "<ul>",
+        "<li><strong>SıratıMüstakim Turnuvası:</strong> Şampiyonluk</li>",
+        "<li><strong>MarmaraCup Kral Kupası:</strong> Şampiyonluk</li>",
+        "</ul>",
+        "<p>Takımımızın <a href='https://www.instagram.com/izmitgucu?igsh=MTRiN21xc28xMzRudQ==' target='_blank' class='link-primary-light'>resmi Instagram sayfasını</a> da yönetiyoruz.</p>"
+      ]
+    }
+  ]
+}

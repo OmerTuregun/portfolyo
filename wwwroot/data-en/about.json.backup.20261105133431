@@ -1,0 +1,66 @@
+{
+  "aboutMeText": "I'm a Computer Engineering graduate from Kocaeli University. I'm continuing my career as an Associate AI Software Developer at Mina AI Solutions, part of Bilişim Vadisi. I'm a driven person who likes to be involved in a process from start to finish, stay attentive to every detail along the way, and keep pushing myself toward the goals I set. Alongside my main role, I also design independent web projects and AI-based workflow tracking applications for people close to me on request. Outside of software development, I enjoy staying active through sports, visiting historical places, and photography.",
+  "futureGoalText": "My focus is on building AI-driven solutions, launching new processes and projects, and staying consistently productive as I work toward becoming one of Turkey's leading names in the field.",
+  "socialActivities": [
+    {
+      "id": "kihmed",
+      "title": "KİHMED (Kocaeli Imam Hatip Alumni Association)",
+      "carouselImages": [
+        "~/img/kihmed/3.jpg",
+        "~/img/kihmed/4.jpg",
+        "~/img/kihmed/5.jpg",
+        "~/img/kihmed/6.jpg",
+        "~/img/kihmed/7.jpg",
+        "~/img/kihmed/8.jpg",
+        "~/img/kihmed/9.jpg",
+        "~/img/kihmed/10.jpg",
+        "~/img/kihmed/11.jpg",
+        "~/img/kihmed/12.jpg",
+        "~/img/kihmed/13.jpg",
+        "~/img/kihmed/14.jpg",
+        "~/img/kihmed/15.jpg",
+        "~/img/kihmed/16.jpg",
+        "~/img/kihmed/17.jpg",
+        "~/img/kihmed/18.jpg",
+        "~/img/kihmed/19.jpg",
+        "~/img/kihmed/20.jpg",
+        "~/img/kihmed/21.jpg",
+        "~/img/kihmed/22.jpg",
+        "~/img/kihmed/23.jpg",
+        "~/img/kihmed/24.jpg",
+        "~/img/kihmed/25.jpg",
+        "~/img/kihmed/26.jpg"
+      ],
+      "description": [
+        "<h5>My Roles and Activities:</h5>",
+        "<p>I have been actively serving in the Youth Commission for 5 years. During this time, I served as the 'Middle School Coordinator' for 3 years.</p>",
+        "<ul>",
+        "<li>I helped middle school students prepare for social life by providing leadership, mentorship, and coaching.</li>",
+        "<li>I organized various educational and social activities to contribute to the religious knowledge of student groups.</li>",
+        "<li>I am currently serving as the vice president in the association's social media management team.</li>",
+        "</ul>"
+      ]
+    },
+    {
+      "id": "izmitgucu",
+      "title": "İzmitgücü FK",
+      "carouselImages": [
+        "~/img/izmitgucu/izmitgucu1.jpg",
+        "~/img/izmitgucu/izmitgucu2.jpg",
+        "~/img/izmitgucu/izmitgucu3.jpg",
+        "~/img/izmitgucu/izmitgucu4.jpg",
+        "~/img/izmitgucu/izmitgucu5.jpg",
+        "~/img/izmitgucu/izmitgucu6.jpg"
+      ],
+      "description": [
+        "<h5>My Role in the Team and Achievements:</h5>",
+        "<p>This team, which I founded with my friends and play football with actively every week, represents an area of great enjoyment in my life. I am the team captain, and my jersey number is 4.</p>",
+        "<ul>",
+        "<li><strong>SıratıMüstakim Tournament:</strong> Championship</li>",
+        "<li><strong>MarmaraCup King's Cup:</strong> Championship</li>",
+        "</ul>",
+        "<p>We also manage our team's <a href='https://www.instagram.com/izmitgucu?igsh=MTRiN21xc28xMzRudQ==' target='_blank' class='link-primary-light'>official Instagram page</a>.</p>"
+      ]
+    }
+  ]
+}
