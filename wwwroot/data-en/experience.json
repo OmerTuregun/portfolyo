@@ -21,6 +21,20 @@
     "type": "İş Deneyimi",
     "experience": [
       {
+        "id": 4,
+        "title": "Software Engineer",
+        "company": "Mina Yapay Zeka Çözümleri",
+        "dateRange": "01.11.2026 - Ongoing",
+        "description": "I work as a software engineer at Mina Yapay Zeka Çözümleri, a company providing AI consulting to businesses. Based on client needs, I build computer vision systems for defect detection and person recognition, and develop AI-powered chatbot solutions for companies that request them.",
+        "tags": [
+          "Artificial Intelligence",
+          "Computer Vision",
+          "Defect Detection",
+          "Person Recognition",
+          "Chatbot"
+        ]
+      },
+      {
         "id": 3,
         "title": "Assistant Software Development Specialist",
         "company": "UZER Makina",

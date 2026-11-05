@@ -21,6 +21,20 @@
     "type": "İş Deneyimi",
     "experience": [
       {
+        "id": 4,
+        "title": "Yazılım Mühendisi",
+        "company": "Mina Yapay Zeka Çözümleri",
+        "dateRange": "01.11.2026 - Devam ediyor",
+        "description": "Firmalara yapay zekâ danışmanlığı veren Mina Yapay Zeka Çözümleri’nde yazılım mühendisi olarak çalışıyorum. Müşteri ihtiyaçlarına göre görüntü işleme tabanlı hata tespiti ve insan tanıma sistemleri geliştiriyor, talep eden firmalar için yapay zekâ destekli chatbot çözümleri oluşturuyorum.",
+        "tags": [
+          "Yapay Zekâ",
+          "Görüntü İşleme",
+          "Hata Tespiti",
+          "İnsan Tanıma",
+          "Chatbot"
+        ]
+      },
+      {
         "id": 3,
         "title": "Yazılım Geliştirme Uzman Yardımcısı",
         "company": "UZER Makina",
