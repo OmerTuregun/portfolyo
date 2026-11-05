@@ -5,20 +5,14 @@
     var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
     ViewData["Title"] = "Hakkımda";
     ViewData["PageTitle"] = $"Hakkımda ({currentLang.ToUpper()})";
-    var success = TempData["Success"]?.ToString();
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+<div class="admin-page-toolbar">
     <div class="lang-selector">
         <a asp-controller="AdminAbout" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="tr" class="lang-btn @(currentLang == "tr" ? "active" : "")">Türkçe</a>
         <a asp-controller="AdminAbout" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="en" class="lang-btn @(currentLang == "en" ? "active" : "")">English</a>
     </div>
 </div>
-
-@if (!string.IsNullOrEmpty(success))
-{
-    <div class="alert-success-custom mb-3">@success</div>
-}
 
 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
@@ -39,8 +33,8 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 style="color: var(--primary-light); margin: 0;">Sosyal Aktiviteler</h5>
+    <div class="admin-page-toolbar">
+        <h5 class="section-title mb-0">Sosyal Aktiviteler</h5>
         <button type="button" class="btn btn-secondary-custom" id="addActivityBtn">
             <i class="bi bi-plus"></i> Aktivite Ekle
         </button>
@@ -75,7 +69,9 @@
         }
     </div>
 
-    <button type="submit" class="btn btn-primary-custom mt-2"><i class="bi bi-check-circle"></i> Kaydet</button>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-circle"></i> Kaydet</button>
+    </div>
 </form>
 
 @section Scripts {

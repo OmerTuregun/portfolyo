@@ -1,8 +1,9 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using My_Portfolyo.Models; // Bu senin namespace'in, aynı kalıyor
+using My_Portfolyo.Models;
 
-namespace My_Portfolyo.Controllers // Bu senin namespace'in, aynı kalıyor
+namespace My_Portfolyo.Controllers
 {
     public class HomeController : Controller
     {
@@ -13,21 +14,15 @@ namespace My_Portfolyo.Controllers // Bu senin namespace'in, aynı kalıyor
             _logger = logger;
         }
 
-        // --- GÜNCELLENDİ: "lang" parametresi eklendi ---
-        // Plan B, Adım 1'de (Program.cs) tanımladığımız {lang} rotasından gelir
         public IActionResult Index(string lang)
         {
-            // Eğer URL /en/Home/Index ise...
             if (lang == "en")
             {
-                // Index.en.cshtml dosyasını göster
                 return View("Index.en");
             }
-            // Değilse (varsayılan 'tr' ise), normal Index.cshtml'i göster
             return View("Index");
         }
 
-        // --- GÜNCELLENDİ: "lang" parametresi eklendi ---
         public IActionResult Projects(string lang)
         {
             if (lang == "en")
@@ -37,7 +32,6 @@ namespace My_Portfolyo.Controllers // Bu senin namespace'in, aynı kalıyor
             return View("Projects");
         }
 
-        // --- GÜNCELLENDİ: "lang" parametresi eklendi ---
         public IActionResult Contact(string lang)
         {
             if (lang == "en")
@@ -47,7 +41,6 @@ namespace My_Portfolyo.Controllers // Bu senin namespace'in, aynı kalıyor
             return View("Contact");
         }
 
-        // --- GÜNCELLENDİ: "lang" parametresi eklendi ---
         public IActionResult Experience(string lang)
         {
             if (lang == "en")
@@ -57,7 +50,6 @@ namespace My_Portfolyo.Controllers // Bu senin namespace'in, aynı kalıyor
             return View("Experience");
         }
 
-        // --- GÜNCELLENDİ: "lang" parametresi eklendi ---
         public IActionResult AboutMe(string lang)
         {
             if (lang == "en")
@@ -67,16 +59,45 @@ namespace My_Portfolyo.Controllers // Bu senin namespace'in, aynı kalıyor
             return View("AboutMe");
         }
 
-
-        // --- Bu standart metotlara dokunmadık ---
-        public IActionResult Privacy()
+        public IActionResult Privacy(string lang)
         {
+            ViewData["Title"] = lang == "en" ? "Privacy" : "Gizlilik";
+            ViewData["Description"] = lang == "en"
+                ? "Privacy notes for omerfarukturegun.com.tr"
+                : "omerfarukturegun.com.tr gizlilik notları";
+            return View();
+        }
+
+        public IActionResult Status(string lang, int id)
+        {
+            var feature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
+            var originalPath = feature?.OriginalPath ?? string.Empty;
+            var isEn = originalPath.StartsWith("/en", StringComparison.OrdinalIgnoreCase)
+                       || string.Equals(lang, "en", StringComparison.OrdinalIgnoreCase);
+
+            var code = id < 400 ? 404 : id;
+
+            Response.StatusCode = code;
+            ViewData["Title"] = code.ToString();
+            ViewData["StatusCode"] = code;
+            ViewData["IsEn"] = isEn;
+            ViewData["Description"] = isEn
+                ? "The requested page could not be found or an error occurred."
+                : "İstenen sayfa bulunamadı veya bir hata oluştu.";
+
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(string lang)
         {
+            var isEn = string.Equals(lang, "en", StringComparison.OrdinalIgnoreCase);
+            ViewData["Title"] = isEn ? "Error" : "Hata";
+            ViewData["IsEn"] = isEn;
+            ViewData["Description"] = isEn
+                ? "Something went wrong while processing your request."
+                : "İsteğiniz işlenirken bir sorun oluştu.";
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

@@ -6,94 +6,93 @@
     var lang = ViewData["Lang"]?.ToString() ?? "tr";
     var currentLang = ViewData["CurrentLang"]?.ToString() ?? "tr";
 }
-    <div class="admin-container">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div class="lang-selector">
-                <a asp-controller="AdminProjects" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="tr" class="lang-btn @(currentLang == "tr" ? "active" : "")">
-                    <i class="bi bi-translate"></i> Türkçe
-                </a>
-                <a asp-controller="AdminProjects" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="en" class="lang-btn @(currentLang == "en" ? "active" : "")">
-                    <i class="bi bi-translate"></i> English
-                </a>
-            </div>
-            <a asp-controller="AdminProjects" asp-action="Create" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-primary-custom">
-                <i class="bi bi-plus-circle"></i> Yeni Proje Ekle
+
+<div class="admin-page-toolbar">
+    <div class="lang-selector">
+        <a asp-controller="AdminProjects" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="tr" class="lang-btn @(currentLang == "tr" ? "active" : "")">
+            <i class="bi bi-translate"></i> Türkçe
+        </a>
+        <a asp-controller="AdminProjects" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="en" class="lang-btn @(currentLang == "en" ? "active" : "")">
+            <i class="bi bi-translate"></i> English
+        </a>
+    </div>
+    <a asp-controller="AdminProjects" asp-action="Create" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-primary-custom">
+        <i class="bi bi-plus-circle"></i> Yeni Proje Ekle
+    </a>
+</div>
+
+<div class="table-card tile--static">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Başlık</th>
+                    <th>Tarih Aralığı</th>
+                    <th>Etiketler</th>
+                    <th>GitHub</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var project in Model)
+                {
+                    <tr>
+                        <td>@project.Id</td>
+                        <td>@project.Title</td>
+                        <td>@project.DateRange</td>
+                        <td>
+                            @if (project.Tags != null && project.Tags.Any())
+                            {
+                                @foreach (var tag in project.Tags.Take(3))
+                                {
+                                    <span class="badge badge-accent">@tag</span>
+                                }
+                                @if (project.Tags.Count > 3)
+                                {
+                                    <span class="admin-muted">+@(project.Tags.Count - 3)</span>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(project.GithubUrl))
+                            {
+                                <a href="@project.GithubUrl" target="_blank" rel="noopener" class="admin-link-accent">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="admin-muted">-</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a asp-controller="AdminProjects" asp-action="Edit" asp-route-id="@project.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-sm btn-secondary-custom">
+                                    <i class="bi bi-pencil"></i> Düzenle
+                                </a>
+                                <form method="post" asp-action="Delete" asp-route-id="@project.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="d-inline-form" data-confirm="Bu projeyi silmek istediğinize emin misiniz?">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-sm btn-danger-custom">
+                                        <i class="bi bi-trash"></i> Sil
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="admin-empty">
+            <div class="admin-empty__icon"><i class="bi bi-inbox"></i></div>
+            <p class="mt-3 mb-0">Henüz proje eklenmemiş.</p>
+            <a asp-controller="AdminProjects" asp-action="Create" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-primary-custom mt-3">
+                <i class="bi bi-plus-circle"></i> İlk Projeyi Ekle
             </a>
         </div>
-
-        <div class="table-card">
-            @if (Model != null && Model.Any())
-            {
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Başlık</th>
-                            <th>Tarih Aralığı</th>
-                            <th>Etiketler</th>
-                            <th>GitHub</th>
-                            <th>İşlemler</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var project in Model)
-                        {
-                            <tr>
-                                <td>@project.Id</td>
-                                <td>@project.Title</td>
-                                <td>@project.DateRange</td>
-                                <td>
-                                    @if (project.Tags != null && project.Tags.Any())
-                                    {
-                                        @foreach (var tag in project.Tags.Take(3))
-                                        {
-                                            <span class="badge" style="background: var(--primary-light); color: var(--bg-dark); margin-right: 0.25rem;">@tag</span>
-                                        }
-                                        @if (project.Tags.Count > 3)
-                                        {
-                                            <span class="text-muted">+@(project.Tags.Count - 3)</span>
-                                        }
-                                    }
-                                </td>
-                                <td>
-                                    @if (!string.IsNullOrEmpty(project.GithubUrl))
-                                    {
-                                        <a href="@project.GithubUrl" target="_blank" class="text-decoration-none" style="color: var(--primary-light);">
-                                            <i class="bi bi-github"></i>
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted">-</span>
-                                    }
-                                </td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <a asp-controller="AdminProjects" asp-action="Edit" asp-route-id="@project.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-sm btn-secondary-custom">
-                                            <i class="bi bi-pencil"></i> Düzenle
-                                        </a>
-                                        <form method="post" asp-action="Delete" asp-route-id="@project.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" style="display: inline;" onsubmit="return confirm('Bu projeyi silmek istediğinize emin misiniz?');">
-                                            @Html.AntiForgeryToken()
-                                            <button type="submit" class="btn btn-sm btn-danger-custom">
-                                                <i class="bi bi-trash"></i> Sil
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <div class="text-center py-5">
-                    <i class="bi bi-inbox" style="font-size: 3rem; color: var(--primary-light); opacity: 0.5;"></i>
-                    <p class="mt-3" style="opacity: 0.7;">Henüz proje eklenmemiş.</p>
-                    <a asp-controller="AdminProjects" asp-action="Create" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-primary-custom mt-3">
-                        <i class="bi bi-plus-circle"></i> İlk Projeyi Ekle
-                    </a>
-                </div>
-            }
-        </div>
-    </div>
+    }
+</div>

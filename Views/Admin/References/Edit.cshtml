@@ -32,6 +32,9 @@
             <input asp-for="Company" class="form-control" />
             <span asp-validation-for="Company" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-circle"></i> Güncelle</button>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-circle"></i> Güncelle</button>
+            <a asp-controller="AdminReferences" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-secondary-custom">İptal</a>
+        </div>
     </form>
 </div>

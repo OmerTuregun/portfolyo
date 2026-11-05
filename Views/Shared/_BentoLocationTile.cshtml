@@ -1,0 +1,12 @@
+@{
+    var lang = ViewContext.RouteData.Values["lang"]?.ToString()?.ToLower() ?? "tr";
+    if (lang != "tr" && lang != "en") { lang = "tr"; }
+    var isTr = lang == "tr";
+}
+
+<div class="tile location-tile tile--static">
+    <div class="location-tile__pattern" aria-hidden="true"></div>
+    <div class="location-tile__pin" aria-hidden="true"></div>
+    <h3 class="location-tile__city">Kocaeli, TR</h3>
+    <p class="location-tile__meta">@(isTr ? "UTC+3 · uzaktan / hibrit" : "UTC+3 · remote / hybrid")</p>
+</div>

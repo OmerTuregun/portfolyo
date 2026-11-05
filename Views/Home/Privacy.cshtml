@@ -1,6 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    Layout = "_LayoutBento";
+    var lang = ViewContext.RouteData.Values["lang"]?.ToString()?.ToLower() ?? "tr";
+    if (lang != "tr" && lang != "en") { lang = "tr"; }
+    var isEn = lang == "en";
+    ViewData["Title"] = isEn ? "Privacy" : "Gizlilik";
+    ViewData["Description"] = isEn
+        ? "Privacy notes for omerfarukturegun.com.tr"
+        : "omerfarukturegun.com.tr gizlilik notları";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<section class="section" aria-labelledby="privacy-heading">
+    <div class="tile tile--static privacy-tile">
+        <p class="eyebrow">@(isEn ? "Legal" : "Yasal")</p>
+        <h1 id="privacy-heading">@(isEn ? "Privacy" : "Gizlilik")</h1>
+
+        @if (isEn)
+        {
+            <p class="lead">Short notes about how this site handles information.</p>
+            <p>Contact form messages are sent through Formspree and are used only to reply to you. They are not sold or used for marketing.</p>
+            <p>This site does not use analytics cookies or tracking scripts. Essential technical cookies may be set only for signed-in admin sessions.</p>
+            <p>Questions: <a href="mailto:trkuraf@gmail.com">trkuraf@gmail.com</a></p>
+        }
+        else
+        {
+            <p class="lead">Bu sitenin bilgileri nasıl işlediğine dair kısa notlar.</p>
+            <p>İletişim formundan gelen mesajlar Formspree üzerinden iletilir ve yalnızca size dönüş yapmak için kullanılır. Satılmaz veya pazarlama amacıyla kullanılmaz.</p>
+            <p>Bu sitede analitik çerezi veya izleme betiği kullanılmıyor. Yalnızca yönetici oturumu için gerekli teknik çerezler oluşabilir.</p>
+            <p>Sorularınız için: <a href="mailto:trkuraf@gmail.com">trkuraf@gmail.com</a></p>
+        }
+    </div>
+</section>

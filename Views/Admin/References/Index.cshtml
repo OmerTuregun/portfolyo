@@ -7,7 +7,7 @@
     ViewData["PageTitle"] = "Referanslar";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+<div class="admin-page-toolbar">
     <div class="lang-selector">
         <a asp-controller="AdminReferences" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="tr" class="lang-btn @(currentLang == "tr" ? "active" : "")">Türkçe</a>
         <a asp-controller="AdminReferences" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="en" class="lang-btn @(currentLang == "en" ? "active" : "")">English</a>
@@ -17,7 +17,7 @@
     </a>
 </div>
 
-<div class="table-card">
+<div class="table-card tile--static">
     @if (Model != null && Model.Any())
     {
         <table class="table">
@@ -43,7 +43,7 @@
                                 <a asp-controller="AdminReferences" asp-action="Edit" asp-route-id="@item.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-sm btn-secondary-custom">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <form method="post" asp-action="Delete" asp-route-id="@item.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" style="display:inline;" onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+                                <form method="post" asp-action="Delete" asp-route-id="@item.Id" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="d-inline-form" data-confirm="Silmek istediğinize emin misiniz?">
                                     @Html.AntiForgeryToken()
                                     <button type="submit" class="btn btn-sm btn-danger-custom"><i class="bi bi-trash"></i></button>
                                 </form>
@@ -56,6 +56,9 @@
     }
     else
     {
-        <div class="text-center py-5" style="opacity:0.7;">Henüz referans yok.</div>
+        <div class="admin-empty">
+            <div class="admin-empty__icon"><i class="bi bi-inbox"></i></div>
+            <p class="mt-3 mb-0">Henüz referans yok.</p>
+        </div>
     }
 </div>

@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,10 +24,27 @@ else
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddMemoryCache();
+
+builder.Services.AddHttpClient("github", client =>
+{
+    client.BaseAddress = new Uri("https://api.github.com/");
+    client.DefaultRequestHeaders.UserAgent.ParseAdd("omerfarukturegun-portfolio");
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    client.Timeout = TimeSpan.FromSeconds(10);
+
+    var githubToken = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
+    if (!string.IsNullOrWhiteSpace(githubToken))
+    {
+        client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", githubToken.Trim());
+    }
+});
 
 // Custom Services
 builder.Services.AddScoped<My_Portfolyo.Services.JsonFileService>();
 builder.Services.AddScoped<My_Portfolyo.Services.AuthService>();
+builder.Services.AddSingleton<My_Portfolyo.Services.GitHubContributionsService>();
 
 // Session yapılandırması
 builder.Services.AddDistributedMemoryCache();
@@ -43,7 +61,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/tr/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -65,6 +83,8 @@ else
 
 app.UseHttpsRedirection();
 
+app.UseStatusCodePagesWithReExecute("/tr/Home/Status/{0}");
+
 // Static files için cache kontrolü
 var staticFileOptions = new StaticFileOptions();
 if (app.Environment.IsDevelopment())
@@ -85,6 +105,8 @@ app.UseRouting();
 app.UseSession();
 
 app.UseAuthorization();
+
+app.MapControllers();
 
 app.MapControllerRoute(
     name: "default_lang",

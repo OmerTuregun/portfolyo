@@ -82,8 +82,25 @@ Yardımcı scriptler: `scripts/dev-start.sh`, `dev-stop.sh`, `prod-start.sh`, `p
 |----------|------|
 | `ADMIN_USERNAME` | Admin paneli kullanıcı adı |
 | `ADMIN_PASSWORD` | BCrypt hash (düz metin fallback uyarısı vardır) |
+| `GITHUB_TOKEN` | Ana sayfa GitHub katkı grafiği (isteğe bağlı) |
 
 `Program.cs` DotNetEnv ile `.env` yükler.
+
+### GitHub katkı grafiği
+
+Ana sayfadaki katkı karosu `GET /api/github/contributions` üzerinden GitHub GraphQL API’den son 30 haftalık veriyi alır (sunucuda 6 saat önbellek).
+
+1. GitHub → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**
+2. Resource owner / repository erişimi: yeterli; **özel izin gerekmez** (public katkı takvimi için token kimlik doğrulama amaçlıdır).
+3. `.env` dosyasına ekleyin:
+
+```bash
+GITHUB_TOKEN=github_pat_...
+```
+
+4. Kullanıcı adı `appsettings.json` içinde `GitHub:Username` (`OmerTuregun`).
+
+**Token yoksa:** endpoint `204 No Content` döner; sayfa hatasız açılır, karo görünür kalır ve “veri alınamadı” yazar. Konsolda kırmızı hata beklenmez.
 
 ## Proje yapısı
 

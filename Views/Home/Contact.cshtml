@@ -1,431 +1,114 @@
 @{
-    Layout = null;
+    Layout = "_LayoutBento";
+    ViewData["Title"] = "İletişim";
+    ViewData["Description"] = "Ömer Faruk Türegün ile iletişime geçin — iş teklifi, proje veya merhaba.";
+    var lang = ViewContext.RouteData.Values["lang"]?.ToString()?.ToLower() ?? "tr";
+    if (lang != "tr" && lang != "en") { lang = "tr"; }
 }
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim - Ömer Faruk Türegün</title>
 
-    <!-- Bootstrap CSS ve Ikonlar -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/css/site-footer.css" asp-append-version="true" rel="stylesheet">
-<!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<section class="bento contact-bento" id="contact-page" aria-label="İletişim">
+    <div class="tile tile--static span-2 row-3 contact-form-tile contact-order-form" id="contact-form-panel" aria-live="polite">
+        <p class="eyebrow">İletişim</p>
+        <h1 class="contact-title">Hadi konuşalım.</h1>
 
-    <!-- AOS (Animasyon) CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <form id="contact-form"
+              action="https://formspree.io/f/xvgvvblj"
+              method="POST"
+              novalidate>
+            <div class="contact-topics" role="group" aria-label="Konu">
+                <button type="button" class="contact-topic" data-topic="İş teklifi" data-topic-key="is" aria-pressed="true">İş teklifi</button>
+                <button type="button" class="contact-topic" data-topic="Serbest proje" data-topic-key="proje" aria-pressed="false">Serbest proje</button>
+                <button type="button" class="contact-topic" data-topic="Sadece merhaba" data-topic-key="merhaba" aria-pressed="false">Sadece merhaba</button>
+            </div>
 
-    <style>
-        /* ==== ANA STİLLER ==== */
-        :root {
-            --bg-dark: #0D1117; /* Ana koyu arka plan */
-            --bg-glass: rgba(30, 41, 59, 0.5); /* Cam kart arka planı */
-            --border-glass: rgba(148, 238, 144, 0.2); /* Cam kart kenarlığı */
-            --primary-light: #90EE90; /* Fıstık Yeşili Vurgu */
-            --text-on-accent: #0D1117; /* Vurgu üstü yazı (koyu) */
-            --text-light: #E6EDF3; /* Ana yazı rengi (Beyaz) */
-            --text-muted: #8B949E; /* Soluk yazı (Gri) */
-        }
+            <input type="hidden" name="konu" id="contact-konu" value="İş teklifi" />
+            <input type="hidden" name="_subject" id="contact-subject" value="Portfolyo · İş teklifi" />
+            <input type="text" name="_gotcha" id="contact-gotcha" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Yatay kaydırmayı engelle */
-        }
+            <div class="contact-fields">
+                <div class="form-field">
+                    <label for="contact-name">Ad Soyad</label>
+                    <input id="contact-name" name="AdSoyad" type="text" autocomplete="name" placeholder="Adınız Soyadınız" />
+                    <p class="form-error" id="contact-name-error" hidden></p>
+                </div>
+                <div class="form-field">
+                    <label for="contact-email">E-posta</label>
+                    <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="ornek@mail.com" />
+                    <p class="form-error" id="contact-email-error" hidden></p>
+                </div>
+            </div>
 
-        /* Ana başlık stili (YAZILIM GELİŞTİRİCİ gibi) */
-        .page-title {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 900;
-            color: var(--text-light);
-            margin: 0.5rem 0 1.5rem;
-        }
+            <div class="form-field">
+                <label for="contact-message">Mesaj</label>
+                <textarea id="contact-message" name="mesaj" rows="6" placeholder="Kısaca anlatın…"></textarea>
+                <p class="form-error" id="contact-message-error" hidden></p>
+            </div>
 
-        @@media (min-width: 992px) {
-            .page-title {
-                font-size: 4.5rem;
-            }
-        }
+            <p class="form-error form-error--form" id="contact-form-error" hidden></p>
 
-        .navbar {
-            /* Diğer sayfalardaki standart stil */
-            background-color: var(--bg-glass) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glass);
-            border-radius: 1rem;
-            margin: 1rem; /* 'margin: 1rem auto' değil */
-            /* width ve max-width kaldırıldı */
-        }
-            .navbar .nav-link {
-                color: var(--text-muted);
-                font-weight: 500;
-                transition: all 0.2s ease-in-out;
-            }
-                .navbar .nav-link:hover,
-                .navbar .nav-link.active {
-                    color: var(--primary-light) !important;                }
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-light);
-            font-size: 1.25rem;
-        }
+            <button type="submit" class="btn btn--primary" id="contact-submit">Gönder →</button>
+        </form>
+    </div>
 
-        /* ==== 'GLASS' KART ==== */
-        .glass-card {
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 1.5rem;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
+    <div class="tile tile--dark tile--static span-2 contact-email-tile contact-order-email">
+        <p class="eyebrow">Doğrudan e-posta</p>
+        <p class="contact-email-address" id="contact-email-display">trkuraf@gmail.com</p>
+        <div class="btn-row">
+            <button type="button" class="btn btn--accent" id="contact-copy" data-email="trkuraf@gmail.com">Adresi kopyala</button>
+            <a class="btn btn--on-dark" href="mailto:trkuraf@gmail.com">Mail uygulamasında aç ↗</a>
+        </div>
+    </div>
 
-        /* ==== 'HERO' KART (Fıstık Yeşili) ==== */
-        .hero-card {
-            background-color: var(--primary-light);
-            color: var(--text-on-accent);
-            padding: 2rem;
-            border-radius: 1.5rem;
-            margin-bottom: 2rem;
-        }
+    <div class="contact-order-location">
+        <partial name="_BentoLocationTile" />
+    </div>
 
-        /* ==== İLETİŞİM FORMU STİLLERİ ==== */
-        .form-control-glass {
-            background: var(--bg-glass) !important;
-            border: 1px solid var(--border-glass) !important;
-            border-radius: 0.75rem !important;
-            color: var(--text-light) !important;
-            padding: 0.75rem 1rem !important;
-            font-size: 0.9rem;
-        }
+    <a class="tile tile--accent contact-cv-tile contact-order-cv"
+       href="/files/CV_TR.pdf"
+       download="OmerFarukTuregun_CV_TR.pdf">
+        <i class="bi bi-download contact-cv__icon" aria-hidden="true"></i>
+        <span class="contact-cv__title">CV indir</span>
+        <span class="contact-cv__meta">PDF · Türkçe</span>
+    </a>
 
-            .form-control-glass::placeholder {
-                color: var(--text-muted) !important;
-            }
-
-            .form-control-glass:focus {
-                background: rgba(30, 41, 59, 0.8) !important;
-                box-shadow: 0 0 0 3px rgba(144, 238, 144, 0.3) !important; /* Yeşil odaklama */
-            }
-
-        /* Form etiketleri */
-        .form-label {
-            color: var(--text-light);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Gönder Butonu */
-        .btn-primary-light {
-            background-color: var(--primary-light);
-            color: var(--text-on-accent);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-weight: 700;
-            border-radius: 0.75rem;
-            transition: all 0.3s ease;
-        }
-
-            .btn-primary-light:hover {
-                background-color: #79db79; /* Biraz daha koyu yeşil */
-                color: var(--text-on-accent);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(144, 238, 144, 0.2);
-            }
-
-        /* ==== SOSYAL MEDYA BUTONLARI (YENİ) ==== */
-        .social-buttons-container {
-            display: flex;
-            flex-wrap: wrap; /* Sığmazsa alt satıra atar */
-            gap: 0.75rem; /* Butonlar arası boşluk */
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 0.75rem;
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-            .social-btn i {
-                /* İkon rengi yeşil */
-                color: var(--primary-light);
-                font-size: 1.1rem;
-                margin-right: 0.5rem;
-            }
-            .social-btn:hover {
-                background: rgba(30, 41, 59, 0.8);
-                border-color: rgba(144, 238, 144, 0.5);
-                color: var(--text-light);
-                transform: translateY(-2px);
-            }
-
-        /* Form Durum Mesajı için Fade Animasyonları */
-        #my-form-status {
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            text-align: center;
-        }
-
-        #my-form-status.fade-in {
-            opacity: 1;
-        }
-
-        #my-form-status.fade-out {
-            opacity: 0;
-        }
-
-        #my-form-status .alert {
-            width: 100%;
-            margin-bottom: 0;
-            padding: 0.75rem 1.25rem;
-        }
-    </style>
-    <link href="~/css/site-mobile.css" asp-append-version="true" rel="stylesheet">
-</head>
-<body data-bs-theme="dark" class="bg-dark text-white">
-    <!-- ==== BUNU ESKİ NAVBAR HTML'İ İLE DEĞİŞTİR ==== -->
-
-        <!-- ==== NAVBAR ==== -->
-        <nav class="navbar navbar-expand-lg sticky-top">
-            <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    Ömer Faruk TÜREGÜN
+    <div class="tile tile--static span-2 contact-social-tile contact-order-social">
+        <p class="eyebrow">Sosyal</p>
+        <h3>Bağlantılar</h3>
+        <ul class="link-list contact-social-list">
+            <li>
+                <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" rel="noopener">
+                    <span>LinkedIn</span>
+                    <span class="contact-social__handle">/in/ömer-faruk-türegün ↗</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutMe">Hakkımda</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Deneyim</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Projects">Projeler</a></li>
-                        <!-- "İletişim" linki (Aktif Sayfa) -->
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Contact">İletişim</a></li>
-                    </ul>
-                    <ul class="navbar-nav ms-2">
-    <li class="nav-item">
-        <!-- Bu 'Index' sayfasında olduğu için asp-action="Index" yazar -->
-        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="en" style="font-weight: 700;">
-            <i class="bi bi-translate me-1"></i> EN
-        </a>
-    </li>
-</ul>
-                </div>
-            </div>
-        </nav>
+            </li>
+            <li>
+                <a href="https://github.com/OmerTuregun" target="_blank" rel="noopener">
+                    <span>GitHub</span>
+                    <span class="contact-social__handle">@@OmerTuregun ↗</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://medium.com/@@trkuraf" target="_blank" rel="noopener">
+                    <span>Medium</span>
+                    <span class="contact-social__handle">@@trkuraf ↗</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/omerfarukturegun" target="_blank" rel="noopener">
+                    <span>Instagram</span>
+                    <span class="contact-social__handle">@@omerfarukturegun ↗</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x.com/o_farukturegun" target="_blank" rel="noopener">
+                    <span>X</span>
+                    <span class="contact-social__handle">@@o_farukturegun ↗</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
 
-    <!-- ==== ANA İÇERİK ==== -->
-    <main class="container my-5">
-        <div class="text-center" data-aos="fade-up">
-            <h1 class="page-title">İLETİŞİME GEÇ</h1>
-            <p class="lead text-white-50 mb-5">
-                Benimle çalışmak, bir proje hakkında konuşmak veya sadece merhaba demek için formu kullanabilirsiniz.
-            </p>
-        </div>
-
-        <div class="row g-4">
-
-            <!-- SOL SÜTUN: Form Alanı (FORM GÖNDERME İÇİN GÜNCELLENDİ) -->
-            <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
-                <div class="glass-card p-4 p-md-5">
-                    
-                    <!-- 1. FORM ETİKETİ GÜNCELLENDİ (id, action, method) -->
-                    <form id="my-form" action="https://formspree.io/f/xvgvvblj" method="POST">
-                        
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Ad Soyad</label>
-                            <!-- 2. 'name' ÖZELLİĞİ EKLENDİ -->
-                            <input type="text" class="form-control form-control-glass" id="name" name="AdSoyad" placeholder="Adınız Soyadınız" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-posta Adresiniz</label>
-                            <!-- 2. 'name' ÖZELLİĞİ EKLENDİ -->
-                            <input type="email" class="form-control form-control-glass" id="email" name="email" placeholder="mail@adresiniz.com" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Mesajınız</label>
-                            <!-- 2. 'name' ÖZELLİĞİ EKLENDİ -->
-                            <textarea class="form-control form-control-glass" id="message" name="mesaj" rows="6" placeholder="Bana bir mesaj bırakın..." required></textarea>
-                        </div>
-                        
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary-light">
-                                Mesajı Gönder <i class="bi bi-send-fill ms-2"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- 3. FORM DURUM MESAJI EKLENDİ (Script'in aradığı ID) -->
-                        <p id="my-form-status" class="mt-3 text-center"></p>
-
-                    </form>
-                </div>
-            </div>
-
-            <!-- SAĞ SÜTUN: Bilgiler ve Sosyal Medya -->
-            <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
-
-                <!-- Fıstık Yeşili Bilgi Kartı -->
-                <div class="hero-card">
-                    <h4 class="fw-bold">İletişim Bilgileri</h4>
-                    <p class="mb-2">Benimle doğrudan iletişime geçmek için:</p>
-                    <ul class="list-unstyled mb-0" style="color: var(--text-on-accent);">
-                        <li>
-                            <i class="bi bi-envelope-fill me-2"></i>
-                            <strong>trkuraf@gmail.com</strong>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Sosyal Medya Linkleri (Yeni Butonlar) -->
-                <h4 class="text-white fw-bold mt-4 mb-3">Sosyal Medya</h4>
-                <div class="social-buttons-container">
-                    <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" class="social-btn">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/OmerTuregun" target="_blank" class="social-btn">
-                        <i class="bi bi-github"></i> GitHub
-                    </a>
-                    <a href="https://medium.com/@@trkuraf" target="_blank" class="social-btn">
-                        <i class="bi bi-medium"></i> Medium
-                    </a>
-                    <a href="https://www.kaggle.com/merfaruktregn" target="_blank" class="social-btn">
-                        <i class="bi bi-kanban-fill"></i> Kaggle
-                    </a>
-                    <a href="https://www.hackerrank.com/profile/trkuraf" target="_blank" class="social-btn">
-                        <i class="bi bi-terminal-fill"></i> HackerRank
-                    </a>
-                    <a href="https://x.com/o_farukturegun?t=mbXcTQaEbZrD8qd3_8wZaA&s=09" target="_blank" class="social-btn">
-                        <i class="bi bi-twitter-x"></i> X (Twitter)
-                    </a>
-                    <a href="https://www.instagram.com/omerfarukturegun?igsh=b2kwOXllcmVlcGVq" target="_blank" class="social-btn">
-                        <i class="bi bi-instagram"></i> Instagram
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS (Animasyon) JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script>
-        // AOS Animasyonlarını Başlat
-        AOS.init({
-            duration: 600,
-            once: true,
-            easing: 'ease-in-out-quad',
-        });
-    </script>
-
-    <!-- ==== BUNU SAYFANIN EN ALTINA EKLE (ESKİ SCRIPT'İN YERİNE) ==== -->
-    <script>
-        var form = document.getElementById("my-form");
-        
-        async function handleSubmit(event) {
-            event.preventDefault();
-            var status = document.getElementById("my-form-status");
-            var data = new FormData(event.target);
-            
-            // Butonu kilitle ve "Gönderiliyor..." yaz
-            var submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Gönderiliyor...';
-
-            // Önceki mesajı temizle ve animasyon sınıflarını kaldır
-            status.innerHTML = '';
-            status.classList.remove('fade-in', 'fade-out');
-
-            fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-            }).then(response => {
-            // Butonu geri aç
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Mesajı Gönder <i class="bi bi-send-fill ms-2"></i>';
-
-            if (response.ok) {
-                // Yeni mesajı göster ve fade-in yap
-                status.innerHTML = '<div class="alert alert-success" style="background-color: var(--primary-light); color: var(--text-on-accent); border: 0; font-weight: 500;">Teşekkürler mesajınızı aldım, en kısa sürede size dönüş sağlayacağım.</div>';
-                status.classList.add('fade-in'); // Yavaşça görünmesini sağla
-                form.reset(); 
-                
-                // 3 saniye sonra fade-out yap ve animasyon bitince tamamen gizle
-                setTimeout(() => {
-                    status.classList.remove('fade-in');
-                    status.classList.add('fade-out'); // Yavaşça kaybolmasını sağla
-                    
-                    // Animasyon süresi (0.5s) kadar bekleyip içeriği boşalt
-                    setTimeout(() => {
-                        status.innerHTML = '';
-                        status.classList.remove('fade-out');
-                    }, 500); // CSS transition süresiyle aynı olmalı
-                }, 3000); // 3 saniye sonra kaybolmaya başlasın
-
-            } else {
-                response.json().then(data => {
-                let errorMessage = 'Bir hata oluştu, lütfen daha sonra tekrar deneyin.';
-                if (Object.hasOwn(data, 'errors')) {
-                    errorMessage = data["errors"].map(error => error["message"]).join(", ");
-                }
-                status.innerHTML = `<div class="alert alert-danger">${errorMessage}</div>`;
-                status.classList.add('fade-in');
-                setTimeout(() => {
-                    status.classList.remove('fade-in');
-                    status.classList.add('fade-out');
-                    setTimeout(() => {
-                        status.innerHTML = '';
-                        status.classList.remove('fade-out');
-                    }, 500);
-                }, 5000); // Hata mesajı biraz daha uzun kalsın
-                })
-            }
-            }).catch(error => {
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Mesajı Gönder <i class="bi bi-send-fill ms-2"></i>';
-            status.innerHTML = '<div class="alert alert-danger">Bir ağ hatası oluştu, lütfen internet bağlantınızı kontrol edin.</div>';
-            status.classList.add('fade-in');
-            setTimeout(() => {
-                    status.classList.remove('fade-in');
-                    status.classList.add('fade-out');
-                    setTimeout(() => {
-                        status.innerHTML = '';
-                        status.classList.remove('fade-out');
-                    }, 500);
-                }, 5000);
-            });
-        }
-        form.addEventListener("submit", handleSubmit)
-    </script>
-    <partial name="_SiteFooter" />
-</body>
-</html>
-
+@section Scripts {
+    <script>document.addEventListener("DOMContentLoaded",function(){Bento.contact.init();});</script>
+}

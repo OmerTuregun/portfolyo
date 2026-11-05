@@ -1,0 +1,56 @@
+@{
+    var lang = ViewContext.RouteData.Values["lang"]?.ToString()?.ToLower() ?? "tr";
+    if (lang != "tr" && lang != "en") { lang = "tr"; }
+    var isTr = lang == "tr";
+    var action = ViewContext.RouteData.Values["action"]?.ToString() ?? "Index";
+
+    string NavLabel(string tr, string en) => isTr ? tr : en;
+    bool IsActive(string name) => string.Equals(action, name, StringComparison.OrdinalIgnoreCase);
+
+    var items = new (string Action, string Tr, string En)[]
+    {
+        ("Index", "Ana sayfa", "Home"),
+        ("Projects", "Projeler", "Projects"),
+        ("Experience", "Deneyim", "Experience"),
+        ("AboutMe", "Hakkımda", "About"),
+        ("Contact", "İletişim", "Contact")
+    };
+}
+
+<header class="site-header" role="banner">
+    <a class="site-logo"
+       asp-controller="Home"
+       asp-action="Index"
+       asp-route-lang="@lang">
+        ömerfaruk<span class="site-logo__dot" aria-hidden="true">.</span>
+    </a>
+
+    <nav class="pill-nav" aria-label="@(isTr ? "Ana menü" : "Main menu")">
+        @foreach (var item in items)
+        {
+            if (IsActive(item.Action))
+            {
+                <a asp-controller="Home" asp-action="@item.Action" asp-route-lang="@lang" aria-current="page">@NavLabel(item.Tr, item.En)</a>
+            }
+            else
+            {
+                <a asp-controller="Home" asp-action="@item.Action" asp-route-lang="@lang">@NavLabel(item.Tr, item.En)</a>
+            }
+        }
+    </nav>
+
+    <div class="lang-switch" aria-label="@(isTr ? "Dil seçimi" : "Language")">
+        @if (isTr)
+        {
+            <a asp-controller="Home" asp-action="@action" asp-route-lang="tr" class="is-active" lang="tr" hreflang="tr">TR</a>
+            <span class="lang-switch__sep" aria-hidden="true">/</span>
+            <a asp-controller="Home" asp-action="@action" asp-route-lang="en" lang="en" hreflang="en">EN</a>
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="@action" asp-route-lang="tr" lang="tr" hreflang="tr">TR</a>
+            <span class="lang-switch__sep" aria-hidden="true">/</span>
+            <a asp-controller="Home" asp-action="@action" asp-route-lang="en" class="is-active" lang="en" hreflang="en">EN</a>
+        }
+    </div>
+</header>

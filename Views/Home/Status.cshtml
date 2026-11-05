@@ -1,0 +1,39 @@
+@{
+    Layout = "_LayoutBento";
+    var isEn = ViewData["IsEn"] as bool? == true;
+    var code = ViewData["StatusCode"] as int? ?? 404;
+    var isNotFound = code == 404;
+
+    string TitleText()
+    {
+        if (isNotFound) return isEn ? "Page not found" : "Bu sayfa bulunamadı";
+        return isEn ? "Something went wrong" : "Bir şeyler ters gitti";
+    }
+
+    string BodyText()
+    {
+        if (isNotFound)
+        {
+            return isEn
+                ? "The link may be broken, or the page may have moved."
+                : "Bağlantı bozuk olabilir ya da sayfa taşınmış olabilir.";
+        }
+        return isEn
+            ? "Please try again in a moment, or return to the home page."
+            : "Biraz sonra tekrar dene veya ana sayfaya dön.";
+    }
+
+    var homeLabel = isEn ? "Back to home" : "Ana sayfaya dön";
+    var projectsLabel = isEn ? "Projects" : "Projeler";
+    var lang = isEn ? "en" : "tr";
+}
+
+<section class="status-page tile tile--static" aria-labelledby="status-heading">
+    <p class="status-page__code" aria-hidden="true">@code</p>
+    <h1 id="status-heading">@TitleText()</h1>
+    <p class="lead">@BodyText()</p>
+    <div class="btn-row">
+        <a class="btn btn--primary" asp-controller="Home" asp-action="Index" asp-route-lang="@lang">@homeLabel</a>
+        <a class="btn btn--secondary" asp-controller="Home" asp-action="Projects" asp-route-lang="@lang">@projectsLabel</a>
+    </div>
+</section>

@@ -44,6 +44,9 @@
             <label asp-for="ImageUrl" class="form-label">Görsel URL</label>
             <input asp-for="ImageUrl" class="form-control" placeholder="~/img/certificates/..." />
         </div>
-        <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-circle"></i> Kaydet</button>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-circle"></i> Kaydet</button>
+            <a asp-controller="AdminCertificates" asp-action="Index" asp-route-lang="@lang" asp-route-contentLang="@currentLang" class="btn btn-secondary-custom">İptal</a>
+        </div>
     </form>
 </div>

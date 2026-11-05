@@ -1,410 +1,73 @@
 @{
-    Layout = null;
+    Layout = "_LayoutBento";
+    ViewData["Title"] = "Projects";
+    ViewData["Description"] = "School, work, and personal projects by Ömer Faruk Türegün — from factory systems to AI agents.";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Ömer Faruk Türegün</title>
+<div id="projects-page">
+    <section class="projects-top" aria-label="Projects overview">
+        <div class="tile tile--static projects-hero">
+            <h1>Projects</h1>
+            <p class="lead">School, work, and personal projects. From factory systems to AI agents.</p>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="~/css/site-footer.css" asp-append-version="true" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- ==== MAIN STYLE FILE (Same as Homepage) ==== -->
-    <style>
-        :root {
-            --bg-dark: #0D1117;
-            --bg-glass: rgba(30, 41, 59, 0.5); /* Semi-transparent glass */
-            --border-glass: rgba(148, 238, 144, 0.2); /* Greenish border */
-            --primary-light: #90EE90; /* Pistachio Green */
-            --text-on-accent: #0D1117; /* Dark text on green */
-            --text-light: #E6EDF3; /* Main text color (White) */
-            --text-muted: #8B949E; /* Muted text (Gray) */
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: #E6EDF3;
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: var(--bg-glass) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glass);
-            border-radius: 1rem;
-            margin: 1rem;
-        }
-            .navbar .nav-link {
-                color: var(--text-muted);
-                font-weight: 500;
-                transition: all 0.2s ease-in-out;
-            }
-                .navbar .nav-link:hover,
-                .navbar .nav-link.active {
-                    color: var(--primary-light) !important;
-                }
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-light);
-        }
-
-        /* ==== GLASS CARDS (General Style) ==== */
-        .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        /*
-         * ==== PROJECT STYLES ====
-         */
-        .project-card-img {
-            aspect-ratio: 16 / 9;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 0.75rem 0.75rem 0 0;
-            margin-bottom: 0;
-            border-bottom: 1px solid var(--glass-border);
-        }
-        .glass-card .project-card-body {
-            padding: 1.5rem;
-            position: relative;
-        }
-        .project-tags {
-            padding: 0;
-            margin: 1rem 0 0 0;
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .project-tags li {
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.6rem;
-            background-color: rgba(144, 238, 144, 0.1);
-            color: var(--primary-light);
-            border-radius: 99px;
-            border: 1px solid rgba(144, 238, 144, 0.3);
-        }
-        
-        /* Make card clickable */
-        .project-card-clickable {
-            cursor: pointer;
-        }
-
-        /* ==== ADD THIS ==== */
-        .project-card-footer {
-            display: flex; /* Key: vertical alignment */
-            justify-content: space-between; /* One to left, one to right */
-            align-items: flex-end; /* Align items (tag list and icon) to bottom */
-            gap: 1rem; /* Space between (prevents overflow) */
-        }
-
-        /* GitHub link */
-        .project-github-link {
-            /* position: absolute and related removed */
-            font-size: 1.5rem;
-            color: #E6EDF3;
-            transition: all 0.3s ease;
-            flex-shrink: 0; /* Prevent icon from shrinking */
-        }
-        .project-github-link:hover {
-            color: var(--primary-light);
-            transform: scale(1.1);
-        }
-
-        #projectModal .modal-dialog {
-            max-width: 600px;
-        }
-
-        #projectModalContent h5 {
-            color: var(--primary-light); /* Green color */
-            font-weight: 700;          /* Bold text */
-            margin-top: 1rem;          /* Space from paragraph above */
-        }
-
-        #projectModal .modal-body,
-        #projectModal .modal-body ul li {
-            font-size: 0.9rem; /* Reduced from 1rem (default) */
-            line-height: 1.6;
-        }
-
-        #projectModalImage {
-            /* Width should be less than modal width (not 100%) */
-            max-width: 80%; 
-            
-            /* Never exceed 300px vertically (Main solution) */
-            max-height: 300px;
-            
-            width: auto; /* Maintain aspect ratio */
-            
-            /* Center image */
-            display: block;
-            margin: 0 auto; 
-        }
-
-        #projectModalTitle {
-            font-size: 0.9rem; /* Reduce font size (smaller than h5) */
-            font-weight: 400;  /* Reduce weight */
-            color: #E6EDF3 !important; /* Override text-white */
-            opacity: 0.7; /* Make slightly faded */
-        }
-
-        /* Style the actual project title we added to body */
-        #projectModalContent h4 {
-            font-size: 1.5rem; /* Keep this large */
-        }
-        
-        /* Main Button Style */
-        .btn-primary-light {
-            background-color: var(--primary-light);
-            color: var(--text-on-accent);
-            border: 0;
-            font-weight: 700;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        .btn-primary-light:hover {
-            background-color: #fff;
-            color: var(--text-on-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(144, 238, 144, 0.2);
-        }
-    </style>
-    <link href="~/css/site-mobile.css" asp-append-version="true" rel="stylesheet">
-</head>
-
-<body data-bs-theme="dark" class="bg-dark text-white">
-
-        <!-- ==== STICKY NAVBAR ==== -->
-        <nav class="navbar navbar-expand-lg sticky-top">
-            <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    Ömer Faruk TÜREGÜN
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutMe">About Me</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" asp-fragment="expertise">Skills</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Experience</a></li>
-                        <!-- "Projects" link (Active Page) -->
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>
-                    <ul class="navbar-nav ms-2">
-                        <li class="nav-item">
-                            <!-- Bu 'Index.en' sayfasında olduğu için asp-action="Index" yazar -->
-                            <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="tr" style="font-weight: 700;">
-                                <i class="bi bi-translate me-1"></i> TR
-                            </a>
-                        </li>
-                    </ul>
+            <div class="projects-toolbar">
+                <div class="segment" id="projects-segment" role="group" aria-label="Category filter">
+                    <button type="button" class="segment__btn" data-filter="all" aria-pressed="true">All <span class="segment__count">0</span></button>
+                    <button type="button" class="segment__btn" data-filter="web" aria-pressed="false">Web <span class="segment__count">0</span></button>
+                    <button type="button" class="segment__btn" data-filter="ai" aria-pressed="false">AI <span class="segment__count">0</span></button>
+                    <button type="button" class="segment__btn" data-filter="ind" aria-pressed="false">Industrial <span class="segment__count">0</span></button>
                 </div>
-            </div>
-        </nav>
 
-
-    <!-- ==== ALL PROJECTS SECTION ==== -->
-    <main class="container my-5 py-5">
-        
-        <div class="row text-center mb-5" data-aos="fade-up">
-            <div class="col">
-                <h1 class="display-4 fw-bold text-white mb-3">All My Projects</h1>
-                <p class="lead text-white-50">A complete collection of applications and works I've developed.</p>
-            </div>
-        </div>
-
-        <!-- PROJECTS WILL BE ADDED HERE VIA JS -->
-        <div class="row g-4" id="all-projects-container">
-            <!-- Will be filled by JS -->
-        </div> 
-
-    </main>
-
-    <!-- ==== PROJECT DETAIL MODAL (HIDDEN) ==== -->
-    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="background-color: transparent; border:none;">
-                <div class="glass-card" style="border-width: 2px; border-color: rgba(255,255,255,0.3);">
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title text-white fw-bold" id="projectModalTitle">Project Title</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-white-50">
-                        <div id="projectModalTags" class="d-flex flex-wrap gap-2 mb-3">
-                            <!-- Tags will be added here via JS -->
-                        </div>
-                        <div id="projectModalContent">
-                            <!-- Detailed content will be added here via JS -->
-                        </div>
-                    </div>
-                    <div class="modal-footer border-0">
-                        <a href="#" id="projectModalGithubLink" class="btn btn-primary-light" target="_blank">
-                            <i class="bi bi-github me-2"></i> View on GitHub
-                        </a>
-                    </div>
+                <div class="projects-search form-field">
+                    <label class="visually-hidden" for="projects-search">Search projects</label>
+                    <input id="projects-search" type="search" placeholder="Search project or technology…" autocomplete="off" />
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- ==== SCRIPT FILES ==== -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <div class="tile tile--accent tile--static projects-stat">
+            <p class="eyebrow">Total</p>
+            <p class="projects-stat__number" id="projects-total">—</p>
+            <p class="projects-stat__meta" id="projects-total-meta">projects</p>
+        </div>
 
-    <!-- ==== PROJECTS PAGE SPECIFIC JAVASCRIPT ==== -->
-    <script>
-        // Global variable to hold all projects
-        let allProjects = [];
+        <div class="tile tile--dark tile--static projects-stack">
+            <p class="eyebrow">Go-to stack</p>
+            <h2 class="projects-stack__title">Docker,<br>React, .NET</h2>
+            <p>the backbone of my end-to-end work</p>
+        </div>
+    </section>
 
-        // Main functions to run when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({
-                duration: 800,
-                once: true
-            });
+    <p class="visually-hidden" id="projects-status" aria-live="polite">0 projects showing</p>
 
-            fetchProjects();
-
-            // Fill data when modal is triggered
-            const projectModal = document.getElementById('projectModal');
-            projectModal.addEventListener('show.bs.modal', (event) => {
-                const projectId = event.relatedTarget.getAttribute('data-project-id');
-                const project = allProjects.find(p => p.id == projectId);
-                if (project) {
-                    populateProjectModal(project);
-                }
-            });
-        });
-        
-        // Function to Fetch Projects from JSON
-        async function fetchProjects() {
-            try {
-                // Cache'i bypass etmek için timestamp ekle
-                const timestamp = new Date().getTime();
-                const response = await fetch(`/data-en/projects.json?v=${timestamp}`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                allProjects = await response.json();
-
-                // Sort by ID (smaller ID at the top)
-                allProjects.sort((a, b) => (a.id || 0) - (b.id || 0));
-                
-                // FOR PROJECTS PAGE: Get ALL projects
-                const projectsToShow = allProjects; 
-                
-                const container = document.getElementById('all-projects-container');
-                container.innerHTML = ''; // Clear
-                
-                projectsToShow.forEach(project => {
-                    container.innerHTML += createProjectCardHTML(project);
-                });
-
-                AOS.refresh();
-
-            } catch (error) {
-                console.error('Error loading projects:', error);
-                document.getElementById('all-projects-container').innerHTML = '<p class="text-danger">Projects could not be loaded.</p>';
-            }
-        }
-
-        function createProjectCardHTML(project) {
-            const tagsHTML = project.tags.map(tag => `<li>${tag}</li>`).join('');
-
-            // GitHub linkini oluşturan logic
-            const githubLinkHTML = project.githubUrl
-                ? `<a href="${project.githubUrl}" class="project-github-link" target="_blank" onclick="event.stopPropagation()">
-                    <i class="bi bi-github"></i>
-                </a>`
-                : ''; 
-
-            // ---- GÜNCEL HTML YAPISI (Görsel etiketi silinmiştir) ----
-            return `
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="${(project.id % 3 + 1) * 100}">
-                <div class="glass-card card-hover w-100 p-0 project-card-clickable" 
-                    data-bs-toggle="modal" 
-                    data-bs-target="#projectModal" 
-                    data-project-id="${project.id}">
-
-                    <div class="project-card-body d-flex flex-column flex-grow-1">
-                        
-                        <div>
-                            <h4 class="text-white fw-bold">${project.title}</h4>
-                            <p class="text-white-50 mb-3">${project.description}</p>
-                        </div>
-                        
-                        <div class="mt-auto">
-                            <div class="project-card-footer">
-                                
-                                <ul class="project-tags">
-                                    ${tagsHTML}
-                                </ul>
-                                
-                                ${githubLinkHTML}
-                            </div>
-                        </div>
+    <section class="section" aria-label="Project list">
+        <div class="projects-grid" id="projects-grid">
+            @for (var i = 0; i < 6; i++)
+            {
+                <div class="project-card-wrap">
+                    <div class="project-card project-card--skeleton">
+                        <span class="skeleton skeleton--block"></span>
+                        <span class="skeleton skeleton--line skeleton--md"></span>
+                        <span class="skeleton skeleton--line skeleton--lg"></span>
+                        <span class="skeleton skeleton--line"></span>
                     </div>
                 </div>
-            </div>
-            `;
-        }
-
-        // Function to Fill Modal with Data
-        function populateProjectModal(project) {
-            
-            document.getElementById('projectModalTitle').innerText = project.dateRange || 'Project Details';
-
-            
-            const githubLinkButton = document.getElementById('projectModalGithubLink');
-            if (project.githubUrl) {
-                githubLinkButton.href = project.githubUrl;
-                githubLinkButton.style.display = 'inline-block'; 
-            } else {
-                githubLinkButton.style.display = 'none'; 
             }
+        </div>
+    </section>
 
-            const tagsContainer = document.getElementById('projectModalTags');
-            tagsContainer.innerHTML = '';
-            project.tags.forEach(tag => {
-                tagsContainer.innerHTML += `<span class="badge" style="background-color: rgba(144, 238, 144, 0.1); color: var(--primary-light); border: 1px solid rgba(144, 238, 144, 0.3); padding: 0.4rem 0.6rem; font-weight: 500;">${tag}</span>`;
-            });
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+        <button type="button" class="project-dialog__x" data-dialog-close aria-label="Close">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+        <div class="project-dialog__inner" id="project-dialog-body"></div>
+        <div class="project-dialog__actions">
+            <a class="btn btn--primary" id="project-dialog-github" href="#" target="_blank" rel="noopener" hidden>View on GitHub ↗</a>
+            <button type="button" class="btn btn--secondary" data-dialog-close>Close</button>
+        </div>
+    </dialog>
+</div>
 
-            const contentContainer = document.getElementById('projectModalContent');
-            
-            contentContainer.innerHTML = ''; 
-            
-            contentContainer.innerHTML += `<h4 class="text-white fw-bold mb-2">${project.title}</h4>`;
-            
-            contentContainer.innerHTML += project.modalContent.join('');
-        }
-
-    </script>
-    <partial name="_SiteFooter" />
-</body>
-</html>
+@section Scripts {
+    <script>document.addEventListener("DOMContentLoaded",function(){Bento.projects.init();});</script>
+}

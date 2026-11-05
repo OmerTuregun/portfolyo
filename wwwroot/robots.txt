@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Disallow: /tr/Admin
+Disallow: /en/Admin
+Disallow: /tr/AdminExperience
+Disallow: /en/AdminExperience
+Disallow: /tr/AdminProjects
+Disallow: /en/AdminProjects
+Disallow: /tr/AdminCertificates
+Disallow: /en/AdminCertificates
+Disallow: /tr/AdminReferences
+Disallow: /en/AdminReferences
+Disallow: /tr/AdminAbout
+Disallow: /en/AdminAbout
+
+Sitemap: https://omerfarukturegun.com.tr/sitemap.xml

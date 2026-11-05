@@ -1,430 +1,114 @@
 @{
-    Layout = null;
+    Layout = "_LayoutBento";
+    ViewData["Title"] = "Contact";
+    ViewData["Description"] = "Get in touch with Ömer Faruk Türegün — job offers, projects, or just hello.";
+    var lang = ViewContext.RouteData.Values["lang"]?.ToString()?.ToLower() ?? "en";
+    if (lang != "tr" && lang != "en") { lang = "en"; }
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Ömer Faruk Türegün</title>
 
-    <!-- Bootstrap CSS and Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/css/site-footer.css" asp-append-version="true" rel="stylesheet">
-<!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<section class="bento contact-bento" id="contact-page" aria-label="Contact">
+    <div class="tile tile--static span-2 row-3 contact-form-tile contact-order-form" id="contact-form-panel" aria-live="polite">
+        <p class="eyebrow">Contact</p>
+        <h1 class="contact-title">Let's talk.</h1>
 
-    <!-- AOS (Animation) CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <form id="contact-form"
+              action="https://formspree.io/f/xvgvvblj"
+              method="POST"
+              novalidate>
+            <div class="contact-topics" role="group" aria-label="Topic">
+                <button type="button" class="contact-topic" data-topic="Job offer" data-topic-key="is" aria-pressed="true">Job offer</button>
+                <button type="button" class="contact-topic" data-topic="Freelance project" data-topic-key="proje" aria-pressed="false">Freelance project</button>
+                <button type="button" class="contact-topic" data-topic="Just saying hi" data-topic-key="merhaba" aria-pressed="false">Just saying hi</button>
+            </div>
 
-    <style>
-        /* ==== MAIN STYLES ==== */
-        :root {
-            --bg-dark: #0D1117; /* Main dark background */
-            --bg-glass: rgba(30, 41, 59, 0.5); /* Glass card background */
-            --border-glass: rgba(148, 238, 144, 0.2); /* Glass card border */
-            --primary-light: #90EE90; /* Pistachio Green Accent */
-            --text-on-accent: #0D1117; /* Text on accent (dark) */
-            --text-light: #E6EDF3; /* Main text color (White) */
-            --text-muted: #8B949E; /* Muted text (Gray) */
-        }
+            <input type="hidden" name="konu" id="contact-konu" value="Job offer" />
+            <input type="hidden" name="_subject" id="contact-subject" value="Portfolyo · Job offer" />
+            <input type="text" name="_gotcha" id="contact-gotcha" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
+            <div class="contact-fields">
+                <div class="form-field">
+                    <label for="contact-name">Full name</label>
+                    <input id="contact-name" name="AdSoyad" type="text" autocomplete="name" placeholder="Your full name" />
+                    <p class="form-error" id="contact-name-error" hidden></p>
+                </div>
+                <div class="form-field">
+                    <label for="contact-email">Email</label>
+                    <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+                    <p class="form-error" id="contact-email-error" hidden></p>
+                </div>
+            </div>
 
-        /* Main title style (like SOFTWARE DEVELOPER) */
-        .page-title {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 900;
-            color: var(--text-light);
-            margin: 0.5rem 0 1.5rem;
-        }
+            <div class="form-field">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="mesaj" rows="6" placeholder="Tell me a bit more…"></textarea>
+                <p class="form-error" id="contact-message-error" hidden></p>
+            </div>
 
-        @@media (min-width: 992px) {
-            .page-title {
-                font-size: 4.5rem;
-            }
-        }
+            <p class="form-error form-error--form" id="contact-form-error" hidden></p>
 
-        .navbar {
-            /* Standard style from other pages */
-            background-color: var(--bg-glass) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glass);
-            border-radius: 1rem;
-            margin: 1rem; /* Not 'margin: 1rem auto' */
-            /* width and max-width removed */
-        }
-            .navbar .nav-link {
-                color: var(--text-muted);
-                font-weight: 500;
-                transition: all 0.2s ease-in-out;
-            }
-                .navbar .nav-link:hover,
-                .navbar .nav-link.active {
-                    color: var(--primary-light) !important;                }
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--text-light);
-            font-size: 1.25rem;
-        }
+            <button type="submit" class="btn btn--primary" id="contact-submit">Send →</button>
+        </form>
+    </div>
 
-        /* ==== 'GLASS' CARD ==== */
-        .glass-card {
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 1.5rem;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
+    <div class="tile tile--dark tile--static span-2 contact-email-tile contact-order-email">
+        <p class="eyebrow">Direct email</p>
+        <p class="contact-email-address" id="contact-email-display">trkuraf@gmail.com</p>
+        <div class="btn-row">
+            <button type="button" class="btn btn--accent" id="contact-copy" data-email="trkuraf@gmail.com">Copy address</button>
+            <a class="btn btn--on-dark" href="mailto:trkuraf@gmail.com">Open in mail app ↗</a>
+        </div>
+    </div>
 
-        /* ==== 'HERO' CARD (Pistachio Green) ==== */
-        .hero-card {
-            background-color: var(--primary-light);
-            color: var(--text-on-accent);
-            padding: 2rem;
-            border-radius: 1.5rem;
-            margin-bottom: 2rem;
-        }
+    <div class="contact-order-location">
+        <partial name="_BentoLocationTile" />
+    </div>
 
-        /* ==== CONTACT FORM STYLES ==== */
-        .form-control-glass {
-            background: var(--bg-glass) !important;
-            border: 1px solid var(--border-glass) !important;
-            border-radius: 0.75rem !important;
-            color: var(--text-light) !important;
-            padding: 0.75rem 1rem !important;
-            font-size: 0.9rem;
-        }
+    <a class="tile tile--accent contact-cv-tile contact-order-cv"
+       href="/files/CV_EN.pdf"
+       download="OmerFarukTuregun_CV_EN.pdf">
+        <i class="bi bi-download contact-cv__icon" aria-hidden="true"></i>
+        <span class="contact-cv__title">Download CV</span>
+        <span class="contact-cv__meta">PDF · English</span>
+    </a>
 
-            .form-control-glass::placeholder {
-                color: var(--text-muted) !important;
-            }
-
-            .form-control-glass:focus {
-                background: rgba(30, 41, 59, 0.8) !important;
-                box-shadow: 0 0 0 3px rgba(144, 238, 144, 0.3) !important; /* Green focus */
-            }
-
-        /* Form labels */
-        .form-label {
-            color: var(--text-light);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Submit Button */
-        .btn-primary-light {
-            background-color: var(--primary-light);
-            color: var(--text-on-accent);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-weight: 700;
-            border-radius: 0.75rem;
-            transition: all 0.3s ease;
-        }
-
-            .btn-primary-light:hover {
-                background-color: #79db79; /* Slightly darker green */
-                color: var(--text-on-accent);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(144, 238, 144, 0.2);
-            }
-
-        /* ==== SOCIAL MEDIA BUTTONS (NEW) ==== */
-        .social-buttons-container {
-            display: flex;
-            flex-wrap: wrap; /* Wrap to next line if doesn't fit */
-            gap: 0.75rem; /* Space between buttons */
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-            border-radius: 0.75rem;
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-            .social-btn i {
-                /* Icon color green */
-                color: var(--primary-light);
-                font-size: 1.1rem;
-                margin-right: 0.5rem;
-            }
-            .social-btn:hover {
-                background: rgba(30, 41, 59, 0.8);
-                border-color: rgba(144, 238, 144, 0.5);
-                color: var(--text-light);
-                transform: translateY(-2px);
-            }
-
-        /* Fade Animations for Form Status Message */
-        #my-form-status {
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            text-align: center;
-        }
-
-        #my-form-status.fade-in {
-            opacity: 1;
-        }
-
-        #my-form-status.fade-out {
-            opacity: 0;
-        }
-
-        #my-form-status .alert {
-            width: 100%;
-            margin-bottom: 0;
-            padding: 0.75rem 1.25rem;
-        }
-    </style>
-    <link href="~/css/site-mobile.css" asp-append-version="true" rel="stylesheet">
-</head>
-<body data-bs-theme="dark" class="bg-dark text-white">
-    <!-- ==== REPLACE WITH OLD NAVBAR HTML ==== -->
-
-        <!-- ==== NAVBAR ==== -->
-        <nav class="navbar navbar-expand-lg sticky-top">
-            <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    Ömer Faruk TÜREGÜN
+    <div class="tile tile--static span-2 contact-social-tile contact-order-social">
+        <p class="eyebrow">Social</p>
+        <h3>Links</h3>
+        <ul class="link-list contact-social-list">
+            <li>
+                <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" rel="noopener">
+                    <span>LinkedIn</span>
+                    <span class="contact-social__handle">/in/ömer-faruk-türegün ↗</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="AboutMe">About Me</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Experience">Experience</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Projects">Projects</a></li>
-                        <!-- "Contact" link (Active Page) -->
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>
-                    <ul class="navbar-nav ms-2">
-    <li class="nav-item">
-        <!-- Bu 'Index.en' sayfasında olduğu için asp-action="Index" yazar -->
-        <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-lang="tr" style="font-weight: 700;">
-            <i class="bi bi-translate me-1"></i> TR
-        </a>
-    </li>
-</ul>
-                </div>
-            </div>
-        </nav>
+            </li>
+            <li>
+                <a href="https://github.com/OmerTuregun" target="_blank" rel="noopener">
+                    <span>GitHub</span>
+                    <span class="contact-social__handle">@@OmerTuregun ↗</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://medium.com/@@trkuraf" target="_blank" rel="noopener">
+                    <span>Medium</span>
+                    <span class="contact-social__handle">@@trkuraf ↗</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/omerfarukturegun" target="_blank" rel="noopener">
+                    <span>Instagram</span>
+                    <span class="contact-social__handle">@@omerfarukturegun ↗</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x.com/o_farukturegun" target="_blank" rel="noopener">
+                    <span>X</span>
+                    <span class="contact-social__handle">@@o_farukturegun ↗</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
 
-    <!-- ==== MAIN CONTENT ==== -->
-    <main class="container my-5">
-        <div class="text-center" data-aos="fade-up">
-            <h1 class="page-title">GET IN TOUCH</h1>
-            <p class="lead text-white-50 mb-5">
-                You can use the form to work with me, discuss a project, or just say hello.
-            </p>
-        </div>
-
-        <div class="row g-4">
-
-            <!-- LEFT COLUMN: Form Area (UPDATED FOR FORM SUBMISSION) -->
-            <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
-                <div class="glass-card p-4 p-md-5">
-                    
-                    <!-- 1. FORM TAG UPDATED (id, action, method) -->
-                    <form id="my-form" action="https://formspree.io/f/xvgvvblj" method="POST">
-                        
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Full Name</label>
-                            <!-- 2. 'name' ATTRIBUTE ADDED -->
-                            <input type="text" class="form-control form-control-glass" id="name" name="FullName" placeholder="Your Full Name" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Your Email Address</label>
-                            <!-- 2. 'name' ATTRIBUTE ADDED -->
-                            <input type="email" class="form-control form-control-glass" id="email" name="email" placeholder="mail@youraddress.com" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Your Message</label>
-                            <!-- 2. 'name' ATTRIBUTE ADDED -->
-                            <textarea class="form-control form-control-glass" id="message" name="message" rows="6" placeholder="Leave me a message..." required></textarea>
-                        </div>
-                        
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary-light">
-                                Send Message <i class="bi bi-send-fill ms-2"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- 3. FORM STATUS MESSAGE ADDED (ID that script looks for) -->
-                        <p id="my-form-status" class="mt-3 text-center"></p>
-
-                    </form>
-                </div>
-            </div>
-
-            <!-- RIGHT COLUMN: Information and Social Media -->
-            <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
-
-                <!-- Pistachio Green Info Card -->
-                <div class="hero-card">
-                    <h4 class="fw-bold">Contact Information</h4>
-                    <p class="mb-2">To get in touch with me directly:</p>
-                    <ul class="list-unstyled mb-0" style="color: var(--text-on-accent);">
-                        <li>
-                            <i class="bi bi-envelope-fill me-2"></i>
-                            <strong>trkuraf@gmail.com</strong>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Social Media Links (New Buttons) -->
-                <h4 class="text-white fw-bold mt-4 mb-3">Social Media</h4>
-                <div class="social-buttons-container">
-                    <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" class="social-btn">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/OmerTuregun" target="_blank" class="social-btn">
-                        <i class="bi bi-github"></i> GitHub
-                    </a>
-                    <a href="https://medium.com/@@trkuraf" target="_blank" class="social-btn">
-                        <i class="bi bi-medium"></i> Medium
-                    </a>
-                    <a href="https://www.kaggle.com/merfaruktregn" target="_blank" class="social-btn">
-                        <i class="bi bi-kanban-fill"></i> Kaggle
-                    </a>
-                    <a href="https://www.hackerrank.com/profile/trkuraf" target="_blank" class="social-btn">
-                        <i class="bi bi-terminal-fill"></i> HackerRank
-                    </a>
-                    <a href="https://x.com/o_farukturegun?t=mbXcTQaEbZrD8qd3_8wZaA&s=09" target="_blank" class="social-btn">
-                        <i class="bi bi-twitter-x"></i> X (Twitter)
-                    </a>
-                    <a href="https://www.instagram.com/omerfarukturegun?igsh=b2kwOXllcmVlcGVq" target="_blank" class="social-btn">
-                        <i class="bi bi-instagram"></i> Instagram
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS (Animation) JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script>
-        // Start AOS Animations
-        AOS.init({
-            duration: 600,
-            once: true,
-            easing: 'ease-in-out-quad',
-        });
-    </script>
-
-    <!-- ==== ADD THIS AT THE BOTTOM OF PAGE (INSTEAD OF OLD SCRIPT) ==== -->
-    <script>
-        var form = document.getElementById("my-form");
-        
-        async function handleSubmit(event) {
-            event.preventDefault();
-            var status = document.getElementById("my-form-status");
-            var data = new FormData(event.target);
-            
-            // Lock button and write "Sending..."
-            var submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
-
-            // Clear previous message and remove animation classes
-            status.innerHTML = '';
-            status.classList.remove('fade-in', 'fade-out');
-
-            fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-            }).then(response => {
-            // Unlock button
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Send Message <i class="bi bi-send-fill ms-2"></i>';
-
-            if (response.ok) {
-                // Show new message and fade-in
-                status.innerHTML = '<div class="alert alert-success" style="background-color: var(--primary-light); color: var(--text-on-accent); border: 0; font-weight: 500;">Thank you! I received your message and will get back to you as soon as possible.</div>';
-                status.classList.add('fade-in'); // Make it appear slowly
-                form.reset(); 
-                
-                // Fade-out after 3 seconds and completely hide after animation ends
-                setTimeout(() => {
-                    status.classList.remove('fade-in');
-                    status.classList.add('fade-out'); // Make it disappear slowly
-                    
-                    // Wait for animation duration (0.5s) and clear content
-                    setTimeout(() => {
-                        status.innerHTML = '';
-                        status.classList.remove('fade-out');
-                    }, 500); // Should match CSS transition duration
-                }, 3000); // Start fading after 3 seconds
-
-            } else {
-                response.json().then(data => {
-                let errorMessage = 'An error occurred, please try again later.';
-                if (Object.hasOwn(data, 'errors')) {
-                    errorMessage = data["errors"].map(error => error["message"]).join(", ");
-                }
-                status.innerHTML = `<div class="alert alert-danger">${errorMessage}</div>`;
-                status.classList.add('fade-in');
-                setTimeout(() => {
-                    status.classList.remove('fade-in');
-                    status.classList.add('fade-out');
-                    setTimeout(() => {
-                        status.innerHTML = '';
-                        status.classList.remove('fade-out');
-                    }, 500);
-                }, 5000); // Error message stays a bit longer
-                })
-            }
-            }).catch(error => {
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Send Message <i class="bi bi-send-fill ms-2"></i>';
-            status.innerHTML = '<div class="alert alert-danger">A network error occurred, please check your internet connection.</div>';
-            status.classList.add('fade-in');
-            setTimeout(() => {
-                    status.classList.remove('fade-in');
-                    status.classList.add('fade-out');
-                    setTimeout(() => {
-                        status.innerHTML = '';
-                        status.classList.remove('fade-out');
-                    }, 500);
-                }, 5000);
-            });
-        }
-        form.addEventListener("submit", handleSubmit)
-    </script>
-    <partial name="_SiteFooter" />
-</body>
-</html>
+@section Scripts {
+    <script>document.addEventListener("DOMContentLoaded",function(){Bento.contact.init();});</script>
+}
