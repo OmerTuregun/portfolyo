@@ -439,7 +439,9 @@
     }
 
     var current = jobs[0];
-    var prev = jobs.slice(1, 4).map(firstCompanyWord).filter(Boolean);
+    var prev = jobs.slice(1, 4).map(function (job) {
+      return firstCompanyWord(job && job.company);
+    }).filter(Boolean);
     var prevPrefix = lang === 'en' ? 'previously: ' : 'önceden: ';
     var prevHtml = prev.length
       ? '<p class="now-prev">' + escapeHtml(prevPrefix + prev.join(' · ')) + '</p>'
@@ -594,6 +596,10 @@
       var days = Array.isArray(weeks[w]) ? weeks[w] : [];
       for (var d = 0; d < 7; d++) {
         var day = days[d] || {};
+        if (!day.d) {
+          html += '<span class="heatmap__cell heatmap__cell--empty"></span>';
+          continue;
+        }
         var level = Math.max(0, Math.min(4, Number(day.l) || 0));
         var count = Number(day.c) || 0;
         var dateLabel = formatContributionDate(day.d, lang);
