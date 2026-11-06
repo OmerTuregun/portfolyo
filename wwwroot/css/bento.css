@@ -523,6 +523,11 @@ a.tile {
   transform: translateY(-1px);
 }
 
+/* Hero CTA: parent tile tilt kapalı; ekstra lift de gerekmez */
+.home-intro .btn:hover {
+  transform: none;
+}
+
 .btn--primary {
   background: var(--ink);
   color: #fff;
