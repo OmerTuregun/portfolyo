@@ -86,9 +86,8 @@
 
 html {
   font-size: 16px;
-  width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -100,9 +99,8 @@ body {
   line-height: 1.55;
   color: var(--ink);
   background: var(--bg);
-  width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -233,14 +231,12 @@ h3 {
   gap: var(--gap);
 }
 
-/* 2 kolon: sadece gerçek tablet/küçük laptop aralığı */
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
   .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .span-4 { grid-column: span 2; }
 }
 
-/* Tek kolon: telefon + Chrome "masaüstü sitesi" (~980px) */
-@media (max-width: 1024px) {
+@media (max-width: 640px) {
   .bento { grid-template-columns: minmax(0, 1fr); }
   .span-2,
   .span-4 { grid-column: auto; }
@@ -417,7 +413,7 @@ a.tile {
   transition: background .2s ease, color .2s ease;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .site-header {
     flex-direction: column;
     align-items: stretch;
@@ -435,7 +431,9 @@ a.tile {
   .lang-switch {
     align-self: flex-start;
   }
+}
 
+@media (max-width: 640px) {
   :root {
     --gutter: 12px;
     --gap: 12px;
