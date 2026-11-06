@@ -7,9 +7,20 @@
 }
 
 <section class="bento home-hero" aria-label="Tanıtım">
+    <div class="tile tile--static about-photo home-photo row-2">
+        <img src="~/img/profil.jpg"
+             asp-append-version="true"
+             alt="Ömer Faruk Türegün"
+             width="640"
+             height="800"
+             class="about-photo__img"
+             loading="eager"
+             fetchpriority="high"
+             decoding="async" />
+    </div>
+
     <div class="tile tile--static span-2 row-2 home-intro">
         <div class="home-intro__top">
-            <img class="home-avatar" src="~/img/profil.jpg" asp-append-version="true" width="72" height="72" alt="Ömer Faruk Türegün" loading="eager" fetchpriority="high" decoding="async" />
             <span class="badge-status">
                 <span class="badge-status__dot" aria-hidden="true"></span>
                 Yeni projelere açık
