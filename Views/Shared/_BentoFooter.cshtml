@@ -19,42 +19,40 @@
 }
 
 <footer class="site-footer" role="contentinfo">
-    <div class="site-footer__top">
-        <nav class="site-footer__nav" aria-label="@(isTr ? "Alt menü" : "Footer menu")">
-            @foreach (var item in items)
+    <nav class="site-footer__nav" aria-label="@(isTr ? "Alt menü" : "Footer menu")">
+        @foreach (var item in items)
+        {
+            if (IsActive(item.Action))
             {
-                if (IsActive(item.Action))
-                {
-                    <a asp-controller="Home" asp-action="@item.Action" asp-route-lang="@lang" aria-current="page">@NavLabel(item.Tr, item.En)</a>
-                }
-                else
-                {
-                    <a asp-controller="Home" asp-action="@item.Action" asp-route-lang="@lang">@NavLabel(item.Tr, item.En)</a>
-                }
+                <a asp-controller="Home" asp-action="@item.Action" asp-route-lang="@lang" aria-current="page">@NavLabel(item.Tr, item.En)</a>
             }
-        </nav>
-
-        <div class="site-footer__social" aria-label="@(isTr ? "Sosyal medya" : "Social media")">
-            <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <i class="bi bi-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="https://github.com/OmerTuregun" target="_blank" rel="noopener" aria-label="GitHub">
-                <i class="bi bi-github" aria-hidden="true"></i>
-            </a>
-            <a href="https://medium.com/@@trkuraf" target="_blank" rel="noopener" aria-label="Medium">
-                <i class="bi bi-medium" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.instagram.com/omerfarukturegun" target="_blank" rel="noopener" aria-label="Instagram">
-                <i class="bi bi-instagram" aria-hidden="true"></i>
-            </a>
-            <a href="https://x.com/o_farukturegun" target="_blank" rel="noopener" aria-label="X">
-                <i class="bi bi-twitter-x" aria-hidden="true"></i>
-            </a>
-            <a href="mailto:trkuraf@gmail.com" aria-label="@(isTr ? "E-posta" : "Email")">
-                <i class="bi bi-envelope" aria-hidden="true"></i>
-            </a>
-        </div>
-    </div>
+            else
+            {
+                <a asp-controller="Home" asp-action="@item.Action" asp-route-lang="@lang">@NavLabel(item.Tr, item.En)</a>
+            }
+        }
+    </nav>
 
     <p class="site-footer__copy">© @year Ömer Faruk Türegün</p>
+
+    <div class="site-footer__social" aria-label="@(isTr ? "Sosyal medya" : "Social media")">
+        <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-t%C3%BCreg%C3%BCn-6360532b6/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="bi bi-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/OmerTuregun" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="bi bi-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://medium.com/@@trkuraf" target="_blank" rel="noopener" aria-label="Medium">
+            <i class="bi bi-medium" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/omerfarukturegun" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="bi bi-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://x.com/o_farukturegun" target="_blank" rel="noopener" aria-label="X">
+            <i class="bi bi-twitter-x" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:trkuraf@gmail.com" aria-label="@(isTr ? "E-posta" : "Email")">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+        </a>
+    </div>
 </footer>
