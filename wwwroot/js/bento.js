@@ -482,6 +482,7 @@
     }
 
     var selected = projects.slice(1, 6);
+    var moreLabel = lang === 'en' ? 'See more →' : 'Devamını gör →';
     var html = '';
 
     selected.forEach(function (project, index) {
@@ -502,6 +503,7 @@
             '<p class="home-work__meta">' + escapeHtml(label.toLocaleUpperCase('tr') + (year ? ' · ' + year : '')) + '</p>' +
             '<h3>' + escapeHtml(title) + '</h3>' +
             '<p class="home-work__desc">' + escapeHtml(desc) + '</p>' +
+            '<p class="home-work__more">' + escapeHtml(moreLabel) + '</p>' +
           '</a>';
       } else {
         var tags = (project.tags || []).slice(0, 3).join(' · ');
@@ -513,6 +515,7 @@
             '<h3 class="home-work__title">' + escapeHtml(title) + '</h3>' +
             '<p class="home-work__desc home-work__desc--clamp">' + escapeHtml(desc) + '</p>' +
             '<p class="home-work__tags">' + escapeHtml(tags) + '</p>' +
+            '<p class="home-work__more">' + escapeHtml(moreLabel) + '</p>' +
           '</a>';
       }
     });
@@ -779,6 +782,7 @@
       retry: lang === 'en' ? 'Try again' : 'Tekrar dene',
       githubAria: lang === 'en' ? 'GitHub repository' : 'GitHub deposu',
       githubCta: lang === 'en' ? 'View on GitHub ↗' : "GitHub'da incele ↗",
+      details: lang === 'en' ? 'View details →' : 'Detaylı gör →',
       close: lang === 'en' ? 'Close' : 'Kapat',
       projectWord: lang === 'en' ? 'projects' : 'proje',
       all: lang === 'en' ? 'All' : 'Tümü',
@@ -879,6 +883,7 @@
               (subtitle ? '<p class="project-card__subtitle">' + escapeHtml(subtitle) + '</p>' : '') +
               '<p class="project-card__desc project-card__desc--3">' + escapeHtml(project.description || '') + '</p>' +
               '<p class="project-card__tags">' + escapeHtml(tags) + '</p>' +
+              '<p class="project-card__cta">' + escapeHtml(t.details) + '</p>' +
             '</div>' +
           '</button>' +
           github +
